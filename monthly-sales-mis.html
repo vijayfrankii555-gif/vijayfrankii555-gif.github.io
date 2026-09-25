@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A corporate step-by-step guide to building a monthly sales MIS report in Excel using a fictional multi-city sales dataset.">
+<title>How to Create a Monthly Sales MIS Report | Vijay Arulsamy</title>
+<style>
+    :root{
+        --black:#0a0a0a;
+        --card:#111111;
+        --line:#292929;
+        --yellow:#ffc400;
+        --white:#f5f5f5;
+        --muted:#b8b8b8;
+    }
+    *{box-sizing:border-box}
+    body{
+        margin:0;
+        font-family:Arial,Helvetica,sans-serif;
+        background:var(--black);
+        color:var(--white);
+        line-height:1.75;
+    }
+    .container{max-width:1000px;margin:auto;padding:0 22px}
+    header{
+        border-bottom:1px solid var(--line);
+        position:sticky;
+        top:0;
+        background:rgba(10,10,10,.94);
+        backdrop-filter:blur(8px);
+        z-index:10;
+    }
+    nav{
+        min-height:68px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:18px;
+    }
+    .brand{
+        color:var(--yellow);
+        text-decoration:none;
+        font-weight:800;
+        letter-spacing:.5px;
+    }
+    .back{
+        color:var(--white);
+        text-decoration:none;
+        font-size:14px;
+    }
+    .back:hover{color:var(--yellow)}
+    main{padding:60px 0 80px}
+    .tag{
+        display:inline-block;
+        background:var(--yellow);
+        color:#000;
+        padding:7px 12px;
+        border-radius:20px;
+        font-size:12px;
+        font-weight:800;
+        margin-bottom:18px;
+    }
+    h1{
+        font-size:clamp(34px,5vw,58px);
+        line-height:1.08;
+        margin:0 0 18px;
+    }
+    .intro{
+        color:var(--muted);
+        font-size:18px;
+        max-width:820px;
+        margin-bottom:40px;
+    }
+    .note{
+        border:1px solid #4d3f00;
+        background:#151200;
+        padding:18px 20px;
+        border-radius:12px;
+        margin:26px 0 38px;
+    }
+    .note strong{color:var(--yellow)}
+    h2{
+        margin-top:52px;
+        font-size:30px;
+        line-height:1.2;
+    }
+    h3{
+        margin-top:32px;
+        font-size:21px;
+        color:var(--yellow);
+    }
+    p{color:#ddd}
+    ul,ol{color:#ddd}
+    li{margin:8px 0}
+    .table-wrap{
+        overflow-x:auto;
+        border:1px solid var(--line);
+        border-radius:12px;
+        margin:18px 0 24px;
+    }
+    table{
+        width:100%;
+        border-collapse:collapse;
+        min-width:760px;
+        background:var(--card);
+    }
+    th,td{
+        border-bottom:1px solid var(--line);
+        padding:11px 12px;
+        text-align:left;
+        font-size:14px;
+    }
+    th{
+        color:var(--yellow);
+        background:#151515;
+    }
+    tr:last-child td{border-bottom:none}
+    .formula{
+        background:#151515;
+        border:1px solid var(--line);
+        border-left:4px solid var(--yellow);
+        padding:15px 16px;
+        border-radius:8px;
+        margin:14px 0 20px;
+        font-family:Consolas,monospace;
+        color:#f2f2f2;
+        overflow:auto;
+    }
+    .step{
+        border:1px solid var(--line);
+        background:var(--card);
+        border-radius:12px;
+        padding:22px;
+        margin:18px 0;
+    }
+    .step-number{
+        color:var(--yellow);
+        font-weight:800;
+        font-size:13px;
+        letter-spacing:1px;
+        text-transform:uppercase;
+    }
+    .kpi-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+        gap:14px;
+        margin:20px 0;
+    }
+    .kpi{
+        border:1px solid var(--line);
+        background:var(--card);
+        padding:20px;
+        border-radius:12px;
+    }
+    .kpi strong{display:block;color:var(--yellow);font-size:13px}
+    .kpi span{display:block;margin-top:8px;font-size:14px;color:#ddd}
+    .cta{
+        margin-top:55px;
+        padding:26px;
+        border:1px solid #4d3f00;
+        background:#151200;
+        border-radius:14px;
+    }
+    .cta a{
+        color:#000;
+        background:var(--yellow);
+        text-decoration:none;
+        display:inline-block;
+        padding:11px 16px;
+        border-radius:7px;
+        font-weight:800;
+        margin-top:8px;
+    }
+    footer{
+        border-top:1px solid var(--line);
+        text-align:center;
+        color:#888;
+        padding:25px 20px;
+        font-size:13px;
+    }
+
+    .result-title{
+        color:var(--yellow);
+        font-size:13px;
+        font-weight:800;
+        letter-spacing:1px;
+        text-transform:uppercase;
+        margin-bottom:10px;
+    }
+    .dashboard-preview{
+        border:1px solid var(--line);
+        background:#0d0d0d;
+        border-radius:16px;
+        padding:22px;
+        margin:24px 0 30px;
+        box-shadow:0 0 0 1px rgba(255,196,0,.04),0 18px 50px rgba(0,0,0,.25);
+    }
+    .preview-head{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:15px;
+        flex-wrap:wrap;
+        margin-bottom:18px;
+    }
+    .preview-head h3{margin:0;color:#fff}
+    .period{
+        padding:7px 10px;
+        border-radius:7px;
+        background:#1d1d1d;
+        color:#bbb;
+        font-size:12px;
+    }
+    .kpi-row{
+        display:grid;
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        gap:12px;
+        margin-bottom:18px;
+    }
+    .kpi-box{
+        background:#151515;
+        border:1px solid #292929;
+        border-radius:10px;
+        padding:16px;
+    }
+    .kpi-label{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.7px}
+    .kpi-value{font-size:23px;font-weight:800;margin-top:5px}
+    .kpi-value.green{color:#59d98e}
+    .kpi-value.yellow{color:var(--yellow)}
+    .kpi-value.red{color:#ff7070}
+    .preview-grid{
+        display:grid;
+        grid-template-columns:1.15fr .85fr;
+        gap:14px;
+    }
+    .panel{
+        background:#121212;
+        border:1px solid #292929;
+        border-radius:10px;
+        padding:16px;
+    }
+    .panel h4{margin:0 0 12px;color:#fff;font-size:14px}
+    .city-row{
+        display:grid;
+        grid-template-columns:1.2fr .8fr .75fr .8fr;
+        gap:8px;
+        align-items:center;
+        padding:9px 0;
+        border-bottom:1px solid #242424;
+        font-size:12px;
+    }
+    .city-row:last-child{border-bottom:none}
+    .bar-bg{
+        background:#262626;
+        height:7px;
+        border-radius:20px;
+        overflow:hidden;
+    }
+    .bar-fill{height:100%;border-radius:20px}
+    .fill-green{background:#59d98e}
+    .fill-yellow{background:#ffc400}
+    .fill-red{background:#ff7070}
+    .status{
+        display:inline-block;
+        font-size:10px;
+        font-weight:800;
+        padding:4px 7px;
+        border-radius:20px;
+    }
+    .status.good{background:rgba(89,217,142,.12);color:#59d98e}
+    .status.watch{background:rgba(255,196,0,.12);color:#ffc400}
+    .status.risk{background:rgba(255,112,112,.12);color:#ff7070}
+    .powerbi{
+        border:1px solid #2d2d2d;
+        border-radius:14px;
+        background:#101010;
+        overflow:hidden;
+        margin:22px 0 30px;
+    }
+    .powerbi-top{
+        background:#171717;
+        border-bottom:1px solid #2d2d2d;
+        padding:14px 18px;
+        display:flex;
+        justify-content:space-between;
+        gap:15px;
+        align-items:center;
+    }
+    .powerbi-top strong{color:#fff}
+    .powerbi-badge{
+        color:#65b3ff;
+        font-size:11px;
+        font-weight:800;
+        letter-spacing:.6px;
+    }
+    .powerbi-body{
+        padding:18px;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:14px;
+    }
+    .powerbi-card{
+        background:#161616;
+        border:1px solid #2a2a2a;
+        border-radius:10px;
+        padding:15px;
+    }
+    .powerbi-card h4{margin:0 0 10px;font-size:13px;color:#ddd}
+    .powerbi-note{
+        margin-top:12px;
+        color:#999;
+        font-size:12px;
+    }
+    @media(max-width:800px){
+        .kpi-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+        .preview-grid,.powerbi-body{grid-template-columns:1fr}
+    }
+    @media(max-width:520px){
+        .kpi-row{grid-template-columns:1fr}
+    }
+
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <a class="brand" href="index.html">VIJAY ARULSAMY</a>
+            <a class="back" href="index.html">← Back to Home</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<div class="container">
+    <span class="tag">MIS • SALES REPORTING • EXCEL</span>
+    <h1>How to Create a Monthly Sales MIS Report</h1>
+    <p class="intro">
+        A corporate step-by-step framework for converting raw sales transactions
+        into a management-ready monthly MIS report using Excel. The examples use
+        a fictional multi-city business dataset so the method can be practiced
+        without exposing confidential company information.
+    </p>
+
+    <div class="note">
+        <strong>Important:</strong> All names, numbers and business data in this article are fictional.
+        Use the structure as a learning model and replace the sample data with authorized business data.
+    </div>
+
+    <h2>1. What Is a Monthly Sales MIS Report?</h2>
+    <p>
+        A Monthly Sales MIS report is a structured management report that converts
+        transaction-level sales data into a clear view of revenue, units, customers,
+        targets, achievement and business movement.
+    </p>
+    <p>
+        A good MIS should answer management questions quickly:
+        What was sold? Where was it sold? Who generated the sales?
+        Did the business achieve target? Which areas need attention?
+    </p>
+
+    <h2>2. Start With a Clean Corporate Sales Dataset</h2>
+    <p>
+        Avoid building a management report directly from scattered invoices or manually
+        edited summary numbers. First create one consistent transaction table.
+    </p>
+
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>City</th>
+                <th>Region</th>
+                <th>Manager</th>
+                <th>Product</th>
+                <th>Units</th>
+                <th>Revenue</th>
+                <th>Target</th>
+                <th>Customers</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>01-Sep</td><td>Chennai</td><td>South</td><td>Arun</td><td>Premium A</td><td>120</td><td>₹2,40,000</td><td>₹2,20,000</td><td>82</td></tr>
+            <tr><td>01-Sep</td><td>Bengaluru</td><td>South</td><td>Priya</td><td>Premium B</td><td>95</td><td>₹1,90,000</td><td>₹2,00,000</td><td>69</td></tr>
+            <tr><td>02-Sep</td><td>Hyderabad</td><td>South</td><td>Rahul</td><td>Standard A</td><td>140</td><td>₹2,10,000</td><td>₹2,00,000</td><td>91</td></tr>
+            <tr><td>02-Sep</td><td>Mumbai</td><td>West</td><td>Neha</td><td>Premium A</td><td>110</td><td>₹2,20,000</td><td>₹2,10,000</td><td>76</td></tr>
+            <tr><td>03-Sep</td><td>Delhi</td><td>North</td><td>Rohit</td><td>Premium B</td><td>100</td><td>₹2,00,000</td><td>₹2,15,000</td><td>71</td></tr>
+            <tr><td>03-Sep</td><td>Pune</td><td>West</td><td>Meera</td><td>Standard A</td><td>125</td><td>₹1,87,500</td><td>₹1,80,000</td><td>88</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2>3. Define the Management KPIs Before Formatting</h2>
+    <p>
+        The report becomes much easier to build when the measures are defined first.
+    </p>
+
+    <div class="kpi-grid">
+        <div class="kpi"><strong>Total Sales</strong><span>Total revenue for the selected month.</span></div>
+        <div class="kpi"><strong>Target</strong><span>Planned revenue for the same period.</span></div>
+        <div class="kpi"><strong>Achievement %</strong><span>Actual sales compared with target.</span></div>
+        <div class="kpi"><strong>Variance</strong><span>Actual sales minus target.</span></div>
+        <div class="kpi"><strong>Units Sold</strong><span>Total quantity sold.</span></div>
+        <div class="kpi"><strong>Customers</strong><span>Total customer transactions or defined unique customers.</span></div>
+        <div class="kpi"><strong>Average Bill</strong><span>Revenue divided by defined transaction/customer count.</span></div>
+        <div class="kpi"><strong>Prior Month Growth</strong><span>Change compared with the previous reporting period.</span></div>
+    </div>
+
+    <h2>4. Build the Summary With SUMIFS</h2>
+    <p>
+        SUMIFS is useful when management needs sales filtered by more than one condition,
+        such as city + product, region + month, or manager + category.
+    </p>
+
+    <div class="formula">
+        =SUMIFS(Sales[Revenue],Sales[City],$B2,Sales[Product],C$1)
+    </div>
+    <p>
+        Here, the formula returns revenue for the selected city and product.
+        Structured table references are recommended because the formula expands with the dataset.
+    </p>
+
+    <h2>5. Add Target Achievement and Variance</h2>
+    <p>
+        Once actual sales and target are available, calculate the management-level measures.
+    </p>
+
+    <div class="formula">
+        Variance = Actual Sales - Target
+    </div>
+
+    <div class="formula">
+        Achievement % = Actual Sales / Target
+    </div>
+
+    <div class="formula">
+        Example Excel formula: =IFERROR(B2/C2,0)
+    </div>
+
+    <p>
+        Keep the denominator clearly defined. In a corporate report, an achievement percentage
+        without a documented target definition can lead to inconsistent interpretation.
+    </p>
+
+    <h2>6. Create City-Wise and Region-Wise Analysis</h2>
+    <p>
+        A monthly MIS becomes management-friendly when the same KPIs are available at
+        multiple business levels.
+    </p>
+
+    <div class="step">
+        <div class="step-number">Level 01 • Corporate</div>
+        <p>Total revenue, total target, achievement %, variance and month-on-month growth.</p>
+    </div>
+
+    <div class="step">
+        <div class="step-number">Level 02 • Region</div>
+        <p>Compare South, West, North and other reporting regions using the same KPI definitions.</p>
+    </div>
+
+    <div class="step">
+        <div class="step-number">Level 03 • City</div>
+        <p>Identify city-level contribution, achievement and variance.</p>
+    </div>
+
+    <div class="step">
+        <div class="step-number">Level 04 • Manager / Product</div>
+        <p>Drill into manager and product performance to explain the movement behind the summary.</p>
+    </div>
+
+    <h2>7. Use PivotTables for Monthly Management Views</h2>
+    <p>
+        PivotTables are useful when the report needs flexible grouping and quick comparison.
+        A practical first PivotTable can use:
+    </p>
+    <ul>
+        <li>Rows: Region, then City</li>
+        <li>Values: Revenue, Units and Customers</li>
+        <li>Columns: Product Category or Month</li>
+        <li>Filters: Manager, Product and Reporting Period</li>
+    </ul>
+
+    <h2>8. Add Month-on-Month Growth</h2>
+    <p>
+        Management usually needs more than the current month value. Compare the current
+        month with the previous month using a consistent formula.
+    </p>
+
+    <div class="formula">
+        Growth % = (Current Month Sales - Previous Month Sales) / Previous Month Sales
+    </div>
+
+    <div class="formula">
+        Example Excel formula: =IFERROR((B2-C2)/C2,0)
+    </div>
+
+    <p>
+        A negative percentage is not automatically an error. It is a signal that should be
+        investigated alongside seasonality, targets, product mix, customer activity and other
+        relevant business context.
+    </p>
+
+    <h2>9. Add Status Logic for Management Review</h2>
+    <p>
+        A report can convert achievement into a simple status for review.
+        Keep the thresholds documented rather than hiding them inside an unexplained formula.
+    </p>
+
+    <div class="formula">
+        =IFS(D2>=1,"Above / On Target",D2>=0.9,"Watch",TRUE,"Below Target")
+    </div>
+
+    <p>
+        The specific thresholds should be agreed with the business. The example above is only
+        a demonstration of how status logic works.
+    </p>
+
+    <h2>10. Add Management Commentary</h2>
+    <p>
+        Numbers become more useful when the report also identifies what changed.
+        A concise management commentary can follow a simple structure:
+    </p>
+    <ol>
+        <li>State the current result.</li>
+        <li>Compare it with target.</li>
+        <li>Compare it with the previous period.</li>
+        <li>Identify the major positive and negative movements.</li>
+        <li>State the next operational focus.</li>
+    </ol>
+
+    <h2>11. Recommended Monthly MIS Layout</h2>
+
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Section</th>
+                <th>Management Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Executive KPI Summary</td><td>Immediate view of sales, target and achievement</td></tr>
+            <tr><td>Month-on-Month Comparison</td><td>Understand movement versus prior month</td></tr>
+            <tr><td>Region Analysis</td><td>Compare regional contribution and achievement</td></tr>
+            <tr><td>City Analysis</td><td>Identify local performance differences</td></tr>
+            <tr><td>Manager Analysis</td><td>Review responsibility-level performance</td></tr>
+            <tr><td>Product Analysis</td><td>Understand product contribution and mix</td></tr>
+            <tr><td>Exceptions</td><td>Highlight major variances and attention areas</td></tr>
+            <tr><td>Management Comments</td><td>Explain key movements and next steps</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2>12. Common Corporate MIS Mistakes</h2>
+    <ul>
+        <li>Manual typing of summary numbers instead of linked calculations.</li>
+        <li>Changing target definitions between months.</li>
+        <li>Mixing invoice count and unique customer count without labeling the metric.</li>
+        <li>Using inconsistent date formats that break month filters.</li>
+        <li>Building charts before validating the underlying numbers.</li>
+        <li>Overloading the dashboard with too many visuals and no clear management question.</li>
+        <li>Publishing confidential company or customer data in public portfolio examples.</li>
+    </ul>
+
+    <h2>13. A Practical Build Sequence</h2>
+    <div class="step">
+        <div class="step-number">Step 01</div>
+        <p>Clean and standardize the transaction dataset.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 02</div>
+        <p>Define KPI names, formulas and business rules.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 03</div>
+        <p>Create SUMIFS / COUNTIFS based summaries.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 04</div>
+        <p>Create PivotTables for flexible management analysis.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 05</div>
+        <p>Add achievement, variance and month-on-month calculations.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 06</div>
+        <p>Apply controlled conditional formatting and exception highlighting.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 07</div>
+        <p>Validate the totals against the source data before publishing.</p>
+    </div>
+
+    <h2>14. Final Checklist Before Sending the MIS</h2>
+    <ul>
+        <li>Does total sales reconcile with the source?</li>
+        <li>Does target use the approved period and definition?</li>
+        <li>Are achievement and variance formulas correct?</li>
+        <li>Are city, region, manager and product totals internally consistent?</li>
+        <li>Are unusual movements explained?</li>
+        <li>Can management understand the report in less than a minute?</li>
+        <li>Have confidential or personally identifiable records been excluded from public examples?</li>
+    </ul>
+
+
+    <h2>13. Excel Result Output — What the Final MIS Can Look Like</h2>
+    <p>
+        After the formulas and PivotTables are connected, the report should finish as a
+        clean management view rather than a sheet full of calculations. Below is a
+        fictional output example showing the type of colour formatting used in a practical MIS.
+    </p>
+
+    <div class="dashboard-preview">
+        <div class="preview-head">
+            <div>
+                <div class="result-title">Excel MIS Output Preview</div>
+                <h3>Monthly Sales Performance — September</h3>
+            </div>
+            <span class="period">Reporting Period: Sep 2026</span>
+        </div>
+
+        <div class="kpi-row">
+            <div class="kpi-box">
+                <div class="kpi-label">Actual Sales</div>
+                <div class="kpi-value green">₹18.42 Cr</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-label">Target</div>
+                <div class="kpi-value yellow">₹20.00 Cr</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-label">Achievement</div>
+                <div class="kpi-value yellow">92.1%</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-label">Variance</div>
+                <div class="kpi-value red">-₹1.58 Cr</div>
+            </div>
+        </div>
+
+        <div class="preview-grid">
+            <div class="panel">
+                <h4>City-wise Achievement</h4>
+                <div class="city-row"><strong>Chennai</strong><span>₹4.80 Cr</span><div class="bar-bg"><div class="bar-fill fill-green" style="width:96%"></div></div><span class="status good">96%</span></div>
+                <div class="city-row"><strong>Bengaluru</strong><span>₹3.65 Cr</span><div class="bar-bg"><div class="bar-fill fill-green" style="width:94%"></div></div><span class="status good">94%</span></div>
+                <div class="city-row"><strong>Hyderabad</strong><span>₹3.20 Cr</span><div class="bar-bg"><div class="bar-fill fill-yellow" style="width:88%"></div></div><span class="status watch">88%</span></div>
+                <div class="city-row"><strong>Mumbai</strong><span>₹3.12 Cr</span><div class="bar-bg"><div class="bar-fill fill-yellow" style="width:86%"></div></div><span class="status watch">86%</span></div>
+                <div class="city-row"><strong>Delhi</strong><span>₹2.20 Cr</span><div class="bar-bg"><div class="bar-fill fill-red" style="width:72%"></div></div><span class="status risk">72%</span></div>
+            </div>
+
+            <div class="panel">
+                <h4>Management Exception View</h4>
+                <p style="font-size:13px;margin:0 0 10px;color:#ccc"><span class="status risk">RED</span> Delhi is below the defined achievement threshold.</p>
+                <p style="font-size:13px;margin:0 0 10px;color:#ccc"><span class="status watch">AMBER</span> Hyderabad and Mumbai require closer follow-up.</p>
+                <p style="font-size:13px;margin:0;color:#ccc"><span class="status good">GREEN</span> Chennai and Bengaluru are near target.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>14. Colour Formatting Rules in Excel</h2>
+    <p>
+        Colour should communicate a business rule, not just decorate the report.
+    </p>
+    <ul>
+        <li><strong style="color:#59d98e">Green:</strong> meeting or exceeding the approved target threshold.</li>
+        <li><strong style="color:#ffc400">Amber / Yellow:</strong> watch area requiring review.</li>
+        <li><strong style="color:#ff7070">Red:</strong> below the defined exception threshold.</li>
+        <li>Keep the same rule across every monthly report so management does not need to relearn the format.</li>
+    </ul>
+
+    <h2>15. Power BI Version — Turn the MIS Into an Interactive Dashboard</h2>
+    <p>
+        The same sales model can be moved from Excel reporting into Power BI for interactive
+        filtering, drill-down and management dashboards. Excel can remain the source or staging
+        layer while Power BI becomes the visual reporting layer.
+    </p>
+
+    <div class="powerbi">
+        <div class="powerbi-top">
+            <strong>Power BI Output Preview — Sales Management Dashboard</strong>
+            <span class="powerbi-badge">POWER BI</span>
+        </div>
+        <div class="powerbi-body">
+            <div class="powerbi-card">
+                <h4>KPI Cards</h4>
+                <p style="margin:0;color:#ddd">Sales • Target • Achievement % • Variance • Customers</p>
+            </div>
+            <div class="powerbi-card">
+                <h4>Visual 01 — Sales by City</h4>
+                <p style="margin:0;color:#ddd">Clustered bar chart with conditional status logic.</p>
+            </div>
+            <div class="powerbi-card">
+                <h4>Visual 02 — Monthly Trend</h4>
+                <p style="margin:0;color:#ddd">Line chart showing current month and prior-period movement.</p>
+            </div>
+            <div class="powerbi-card">
+                <h4>Visual 03 — Product Mix</h4>
+                <p style="margin:0;color:#ddd">Column or treemap view for category contribution.</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>Suggested Power BI measures</h3>
+    <div class="formula">
+        Total Sales = SUM(Sales[Revenue])
+    </div>
+    <div class="formula">
+        Total Target = SUM(Sales[Target])
+    </div>
+    <div class="formula">
+        Achievement % = DIVIDE([Total Sales],[Total Target],0)
+    </div>
+    <div class="formula">
+        Variance = [Total Sales] - [Total Target]
+    </div>
+
+    <p>
+        Use slicers for Month, Region, City, Manager and Product. Add drill-through or tooltips
+        when users need to move from the corporate view into city or product detail.
+    </p>
+
+    <h2>16. Excel vs Power BI — Where Each Fits</h2>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Area</th><th>Excel</th><th>Power BI</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Detailed calculations</td><td>Excellent for formula-driven analysis</td><td>Best handled through model measures and DAX</td></tr>
+            <tr><td>Ad-hoc analysis</td><td>Flexible and fast</td><td>Strong for governed interactive reporting</td></tr>
+            <tr><td>Interactive dashboards</td><td>Possible with charts and controls</td><td>Core strength</td></tr>
+            <tr><td>Drill-down / filtering</td><td>Possible but more manual</td><td>Built for interactive exploration</td></tr>
+            <tr><td>Management presentation</td><td>Good for controlled workbooks</td><td>Strong for dashboard-style consumption</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="cta">
+        <h2 style="margin-top:0">Final Takeaway</h2>
+        <p>
+            A strong Monthly Sales MIS is not simply a formatted Excel sheet.
+            It is a controlled reporting system: clean data, clear KPI definitions,
+            reliable formulas, structured analysis and management-focused presentation.
+        </p>
+        <p>
+            Build the logic first, validate the numbers second, and format the report last.
+        </p>
+        <a href="index.html">← Return to Vijay Arulsamy</a>
+    </div>
+</div>
+</main>
+
+<footer>
+    © 2026 Vijay Arulsamy • Accounting • Excel • MIS • Business Reporting
+</footer>
+</body>
+</html>

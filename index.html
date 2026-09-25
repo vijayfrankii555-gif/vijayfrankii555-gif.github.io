@@ -4,9 +4,15 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Vijay Arulsamy | Accounting, Excel, Power BI & MIS Professional</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Vijay Arulsamy | Accounting, Excel, Power BI & MIS Professional
+    </title>
 
     <meta
         name="description"
@@ -16,7 +22,7 @@
     <style>
 
         /* =====================================================
-           GLOBAL
+           RESET
         ===================================================== */
 
         * {
@@ -31,20 +37,20 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            color: #f5f5f5;
             background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
         }
 
         img {
             max-width: 100%;
             display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .container {
@@ -59,16 +65,20 @@
         ===================================================== */
 
         header {
-            background: rgba(10, 10, 10, 0.96);
-            border-bottom: 1px solid #292929;
             position: sticky;
             top: 0;
             z-index: 1000;
+
+            background: rgba(10, 10, 10, 0.95);
+
+            border-bottom: 1px solid #2b2b2b;
+
             backdrop-filter: blur(10px);
         }
 
         nav {
             min-height: 72px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -91,9 +101,10 @@
         }
 
         .nav-links a {
-            color: #d4d4d4;
             font-size: 15px;
             font-weight: 600;
+            color: #d5d5d5;
+
             transition: 0.3s ease;
         }
 
@@ -107,15 +118,15 @@
         ===================================================== */
 
         .hero {
+            padding: 110px 0;
+
             background:
                 radial-gradient(
                     circle at 85% 30%,
-                    rgba(255, 196, 0, 0.09),
+                    rgba(255, 196, 0, 0.10),
                     transparent 35%
                 ),
                 #0a0a0a;
-
-            padding: 110px 0;
         }
 
         .hero-grid {
@@ -128,7 +139,6 @@
         .hero h1 {
             font-size: 54px;
             line-height: 1.1;
-            color: #ffffff;
             margin-bottom: 22px;
         }
 
@@ -139,28 +149,34 @@
         .hero-subtitle {
             font-size: 21px;
             font-weight: 700;
-            color: #eeeeee;
             margin-bottom: 18px;
+            color: #eeeeee;
         }
 
         .hero-text {
+            max-width: 700px;
+
             font-size: 17px;
             color: #bcbcbc;
-            max-width: 700px;
+
             margin-bottom: 30px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 14px;
             flex-wrap: wrap;
+            gap: 14px;
         }
 
         .btn {
             display: inline-block;
+
             padding: 13px 22px;
+
             border-radius: 7px;
+
             font-weight: 800;
+
             transition: 0.3s ease;
         }
 
@@ -171,25 +187,28 @@
 
         .btn-primary:hover {
             background: #ffd633;
+
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 196, 0, 0.25);
+
+            box-shadow:
+                0 10px 25px rgba(255, 196, 0, 0.25);
         }
 
         .btn-secondary {
             border: 1px solid #ffc400;
             color: #ffc400;
-            background: transparent;
         }
 
         .btn-secondary:hover {
             background: #ffc400;
             color: #0a0a0a;
+
             transform: translateY(-3px);
         }
 
 
         /* =====================================================
-           PROFILE IMAGE
+           PROFILE PHOTO
         ===================================================== */
 
         .profile-wrapper {
@@ -199,96 +218,82 @@
 
         .profile-card {
             position: relative;
+
             padding: 10px;
+
             border-radius: 22px;
+
             background: #111111;
+
             border: 1px solid #3b3b3b;
 
             animation:
                 profileFloat 4s ease-in-out infinite,
                 profileGlow 2.8s ease-in-out infinite;
-
-            transform-origin: center;
         }
 
         .profile-card::before {
             content: "";
+
             position: absolute;
             inset: -3px;
+
             border-radius: 24px;
 
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 196, 0, 0.85),
-                transparent,
-                rgba(255, 196, 0, 0.85),
-                transparent
-            );
+            background:
+                linear-gradient(
+                    45deg,
+                    transparent,
+                    rgba(255, 196, 0, 0.85),
+                    transparent,
+                    rgba(255, 196, 0, 0.85),
+                    transparent
+                );
 
             background-size: 300% 300%;
+
             z-index: -1;
 
-            animation: borderMove 5s linear infinite;
-        }
-
-        .profile-card::after {
-            content: "";
-            position: absolute;
-            inset: 8px;
-            border-radius: 16px;
-
-            box-shadow:
-                0 0 25px rgba(255, 196, 0, 0.13),
-                0 0 55px rgba(255, 196, 0, 0.07);
-
-            pointer-events: none;
+            animation:
+                borderMove 5s linear infinite;
         }
 
         .profile-card img {
             width: 320px;
             height: 400px;
+
             object-fit: cover;
-            object-position: center;
+
             border-radius: 14px;
 
-            animation: profileZoom 5s ease-in-out infinite;
+            animation:
+                profileZoom 5s ease-in-out infinite;
 
-            transition:
-                transform 0.5s ease,
-                filter 0.5s ease;
-        }
-
-        .profile-card:hover {
-            animation-play-state: paused;
+            transition: 0.5s ease;
         }
 
         .profile-card:hover img {
             transform: scale(1.035);
-            filter: brightness(1.08) contrast(1.04);
+
+            filter:
+                brightness(1.08)
+                contrast(1.04);
         }
 
         @keyframes profileFloat {
 
             0% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            25% {
-                transform: translateY(-8px) rotate(0.4deg);
+                transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-14px) rotate(0deg);
-            }
-
-            75% {
-                transform: translateY(-8px) rotate(-0.4deg);
+                transform: translateY(-14px);
             }
 
             100% {
-                transform: translateY(0px) rotate(0deg);
+                transform: translateY(0);
             }
+
         }
 
         @keyframes profileGlow {
@@ -310,6 +315,7 @@
                     0 15px 35px rgba(0, 0, 0, 0.45),
                     0 0 12px rgba(255, 196, 0, 0.05);
             }
+
         }
 
         @keyframes profileZoom {
@@ -322,6 +328,7 @@
             50% {
                 transform: scale(1.018);
             }
+
         }
 
         @keyframes borderMove {
@@ -337,11 +344,12 @@
             100% {
                 background-position: 0% 50%;
             }
+
         }
 
 
         /* =====================================================
-           COMMON SECTIONS
+           SECTIONS
         ===================================================== */
 
         section {
@@ -350,25 +358,30 @@
 
         .section-title {
             font-size: 36px;
-            color: #ffffff;
             margin-bottom: 14px;
         }
 
         .section-title::after {
             content: "";
+
             display: block;
+
             width: 55px;
             height: 4px;
-            background: #ffc400;
+
             margin-top: 12px;
+
+            background: #ffc400;
+
             border-radius: 2px;
         }
 
         .section-description {
-            color: #a8a8a8;
             max-width: 760px;
+
             margin-bottom: 42px;
-            font-size: 16px;
+
+            color: #a8a8a8;
         }
 
 
@@ -382,14 +395,15 @@
 
         .about-grid {
             display: grid;
+
             grid-template-columns: 1fr 1fr;
+
             gap: 50px;
-            align-items: start;
         }
 
         .about-text {
-            color: #c5c5c5;
             font-size: 17px;
+            color: #c5c5c5;
         }
 
         .about-text p {
@@ -404,18 +418,25 @@
 
         .skill {
             padding: 9px 14px;
+
             border-radius: 20px;
+
             background: #1b1b1b;
+
             border: 1px solid #333333;
+
             color: #ffc400;
+
             font-size: 14px;
             font-weight: 600;
+
             transition: 0.3s ease;
         }
 
         .skill:hover {
             background: #ffc400;
             color: #0a0a0a;
+
             transform: translateY(-3px);
         }
 
@@ -430,44 +451,61 @@
 
         .certifications-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 24px;
         }
 
         .certification-card {
-            background: #111111;
-            border: 1px solid #292929;
-            border-radius: 12px;
             padding: 28px;
+
+            background: #111111;
+
+            border: 1px solid #292929;
+
+            border-radius: 12px;
+
             transition: 0.3s ease;
         }
 
         .certification-card:hover {
             border-color: #ffc400;
+
             transform: translateY(-7px);
-            box-shadow: 0 15px 30px rgba(255, 196, 0, 0.08);
+
+            box-shadow:
+                0 15px 30px rgba(255, 196, 0, 0.08);
         }
 
         .certification-badge {
             width: 52px;
             height: 52px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            margin-bottom: 18px;
+
             background: #ffc400;
             color: #0a0a0a;
+
             border-radius: 10px;
+
             font-weight: 900;
-            margin-bottom: 18px;
         }
 
         .certification-card h3 {
-            color: #ffffff;
             margin-bottom: 10px;
+
+            color: #ffffff;
         }
 
         .certification-card p {
             color: #a8a8a8;
+
             font-size: 15px;
         }
 
@@ -482,47 +520,58 @@
 
         .solutions-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 28px;
         }
 
         .solution-card {
-            background: #0a0a0a;
-            border: 1px solid #292929;
-            border-radius: 14px;
             overflow: hidden;
+
+            background: #0a0a0a;
+
+            border: 1px solid #292929;
+
+            border-radius: 14px;
+
             transition: 0.35s ease;
         }
 
         .solution-card:hover {
             border-color: #ffc400;
+
             transform: translateY(-8px);
+
             box-shadow:
                 0 18px 40px rgba(255, 196, 0, 0.12);
         }
 
         .solution-image-wrap {
             position: relative;
+
             overflow: hidden;
+
             background: #111111;
         }
 
         .solution-image {
             width: 100%;
             height: 230px;
+
             object-fit: cover;
 
             animation:
                 solutionZoom 5s ease-in-out infinite,
                 solutionBrightness 3s ease-in-out infinite;
 
-            transition:
-                transform 0.55s ease,
-                filter 0.55s ease;
+            transition: 0.55s ease;
         }
 
         .solution-card:hover .solution-image {
             transform: scale(1.09);
+
             filter:
                 brightness(1.15)
                 saturate(1.12);
@@ -530,26 +579,23 @@
 
         .solution-image-wrap::after {
             content: "";
+
             position: absolute;
             inset: 0;
 
             border: 2px solid transparent;
 
-            box-shadow:
-                inset 0 0 0 rgba(255, 196, 0, 0);
-
-            transition:
-                border-color 0.4s ease,
-                box-shadow 0.4s ease;
+            transition: 0.4s ease;
 
             pointer-events: none;
         }
 
-        .solution-card:hover .solution-image-wrap::after {
-            border-color: rgba(255, 196, 0, 0.85);
+        .solution-card:hover
+        .solution-image-wrap::after {
 
-            box-shadow:
-                inset 0 0 35px rgba(255, 196, 0, 0.14);
+            border-color:
+                rgba(255, 196, 0, 0.85);
+
         }
 
         @keyframes solutionZoom {
@@ -562,6 +608,7 @@
             50% {
                 transform: scale(1.035);
             }
+
         }
 
         @keyframes solutionBrightness {
@@ -574,6 +621,7 @@
             50% {
                 filter: brightness(1.08);
             }
+
         }
 
         .solution-content {
@@ -582,23 +630,31 @@
 
         .solution-number {
             display: inline-block;
-            color: #0a0a0a;
-            background: #ffc400;
+
+            margin-bottom: 14px;
+
             padding: 5px 10px;
+
+            background: #ffc400;
+            color: #0a0a0a;
+
             border-radius: 15px;
+
             font-size: 12px;
             font-weight: 800;
-            margin-bottom: 14px;
         }
 
         .solution-content h3 {
-            color: #ffffff;
-            font-size: 21px;
             margin-bottom: 10px;
+
+            color: #ffffff;
+
+            font-size: 21px;
         }
 
         .solution-content p {
             color: #a8a8a8;
+
             font-size: 15px;
         }
 
@@ -613,45 +669,59 @@
 
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 24px;
         }
 
         .why-card {
-            background: #111111;
-            border: 1px solid #292929;
             padding: 28px;
+
+            background: #111111;
+
+            border: 1px solid #292929;
+
             border-radius: 12px;
+
             transition: 0.3s ease;
         }
 
         .why-card:hover {
             border-color: #ffc400;
+
             transform: translateY(-7px);
-        }
-
-        .why-card h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .why-card p {
-            color: #a8a8a8;
-            font-size: 15px;
         }
 
         .why-icon {
             width: 48px;
             height: 48px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            margin-bottom: 18px;
+
             background: #ffc400;
             color: #0a0a0a;
+
             border-radius: 10px;
-            font-size: 18px;
+
             font-weight: 900;
-            margin-bottom: 18px;
+        }
+
+        .why-card h3 {
+            margin-bottom: 10px;
+
+            color: #ffffff;
+        }
+
+        .why-card p {
+            color: #a8a8a8;
+
+            font-size: 15px;
         }
 
 
@@ -665,50 +735,71 @@
 
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 24px;
         }
 
         .blog-card {
-            background: #0a0a0a;
-            border: 1px solid #292929;
-            border-radius: 12px;
             padding: 25px;
+
+            background: #0a0a0a;
+
+            border: 1px solid #292929;
+
+            border-radius: 12px;
+
             transition: 0.3s ease;
         }
 
         .blog-card:hover {
             border-color: #ffc400;
+
             transform: translateY(-7px);
         }
 
         .blog-card .tag {
             display: inline-block;
-            font-size: 12px;
-            color: #0a0a0a;
-            background: #ffc400;
-            padding: 6px 10px;
-            border-radius: 20px;
+
             margin-bottom: 14px;
+
+            padding: 6px 10px;
+
+            background: #ffc400;
+            color: #0a0a0a;
+
+            border-radius: 20px;
+
+            font-size: 12px;
             font-weight: 800;
         }
 
         .blog-card h3 {
-            font-size: 18px;
             margin-bottom: 10px;
+
             color: #ffffff;
+
+            font-size: 19px;
         }
 
         .blog-card p {
-            color: #a8a8a8;
-            font-size: 14px;
             margin-bottom: 15px;
+
+            color: #a8a8a8;
+
+            font-size: 14px;
         }
 
         .read-more {
             color: #ffc400;
+
             font-size: 14px;
+
             font-weight: 800;
+
+            transition: 0.3s ease;
         }
 
         .read-more:hover {
@@ -734,29 +825,38 @@
         }
 
         .contact-text {
-            color: #1f1f1f;
             max-width: 700px;
+
             margin-bottom: 28px;
+
+            color: #1f1f1f;
         }
 
         .contact-links {
             display: flex;
-            gap: 18px;
             flex-wrap: wrap;
+
+            gap: 18px;
         }
 
         .contact-link {
             padding: 11px 17px;
+
             border: 1px solid #0a0a0a;
+
             border-radius: 7px;
+
             color: #0a0a0a;
+
             font-weight: 800;
+
             transition: 0.3s ease;
         }
 
         .contact-link:hover {
             background: #0a0a0a;
             color: #ffc400;
+
             transform: translateY(-3px);
         }
 
@@ -766,31 +866,15 @@
         ===================================================== */
 
         footer {
-            background: #000000;
-            color: #858585;
-            text-align: center;
             padding: 25px;
+
+            background: #000000;
+
+            color: #858585;
+
+            text-align: center;
+
             font-size: 14px;
-        }
-
-
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
         }
 
 
@@ -827,6 +911,7 @@
             .blog-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
         }
 
 
@@ -841,11 +926,11 @@
             }
 
             .hero {
-                padding: 60px 0;
+                padding: 65px 0;
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 37px;
             }
 
             .hero-subtitle {
@@ -869,13 +954,15 @@
             }
 
             section {
-                padding: 60px 0;
+                padding: 65px 0;
             }
 
             .section-title {
                 font-size: 30px;
             }
+
         }
+
 
     </style>
 
@@ -902,27 +989,39 @@
             <ul class="nav-links">
 
                 <li>
-                    <a href="#about">About</a>
+                    <a href="#about">
+                        About
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#certifications">Credentials</a>
+                    <a href="#certifications">
+                        Credentials
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#services">Solutions</a>
+                    <a href="#services">
+                        Solutions
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#why-me">Why Me</a>
+                    <a href="#why-me">
+                        Why Me
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#blog">Blog</a>
+                    <a href="#blog">
+                        Blog
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#contact">Contact</a>
+                    <a href="#contact">
+                        Contact
+                    </a>
                 </li>
 
             </ul>
@@ -944,22 +1043,31 @@
 
         <div class="hero-grid">
 
+
             <div>
 
                 <h1>
+
                     Accounting,
-                    <span>Excel & MIS</span>
+                    <span>
+                        Excel & Power BI
+                    </span>
                     Professional
+
                 </h1>
 
                 <p class="hero-subtitle">
+
                     Business Reporting • Data Analysis • Inventory • Automation
+
                 </p>
 
                 <p class="hero-text">
-                    I help small and growing businesses organize accounting,
-                    sales and inventory data into clear, accurate and useful
-                    business reports and dashboards.
+
+                    I help small and growing businesses organize
+                    accounting, sales and inventory data into clear,
+                    accurate and useful business reports and dashboards.
+
                 </p>
 
                 <div class="hero-buttons">
@@ -989,12 +1097,13 @@
 
                     <img
                         src="vijay-profie.png"
-                        alt="Vijay Arulsamy - Accounting and MIS Professional"
+                        alt="Vijay Arulsamy"
                     >
 
                 </div>
 
             </div>
+
 
         </div>
 
@@ -1020,26 +1129,33 @@
 
         <div class="about-grid">
 
+
             <div class="about-text">
 
                 <p>
-                    I am Vijay Arulsamy, an accounting and business reporting
-                    professional with experience in accounting, documentation,
-                    payroll support, inventory reporting and management
-                    information systems.
+
+                    I am Vijay Arulsamy, an accounting and business
+                    reporting professional with experience in accounting,
+                    documentation, payroll support, inventory reporting
+                    and management information systems.
+
                 </p>
 
                 <p>
-                    My professional focus combines accounting knowledge with
-                    Microsoft Excel, Power BI, business reporting, dashboards
-                    and data analysis to make business information easier
-                    to understand and use.
+
+                    My professional focus combines accounting knowledge
+                    with Microsoft Excel, Power BI, business reporting,
+                    dashboards and data analysis to make business
+                    information easier to understand and use.
+
                 </p>
 
                 <p>
+
                     I am also interested in business process improvement,
-                    reporting automation and practical data-driven solutions
-                    for small and growing businesses.
+                    reporting automation and practical data-driven
+                    solutions for small and growing businesses.
+
                 </p>
 
             </div>
@@ -1058,23 +1174,62 @@
 
                 <div class="skills">
 
-                    <span class="skill">Microsoft Excel</span>
-                    <span class="skill">Advanced Excel</span>
-                    <span class="skill">Tally Prime</span>
-                    <span class="skill">SAP FI</span>
-                    <span class="skill">Zoho Books</span>
-                    <span class="skill">MIS Reporting</span>
-                    <span class="skill">Inventory Analysis</span>
-                    <span class="skill">GST</span>
-                    <span class="skill">TDS</span>
-                    <span class="skill">Payroll</span>
-                    <span class="skill">Power BI</span>
-                    <span class="skill">Business Dashboards</span>
-                    <span class="skill">Google Sheets</span>
+                    <span class="skill">
+                        Microsoft Excel
+                    </span>
+
+                    <span class="skill">
+                        Advanced Excel
+                    </span>
+
+                    <span class="skill">
+                        Tally Prime
+                    </span>
+
+                    <span class="skill">
+                        SAP FI
+                    </span>
+
+                    <span class="skill">
+                        Zoho Books
+                    </span>
+
+                    <span class="skill">
+                        MIS Reporting
+                    </span>
+
+                    <span class="skill">
+                        Inventory Analysis
+                    </span>
+
+                    <span class="skill">
+                        GST
+                    </span>
+
+                    <span class="skill">
+                        TDS
+                    </span>
+
+                    <span class="skill">
+                        Payroll
+                    </span>
+
+                    <span class="skill">
+                        Power BI
+                    </span>
+
+                    <span class="skill">
+                        Business Dashboards
+                    </span>
+
+                    <span class="skill">
+                        Google Sheets
+                    </span>
 
                 </div>
 
             </div>
+
 
         </div>
 
@@ -1099,9 +1254,12 @@
         </h2>
 
         <p class="section-description">
-            Professional certifications and learning credentials supporting
-            my accounting, finance and technology skills.
+
+            Professional certifications and learning credentials
+            supporting my accounting, finance and technology skills.
+
         </p>
+
 
         <div class="certifications-grid">
 
@@ -1117,8 +1275,10 @@
                 </h3>
 
                 <p>
+
                     Certification focused on SAP Financial Accounting
                     processes and concepts.
+
                 </p>
 
             </div>
@@ -1135,8 +1295,10 @@
                 </h3>
 
                 <p>
+
                     Professional knowledge of GST processes and
                     accounting-related compliance support.
+
                 </p>
 
             </div>
@@ -1153,8 +1315,10 @@
                 </h3>
 
                 <p>
-                    Completed a six-course Google AI learning program
-                    through Coursera.
+
+                    Completed a six-course Google AI learning
+                    program through Coursera.
+
                 </p>
 
             </div>
@@ -1183,9 +1347,12 @@
         </h2>
 
         <p class="section-description">
-            Practical accounting, reporting, data analysis and business
-            solutions for small and growing businesses.
+
+            Practical accounting, reporting, data analysis and
+            business solutions for small and growing businesses.
+
         </p>
+
 
         <div class="solutions-grid">
 
@@ -1199,7 +1366,7 @@
                     <img
                         class="solution-image"
                         src="excel-mis.jpg"
-                        alt="Excel and MIS business reporting"
+                        alt="Excel and MIS reporting"
                     >
 
                 </div>
@@ -1215,9 +1382,11 @@
                     </h3>
 
                     <p>
+
                         Professional Excel and Power BI reporting,
                         management information systems, automated
                         summaries, KPI reporting and business analysis.
+
                     </p>
 
                 </div>
@@ -1250,8 +1419,11 @@
                     </h3>
 
                     <p>
-                        Accounting support, reconciliations, ledger review,
-                        P&L reporting and structured financial information.
+
+                        Accounting support, reconciliations,
+                        ledger review, P&L reporting and structured
+                        financial information.
+
                     </p>
 
                 </div>
@@ -1284,8 +1456,11 @@
                     </h3>
 
                     <p>
-                        Reorder reporting, stock ageing, movement analysis,
-                        product-level monitoring and inventory reporting.
+
+                        Reorder reporting, stock ageing,
+                        movement analysis, product-level
+                        monitoring and inventory reporting.
+
                     </p>
 
                 </div>
@@ -1302,7 +1477,7 @@
                     <img
                         class="solution-image"
                         src="business-dashboard.jpg"
-                        alt="Business dashboard and data analytics"
+                        alt="Power BI business dashboard"
                     >
 
                 </div>
@@ -1318,9 +1493,11 @@
                     </h3>
 
                     <p>
-                        Clear Excel and Power BI dashboards for sales,
-                        targets, products, customers and business
-                        performance.
+
+                        Clear Excel and Power BI dashboards for
+                        sales, targets, products, customers and
+                        business performance.
+
                     </p>
 
                 </div>
@@ -1336,7 +1513,7 @@
 
 
 <!-- =====================================================
-     WHY ME / HOW I WORK
+     HOW I WORK
 ===================================================== -->
 
 <section
@@ -1351,9 +1528,12 @@
         </h2>
 
         <p class="section-description">
+
             A practical approach focused on accurate data,
             understandable reports and useful business information.
+
         </p>
+
 
         <div class="why-grid">
 
@@ -1369,8 +1549,10 @@
                 </h3>
 
                 <p>
+
                     First understand the business process,
                     reporting requirement and data available.
+
                 </p>
 
             </div>
@@ -1387,8 +1569,10 @@
                 </h3>
 
                 <p>
-                    Structure the data so that information becomes
+
+                    Structure the data so information becomes
                     easier to check, analyze and maintain.
+
                 </p>
 
             </div>
@@ -1405,8 +1589,11 @@
                 </h3>
 
                 <p>
-                    Build clear Excel reports and Power BI dashboards
-                    that help business owners understand their data.
+
+                    Build clear Excel reports and Power BI
+                    dashboards that help business owners
+                    understand their data.
+
                 </p>
 
             </div>
@@ -1435,9 +1622,12 @@
         </h2>
 
         <p class="section-description">
+
             Practical articles about Excel, Power BI, accounting,
             MIS, inventory and business analysis.
+
         </p>
+
 
         <div class="blog-grid">
 
@@ -1455,9 +1645,11 @@
                 </h3>
 
                 <p>
-                    A step-by-step corporate guide covering Excel
-                    formulas, formatted output and Power BI
-                    dashboard logic.
+
+                    A step-by-step corporate guide covering
+                    Excel formulas, formatted output and
+                    Power BI dashboard logic.
+
                 </p>
 
                 <a
@@ -1483,9 +1675,11 @@
                 </h3>
 
                 <p>
-                    Learn how to organize sales data, create KPIs,
-                    format the output and convert the same logic
-                    into a Power BI dashboard.
+
+                    Learn how to organize sales data, create
+                    KPIs, format the output and convert the
+                    same logic into a Power BI dashboard.
+
                 </p>
 
                 <a
@@ -1511,9 +1705,11 @@
                 </h3>
 
                 <p>
-                    Build a structured reorder report using stock,
-                    demand, lead time, safety stock, Excel logic
-                    and Power BI dashboard concepts.
+
+                    Build a structured reorder report using
+                    stock, demand, lead time, safety stock,
+                    Excel logic and Power BI dashboard concepts.
+
                 </p>
 
                 <a
@@ -1549,40 +1745,50 @@
         </h2>
 
         <p class="contact-text">
+
             Have an Excel, Power BI, accounting, reporting or
             business-data requirement? Tell me what you need and
             let's discuss how the work can be structured.
+
         </p>
+
 
         <div class="contact-links">
 
-            <!-- Replace this email later -->
+
+            <!-- EMAIL -->
+
             <a
                 class="contact-link"
-                href="mailto:your-email@example.com"
+                href="mailto:vijayfrankii555@gmail.com"
             >
                 Email
             </a>
 
-            <!-- Replace # with your LinkedIn URL -->
+
+            <!-- LINKEDIN -->
+
             <a
                 class="contact-link"
-                href="#"
+                href="https://www.linkedin.com/in/vijay-arulsamy-481a68408/"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 LinkedIn
             </a>
 
-            <!-- Replace # with your WhatsApp link -->
+
+            <!-- WHATSAPP -->
+
             <a
                 class="contact-link"
-                href="#"
+                href="https://wa.me/918248862651"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 WhatsApp
             </a>
+
 
         </div>
 

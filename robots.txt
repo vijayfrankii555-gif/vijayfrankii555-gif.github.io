@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vijayfrankii555-gif.github.io/sitemap.xml

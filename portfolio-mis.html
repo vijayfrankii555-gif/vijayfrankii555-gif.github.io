@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Monthly Sales MIS Reporting Sample | Vijay Arulsamy
+    </title>
+
+    <meta
+        name="description"
+        content="Sample Monthly Sales MIS Reporting project showing KPI cards, target achievement, variance, city analysis and management reporting output."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://vijayfrankii555-gif.github.io/portfolio-mis.html"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,10,.96);
+            border-bottom: 1px solid #292929;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            color: #ffc400;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .back {
+            color: #d8d8d8;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .back:hover {
+            color: #ffc400;
+        }
+
+        main {
+            padding: 65px 0 90px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 18px;
+            background: #ffc400;
+            color: #0a0a0a;
+            font-size: 11px;
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(34px, 5vw, 56px);
+            line-height: 1.08;
+            margin-bottom: 18px;
+        }
+
+        .intro {
+            color: #b8b8b8;
+            max-width: 820px;
+            font-size: 17px;
+            margin-bottom: 28px;
+        }
+
+        .notice {
+            background: #151200;
+            border: 1px solid #4d3f00;
+            border-radius: 12px;
+            padding: 17px 19px;
+            margin-bottom: 40px;
+            color: #d7d7d7;
+        }
+
+        .notice strong {
+            color: #ffc400;
+        }
+
+        h2 {
+            margin-top: 52px;
+            margin-bottom: 18px;
+            font-size: 29px;
+        }
+
+        h3 {
+            color: #ffc400;
+            font-size: 20px;
+            margin: 28px 0 12px;
+        }
+
+        p {
+            color: #d3d3d3;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+            margin: 20px 0 26px;
+        }
+
+        .kpi {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 11px;
+            padding: 18px;
+        }
+
+        .kpi small {
+            display: block;
+            color: #8d8d8d;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+        }
+
+        .kpi strong {
+            display: block;
+            margin-top: 6px;
+            font-size: 22px;
+        }
+
+        .green {
+            color: #59d98e;
+        }
+
+        .yellow {
+            color: #ffc400;
+        }
+
+        .red {
+            color: #ff7070;
+        }
+
+        .panel {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 13px;
+            padding: 20px;
+            margin: 18px 0;
+        }
+
+        .panel-title {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid #292929;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 720px;
+            border-collapse: collapse;
+            background: #0f0f0f;
+        }
+
+        th,
+        td {
+            padding: 11px 12px;
+            border-bottom: 1px solid #242424;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        th {
+            color: #ffc400;
+            background: #151515;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .status.good {
+            background: rgba(89,217,142,.12);
+            color: #59d98e;
+        }
+
+        .status.watch {
+            background: rgba(255,196,0,.12);
+            color: #ffc400;
+        }
+
+        .status.risk {
+            background: rgba(255,112,112,.12);
+            color: #ff7070;
+        }
+
+        .bar-row {
+            display: grid;
+            grid-template-columns: 110px 1fr 70px;
+            gap: 10px;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 12px;
+        }
+
+        .bar-bg {
+            height: 9px;
+            border-radius: 20px;
+            background: #292929;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            border-radius: 20px;
+            background: #ffc400;
+        }
+
+        .bar.green-bar {
+            background: #59d98e;
+        }
+
+        .bar.red-bar {
+            background: #ff7070;
+        }
+
+        .logic {
+            background: #151515;
+            border-left: 4px solid #ffc400;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 15px 0;
+            font-family: Consolas, monospace;
+            overflow-x: auto;
+        }
+
+        ul {
+            color: #d3d3d3;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .cta {
+            margin-top: 55px;
+            background: #ffc400;
+            color: #0a0a0a;
+            border-radius: 13px;
+            padding: 25px;
+        }
+
+        .cta h2 {
+            margin-top: 0;
+            color: #0a0a0a;
+        }
+
+        .cta p {
+            color: #161616;
+        }
+
+        .cta-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 15px;
+            border: 1px solid #0a0a0a;
+            border-radius: 7px;
+            font-weight: 900;
+        }
+
+        .cta-link:hover {
+            background: #0a0a0a;
+            color: #ffc400;
+        }
+
+        footer {
+            border-top: 1px solid #292929;
+            padding: 24px;
+            text-align: center;
+            color: #818181;
+            background: #000000;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 520px) {
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bar-row {
+                grid-template-columns: 90px 1fr 55px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="container">
+
+        <nav>
+
+            <a
+                class="brand"
+                href="index.html"
+            >
+                VIJAY ARULSAMY
+            </a>
+
+            <a
+                class="back"
+                href="index.html#portfolio"
+            >
+                ← Back to Portfolio
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <span class="tag">
+            SAMPLE PROJECT • MIS REPORTING
+        </span>
+
+
+        <h1>
+            Monthly Sales MIS Reporting
+        </h1>
+
+
+        <p class="intro">
+
+            A fictional management reporting project demonstrating
+            how raw multi-city sales data can be converted into a
+            structured MIS with KPIs, target analysis, variance
+            reporting, colour-coded exceptions and dashboard-ready
+            outputs.
+
+        </p>
+
+
+        <div class="notice">
+
+            <strong>Portfolio Sample:</strong>
+            All numbers in this project are fictional and are shown
+            only to demonstrate reporting structure and presentation.
+            No confidential company or customer data is used.
+
+        </div>
+
+
+        <h2>
+            1. Management KPI Output
+        </h2>
+
+
+        <div class="kpi-grid">
+
+            <div class="kpi">
+
+                <small>
+                    Total Sales
+                </small>
+
+                <strong class="green">
+                    ₹18.42 Cr
+                </strong>
+
+            </div>
+
+
+            <div class="kpi">
+
+                <small>
+                    Target
+                </small>
+
+                <strong class="yellow">
+                    ₹20.00 Cr
+                </strong>
+
+            </div>
+
+
+            <div class="kpi">
+
+                <small>
+                    Achievement
+                </small>
+
+                <strong class="yellow">
+                    92.1%
+                </strong>
+
+            </div>
+
+
+            <div class="kpi">
+
+                <small>
+                    Variance
+                </small>
+
+                <strong class="red">
+                    -₹1.58 Cr
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            2. City-wise Performance
+        </h2>
+
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Sales Achievement by City
+            </div>
+
+
+            <div class="bar-row">
+
+                <strong>
+                    Chennai
+                </strong>
+
+                <div class="bar-bg">
+                    <div
+                        class="bar green-bar"
+                        style="width:96%;"
+                    ></div>
+                </div>
+
+                <span>
+                    96%
+                </span>
+
+            </div>
+
+
+            <div class="bar-row">
+
+                <strong>
+                    Bengaluru
+                </strong>
+
+                <div class="bar-bg">
+                    <div
+                        class="bar green-bar"
+                        style="width:94%;"
+                    ></div>
+                </div>
+
+                <span>
+                    94%
+                </span>
+
+            </div>
+
+
+            <div class="bar-row">
+
+                <strong>
+                    Hyderabad
+                </strong>
+
+                <div class="bar-bg">
+                    <div
+                        class="bar"
+                        style="width:88%;"
+                    ></div>
+                </div>
+
+                <span>
+                    88%
+                </span>
+
+            </div>
+
+
+            <div class="bar-row">
+
+                <strong>
+                    Mumbai
+                </strong>
+
+                <div class="bar-bg">
+                    <div
+                        class="bar"
+                        style="width:86%;"
+                    ></div>
+                </div>
+
+                <span>
+                    86%
+                </span>
+
+            </div>
+
+
+            <div class="bar-row">
+
+                <strong>
+                    Delhi
+                </strong>
+
+                <div class="bar-bg">
+                    <div
+                        class="bar red-bar"
+                        style="width:72%;"
+                    ></div>
+                </div>
+
+                <span>
+                    72%
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            3. Management Result Table
+        </h2>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            City
+                        </th>
+
+                        <th>
+                            Sales
+                        </th>
+
+                        <th>
+                            Target
+                        </th>
+
+                        <th>
+                            Achievement
+                        </th>
+
+                        <th>
+                            Variance
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Chennai
+                        </td>
+
+                        <td>
+                            ₹4.80 Cr
+                        </td>
+
+                        <td>
+                            ₹5.00 Cr
+                        </td>
+
+                        <td>
+                            96%
+                        </td>
+
+                        <td>
+                            -₹0.20 Cr
+                        </td>
+
+                        <td>
+                            <span class="status good">
+                                GOOD
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Bengaluru
+                        </td>
+
+                        <td>
+                            ₹3.65 Cr
+                        </td>
+
+                        <td>
+                            ₹3.90 Cr
+                        </td>
+
+                        <td>
+                            94%
+                        </td>
+
+                        <td>
+                            -₹0.25 Cr
+                        </td>
+
+                        <td>
+                            <span class="status good">
+                                GOOD
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Hyderabad
+                        </td>
+
+                        <td>
+                            ₹3.20 Cr
+                        </td>
+
+                        <td>
+                            ₹3.65 Cr
+                        </td>
+
+                        <td>
+                            88%
+                        </td>
+
+                        <td>
+                            -₹0.45 Cr
+                        </td>
+
+                        <td>
+                            <span class="status watch">
+                                WATCH
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Mumbai
+                        </td>
+
+                        <td>
+                            ₹3.12 Cr
+                        </td>
+
+                        <td>
+                            ₹3.63 Cr
+                        </td>
+
+                        <td>
+                            86%
+                        </td>
+
+                        <td>
+                            -₹0.51 Cr
+                        </td>
+
+                        <td>
+                            <span class="status watch">
+                                WATCH
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Delhi
+                        </td>
+
+                        <td>
+                            ₹2.20 Cr
+                        </td>
+
+                        <td>
+                            ₹3.05 Cr
+                        </td>
+
+                        <td>
+                            72%
+                        </td>
+
+                        <td>
+                            -₹0.85 Cr
+                        </td>
+
+                        <td>
+                            <span class="status risk">
+                                ACTION
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <h2>
+            4. Reporting Logic
+        </h2>
+
+
+        <p>
+
+            The report is built around clearly defined management
+            calculations rather than manually typed summary figures.
+
+        </p>
+
+
+        <div class="logic">
+            Achievement % = Actual Sales ÷ Target
+        </div>
+
+
+        <div class="logic">
+            Variance = Actual Sales − Target
+        </div>
+
+
+        <div class="logic">
+            Month-on-Month Growth % =
+            (Current Month − Previous Month) ÷ Previous Month
+        </div>
+
+
+        <h2>
+            5. Colour Formatting
+        </h2>
+
+
+        <ul>
+
+            <li>
+                <strong class="green">
+                    Green
+                </strong>
+                — approved good-performance range.
+            </li>
+
+            <li>
+                <strong class="yellow">
+                    Yellow
+                </strong>
+                — watch / management-review range.
+            </li>
+
+            <li>
+                <strong class="red">
+                    Red
+                </strong>
+                — exception / action range.
+            </li>
+
+        </ul>
+
+
+        <h2>
+            6. Power BI Version
+        </h2>
+
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Suggested Power BI Management Dashboard
+            </div>
+
+            <p>
+                The same reporting model can be used in Power BI
+                with KPI cards, city-wise performance, monthly trend,
+                product analysis and slicers for Month, Region,
+                City and Manager.
+            </p>
+
+        </div>
+
+
+        <h3>
+            Core DAX Measures
+        </h3>
+
+
+        <div class="logic">
+            Total Sales = SUM(Sales[Revenue])
+        </div>
+
+
+        <div class="logic">
+            Total Target = SUM(Sales[Target])
+        </div>
+
+
+        <div class="logic">
+            Achievement % =
+            DIVIDE([Total Sales], [Total Target], 0)
+        </div>
+
+
+        <div class="logic">
+            Variance =
+            [Total Sales] - [Total Target]
+        </div>
+
+
+        <h2>
+            7. Business Value
+        </h2>
+
+
+        <ul>
+
+            <li>
+                Converts raw sales transactions into management information.
+            </li>
+
+            <li>
+                Makes target gaps and exceptions visible.
+            </li>
+
+            <li>
+                Creates a consistent reporting format for monthly review.
+            </li>
+
+            <li>
+                Provides a foundation for Excel and Power BI dashboards.
+            </li>
+
+        </ul>
+
+
+        <div class="cta">
+
+            <h2>
+                Need a Similar Reporting Structure?
+            </h2>
+
+            <p>
+
+                This is a fictional portfolio sample. The same
+                reporting approach can be adapted to authorized
+                business data and reporting requirements.
+
+            </p>
+
+
+            <a
+                class="cta-link"
+                href="index.html#contact"
+            >
+                Contact Vijay
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 Vijay Arulsamy • MIS Reporting • Business Analysis
+
+</footer>
+
+
+</body>
+
+</html>

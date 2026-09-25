@@ -15,6 +15,10 @@
 
     <style>
 
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -30,6 +34,7 @@
             line-height: 1.6;
             color: #f5f5f5;
             background: #0a0a0a;
+            overflow-x: hidden;
         }
 
         a {
@@ -48,14 +53,18 @@
             margin: auto;
         }
 
-        /* HEADER */
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         header {
-            background: #0a0a0a;
+            background: rgba(10, 10, 10, 0.96);
             border-bottom: 1px solid #292929;
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         nav {
@@ -85,18 +94,28 @@
             color: #d4d4d4;
             font-size: 15px;
             font-weight: 600;
-            transition: 0.2s;
+            transition: 0.3s ease;
         }
 
         .nav-links a:hover {
             color: #ffc400;
         }
 
-        /* HERO */
+
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         .hero {
-            background: #0a0a0a;
-            padding: 100px 0;
+            background:
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(255, 196, 0, 0.08),
+                    transparent 35%
+                ),
+                #0a0a0a;
+
+            padding: 110px 0;
         }
 
         .hero-grid {
@@ -140,18 +159,21 @@
         .btn {
             display: inline-block;
             padding: 13px 22px;
-            border-radius: 6px;
+            border-radius: 7px;
             font-weight: 800;
-            transition: 0.2s ease;
+            transition: 0.3s ease;
         }
 
         .btn-primary {
             background: #ffc400;
             color: #0a0a0a;
+            box-shadow: 0 0 0 rgba(255, 196, 0, 0);
         }
 
         .btn-primary:hover {
             background: #ffd633;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 196, 0, 0.25);
         }
 
         .btn-secondary {
@@ -163,9 +185,13 @@
         .btn-secondary:hover {
             background: #ffc400;
             color: #0a0a0a;
+            transform: translateY(-3px);
         }
 
-        /* PROFILE */
+
+        /* =====================================================
+           PROFILE IMAGE ANIMATION
+        ===================================================== */
 
         .profile-wrapper {
             display: flex;
@@ -173,11 +199,49 @@
         }
 
         .profile-card {
-            background: #111111;
+            position: relative;
             padding: 10px;
-            border-radius: 18px;
-            border: 1px solid #333333;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+            border-radius: 22px;
+            background: #111111;
+            border: 1px solid #3b3b3b;
+
+            animation:
+                profileFloat 4s ease-in-out infinite,
+                profileGlow 2.8s ease-in-out infinite;
+
+            transform-origin: center;
+        }
+
+        .profile-card::before {
+            content: "";
+            position: absolute;
+            inset: -3px;
+            border-radius: 24px;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 196, 0, 0.8),
+                transparent,
+                rgba(255, 196, 0, 0.8),
+                transparent
+            );
+
+            background-size: 300% 300%;
+            z-index: -1;
+
+            animation: borderMove 5s linear infinite;
+        }
+
+        .profile-card::after {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            border-radius: 16px;
+            box-shadow:
+                0 0 25px rgba(255, 196, 0, 0.13),
+                0 0 55px rgba(255, 196, 0, 0.07);
+
+            pointer-events: none;
         }
 
         .profile-card img {
@@ -185,10 +249,99 @@
             height: 400px;
             object-fit: cover;
             object-position: center;
-            border-radius: 12px;
+            border-radius: 14px;
+
+            animation: profileZoom 5s ease-in-out infinite;
+
+            transition:
+                transform 0.5s ease,
+                filter 0.5s ease;
         }
 
-        /* COMMON */
+        .profile-card:hover {
+            animation-play-state: paused;
+        }
+
+        .profile-card:hover img {
+            transform: scale(1.035);
+            filter: brightness(1.08) contrast(1.04);
+        }
+
+        @keyframes profileFloat {
+
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-8px) rotate(0.4deg);
+            }
+
+            50% {
+                transform: translateY(-14px) rotate(0deg);
+            }
+
+            75% {
+                transform: translateY(-8px) rotate(-0.4deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        @keyframes profileGlow {
+
+            0% {
+                box-shadow:
+                    0 15px 35px rgba(0, 0, 0, 0.45),
+                    0 0 12px rgba(255, 196, 0, 0.05);
+            }
+
+            50% {
+                box-shadow:
+                    0 20px 45px rgba(0, 0, 0, 0.50),
+                    0 0 30px rgba(255, 196, 0, 0.22);
+            }
+
+            100% {
+                box-shadow:
+                    0 15px 35px rgba(0, 0, 0, 0.45),
+                    0 0 12px rgba(255, 196, 0, 0.05);
+            }
+        }
+
+        @keyframes profileZoom {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.018);
+            }
+        }
+
+        @keyframes borderMove {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        /* =====================================================
+           COMMON SECTIONS
+        ===================================================== */
 
         section {
             padding: 85px 0;
@@ -217,7 +370,10 @@
             font-size: 16px;
         }
 
-        /* ABOUT */
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
 
         .about {
             background: #111111;
@@ -253,9 +409,19 @@
             color: #ffc400;
             font-size: 14px;
             font-weight: 600;
+            transition: 0.3s ease;
         }
 
-        /* CERTIFICATIONS */
+        .skill:hover {
+            background: #ffc400;
+            color: #0a0a0a;
+            transform: translateY(-3px);
+        }
+
+
+        /* =====================================================
+           CERTIFICATIONS
+        ===================================================== */
 
         .certifications {
             background: #0a0a0a;
@@ -272,12 +438,13 @@
             border: 1px solid #292929;
             border-radius: 12px;
             padding: 28px;
-            transition: 0.25s ease;
+            transition: 0.3s ease;
         }
 
         .certification-card:hover {
             border-color: #ffc400;
-            transform: translateY(-4px);
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(255, 196, 0, 0.08);
         }
 
         .certification-badge {
@@ -303,7 +470,10 @@
             font-size: 15px;
         }
 
-        /* SERVICES & SOLUTIONS */
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
 
         .services {
             background: #111111;
@@ -325,8 +495,9 @@
 
         .solution-card:hover {
             border-color: #ffc400;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 196, 0, 0.08);
+            transform: translateY(-8px);
+            box-shadow:
+                0 18px 40px rgba(255, 196, 0, 0.12);
         }
 
         .solution-image-wrap {
@@ -339,44 +510,68 @@
             width: 100%;
             height: 230px;
             object-fit: cover;
+
+            animation:
+                solutionZoom 5s ease-in-out infinite,
+                solutionBrightness 3s ease-in-out infinite;
+
             transition:
-                transform 0.7s ease,
-                filter 0.7s ease;
-            animation: imagePulse 4.5s ease-in-out infinite;
+                transform 0.55s ease,
+                filter 0.55s ease;
         }
 
         .solution-card:hover .solution-image {
-            transform: scale(1.055);
-            filter: brightness(1.08);
+            transform: scale(1.09);
+            filter:
+                brightness(1.15)
+                saturate(1.12);
         }
 
         .solution-image-wrap::after {
             content: "";
             position: absolute;
             inset: 0;
+
             border: 2px solid transparent;
-            border-radius: 14px 14px 0 0;
-            box-shadow: inset 0 0 0 0 rgba(255, 196, 0, 0);
+
+            box-shadow:
+                inset 0 0 0 rgba(255, 196, 0, 0);
+
             transition:
-                box-shadow 0.35s ease,
-                border-color 0.35s ease;
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+
             pointer-events: none;
         }
 
         .solution-card:hover .solution-image-wrap::after {
-            border-color: rgba(255, 196, 0, 0.8);
-            box-shadow: inset 0 0 30px rgba(255, 196, 0, 0.12);
+            border-color: rgba(255, 196, 0, 0.85);
+
+            box-shadow:
+                inset 0 0 35px rgba(255, 196, 0, 0.14);
         }
 
-        @keyframes imagePulse {
+        @keyframes solutionZoom {
 
             0%,
             100% {
-                filter: brightness(0.97);
+                transform: scale(1);
             }
 
             50% {
-                filter: brightness(1.03);
+                transform: scale(1.035);
+            }
+        }
+
+        @keyframes solutionBrightness {
+
+            0%,
+            100% {
+                filter: brightness(0.94);
+            }
+
+            50% {
+                filter: brightness(1.08);
             }
         }
 
@@ -406,7 +601,10 @@
             font-size: 15px;
         }
 
-        /* WHY ME */
+
+        /* =====================================================
+           WHY ME
+        ===================================================== */
 
         .why-me {
             background: #0a0a0a;
@@ -423,12 +621,12 @@
             border: 1px solid #292929;
             padding: 28px;
             border-radius: 12px;
-            transition: 0.25s ease;
+            transition: 0.3s ease;
         }
 
         .why-card:hover {
             border-color: #ffc400;
-            transform: translateY(-4px);
+            transform: translateY(-7px);
         }
 
         .why-card h3 {
@@ -455,7 +653,10 @@
             margin-bottom: 18px;
         }
 
-        /* BLOG */
+
+        /* =====================================================
+           BLOG
+        ===================================================== */
 
         .blog {
             background: #111111;
@@ -472,12 +673,12 @@
             border: 1px solid #292929;
             border-radius: 12px;
             padding: 25px;
-            transition: 0.25s ease;
+            transition: 0.3s ease;
         }
 
         .blog-card:hover {
             border-color: #ffc400;
-            transform: translateY(-4px);
+            transform: translateY(-7px);
         }
 
         .blog-card .tag {
@@ -509,7 +710,10 @@
             font-weight: 800;
         }
 
-        /* CONTACT */
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
 
         .contact {
             background: #ffc400;
@@ -542,14 +746,19 @@
             border-radius: 7px;
             color: #0a0a0a;
             font-weight: 800;
+            transition: 0.3s ease;
         }
 
         .contact-link:hover {
             background: #0a0a0a;
             color: #ffc400;
+            transform: translateY(-3px);
         }
 
-        /* FOOTER */
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
             background: #000000;
@@ -559,7 +768,10 @@
             font-size: 14px;
         }
 
-        /* REDUCE MOTION */
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -567,17 +779,20 @@
                 scroll-behavior: auto;
             }
 
-            .solution-image,
-            .solution-card,
-            .why-card,
-            .blog-card,
-            .certification-card {
-                animation: none !important;
-                transition: none !important;
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
+
         }
 
-        /* TABLET */
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
 
         @media (max-width: 950px) {
 
@@ -608,9 +823,13 @@
             .blog-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
         }
 
-        /* MOBILE */
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 650px) {
 
@@ -653,13 +872,16 @@
             .section-title {
                 font-size: 30px;
             }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -812,7 +1034,10 @@
             <div>
 
                 <h3
-                    style="margin-bottom:20px;color:#ffffff;"
+                    style="
+                    margin-bottom:20px;
+                    color:#ffffff;
+                    "
                 >
                     Professional Skills
                 </h3>
@@ -860,6 +1085,7 @@
         </p>
 
         <div class="certifications-grid">
+
 
             <div class="certification-card">
 
@@ -913,6 +1139,7 @@
                 </p>
 
             </div>
+
 
         </div>
 

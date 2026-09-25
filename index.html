@@ -6,14 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Vijay Arulsamy | Accounting, Excel & MIS Professional</title>
+    <title>Vijay Arulsamy | Accounting, Excel, Power BI & MIS Professional</title>
 
     <meta
         name="description"
-        content="Vijay Arulsamy - Accounting, Excel, MIS reporting, business analysis, inventory reporting and business solutions."
+        content="Vijay Arulsamy - Accounting, Advanced Excel, Power BI, MIS reporting, business analysis, inventory reporting and business solutions."
     >
 
     <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
 
         * {
             margin: 0;
@@ -50,9 +54,9 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            HEADER
-        ============================== */
+        ===================================================== */
 
         header {
             background: rgba(10, 10, 10, 0.96);
@@ -98,15 +102,15 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            HERO
-        ============================== */
+        ===================================================== */
 
         .hero {
             background:
                 radial-gradient(
                     circle at 85% 30%,
-                    rgba(255, 196, 0, 0.08),
+                    rgba(255, 196, 0, 0.09),
                     transparent 35%
                 ),
                 #0a0a0a;
@@ -184,9 +188,9 @@
         }
 
 
-        /* ==============================
-           PROFILE ANIMATION
-        ============================== */
+        /* =====================================================
+           PROFILE IMAGE
+        ===================================================== */
 
         .profile-wrapper {
             display: flex;
@@ -203,6 +207,8 @@
             animation:
                 profileFloat 4s ease-in-out infinite,
                 profileGlow 2.8s ease-in-out infinite;
+
+            transform-origin: center;
         }
 
         .profile-card::before {
@@ -214,9 +220,9 @@
             background: linear-gradient(
                 45deg,
                 transparent,
-                rgba(255, 196, 0, 0.8),
+                rgba(255, 196, 0, 0.85),
                 transparent,
-                rgba(255, 196, 0, 0.8),
+                rgba(255, 196, 0, 0.85),
                 transparent
             );
 
@@ -334,9 +340,9 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            COMMON SECTIONS
-        ============================== */
+        ===================================================== */
 
         section {
             padding: 85px 0;
@@ -366,9 +372,9 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            ABOUT
-        ============================== */
+        ===================================================== */
 
         .about {
             background: #111111;
@@ -414,9 +420,9 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            CERTIFICATIONS
-        ============================== */
+        ===================================================== */
 
         .certifications {
             background: #0a0a0a;
@@ -466,9 +472,9 @@
         }
 
 
-        /* ==============================
-           SERVICES & SOLUTIONS
-        ============================== */
+        /* =====================================================
+           SERVICES
+        ===================================================== */
 
         .services {
             background: #111111;
@@ -526,6 +532,7 @@
             content: "";
             position: absolute;
             inset: 0;
+
             border: 2px solid transparent;
 
             box-shadow:
@@ -596,9 +603,9 @@
         }
 
 
-        /* ==============================
-           HOW I WORK
-        ============================== */
+        /* =====================================================
+           WHY ME
+        ===================================================== */
 
         .why-me {
             background: #0a0a0a;
@@ -648,9 +655,9 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            BLOG
-        ============================== */
+        ===================================================== */
 
         .blog {
             background: #111111;
@@ -704,10 +711,14 @@
             font-weight: 800;
         }
 
+        .read-more:hover {
+            color: #ffffff;
+        }
 
-        /* ==============================
+
+        /* =====================================================
            CONTACT
-        ============================== */
+        ===================================================== */
 
         .contact {
             background: #ffc400;
@@ -750,9 +761,9 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            FOOTER
-        ============================== */
+        ===================================================== */
 
         footer {
             background: #000000;
@@ -763,9 +774,9 @@
         }
 
 
-        /* ==============================
-           ACCESSIBILITY
-        ============================== */
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -783,9 +794,9 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            TABLET
-        ============================== */
+        ===================================================== */
 
         @media (max-width: 950px) {
 
@@ -819,9 +830,9 @@
         }
 
 
-        /* ==============================
+        /* =====================================================
            MOBILE
-        ============================== */
+        ===================================================== */
 
         @media (max-width: 650px) {
 
@@ -874,784 +885,721 @@
 <body>
 
 
-    <!-- ==============================
-         HEADER
-    ============================== -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <header>
+<header>
 
-        <div class="container">
+    <div class="container">
 
-            <nav>
+        <nav>
 
-                <div class="logo">
-                    Vijay Arulsamy<span>.</span>
-                </div>
-
-
-                <ul class="nav-links">
-
-                    <li>
-                        <a href="#about">
-                            About
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#certifications">
-                            Credentials
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#services">
-                            Solutions
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#why-me">
-                            Why Me
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#blog">
-                            Blog
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#contact">
-                            Contact
-                        </a>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-        </div>
-
-    </header>
-
-
-    <!-- ==============================
-         HERO
-    ============================== -->
-
-    <section class="hero">
-
-        <div class="container">
-
-            <div class="hero-grid">
-
-
-                <div>
-
-                    <h1>
-                        Accounting,
-                        <span>Excel & MIS</span>
-                        Professional
-                    </h1>
-
-
-                    <p class="hero-subtitle">
-                        Business Reporting • Data Analysis • Inventory • Automation
-                    </p>
-
-
-                    <p class="hero-text">
-
-                        I help small and growing businesses organize
-                        accounting, sales and inventory data into clear,
-                        accurate and useful business reports.
-
-                    </p>
-
-
-                    <div class="hero-buttons">
-
-                        <a
-                            href="#services"
-                            class="btn btn-primary"
-                        >
-                            Explore My Solutions
-                        </a>
-
-
-                        <a
-                            href="#contact"
-                            class="btn btn-secondary"
-                        >
-                            Contact Me
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="profile-wrapper">
-
-                    <div class="profile-card">
-
-                        <img
-                            src="vijay-profie.png"
-                            alt="Vijay Arulsamy - Accounting and MIS Professional"
-                        >
-
-                    </div>
-
-                </div>
-
-
+            <div class="logo">
+                Vijay Arulsamy<span>.</span>
             </div>
 
-        </div>
+            <ul class="nav-links">
 
-    </section>
+                <li>
+                    <a href="#about">About</a>
+                </li>
 
+                <li>
+                    <a href="#certifications">Credentials</a>
+                </li>
 
-    <!-- ==============================
-         ABOUT
-    ============================== -->
+                <li>
+                    <a href="#services">Solutions</a>
+                </li>
 
-    <section
-        id="about"
-        class="about"
-    >
+                <li>
+                    <a href="#why-me">Why Me</a>
+                </li>
 
-        <div class="container">
+                <li>
+                    <a href="#blog">Blog</a>
+                </li>
 
-            <h2 class="section-title">
-                About Me
-            </h2>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
 
+            </ul>
 
-            <div class="about-grid">
+        </nav>
 
+    </div>
 
-                <div class="about-text">
+</header>
 
-                    <p>
-                        I am Vijay Arulsamy, an accounting and business
-                        reporting professional with experience in accounting,
-                        documentation, payroll support, inventory reporting
-                        and management information systems.
-                    </p>
 
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-                    <p>
-                        My professional focus combines accounting knowledge
-                        with Microsoft Excel, business reporting, dashboards
-                        and data analysis to make business information easier
-                        to understand and use.
-                    </p>
+<section class="hero">
 
+    <div class="container">
 
-                    <p>
-                        I am also interested in business process improvement,
-                        reporting automation and practical data-driven
-                        solutions for small and growing businesses.
-                    </p>
+        <div class="hero-grid">
 
-                </div>
+            <div>
 
+                <h1>
+                    Accounting,
+                    <span>Excel & MIS</span>
+                    Professional
+                </h1>
 
-                <div>
+                <p class="hero-subtitle">
+                    Business Reporting • Data Analysis • Inventory • Automation
+                </p>
 
-                    <h3
-                        style="
-                        margin-bottom:20px;
-                        color:#ffffff;
-                        "
-                    >
-                        Professional Skills
-                    </h3>
+                <p class="hero-text">
+                    I help small and growing businesses organize accounting,
+                    sales and inventory data into clear, accurate and useful
+                    business reports and dashboards.
+                </p>
 
-
-                    <div class="skills">
-
-                        <span class="skill">
-                            Microsoft Excel
-                        </span>
-
-                        <span class="skill">
-                            Advanced Excel
-                        </span>
-
-                        <span class="skill">
-                            Tally Prime
-                        </span>
-
-                        <span class="skill">
-                            SAP FI
-                        </span>
-
-                        <span class="skill">
-                            Zoho Books
-                        </span>
-
-                        <span class="skill">
-                            MIS Reporting
-                        </span>
-
-                        <span class="skill">
-                            Inventory Analysis
-                        </span>
-
-                        <span class="skill">
-                            GST
-                        </span>
-
-                        <span class="skill">
-                            TDS
-                        </span>
-
-                        <span class="skill">
-                            Payroll
-                        </span>
-
-                        <span class="skill">
-                            Business Dashboards
-                        </span>
-
-                        <span class="skill">
-                            Google Sheets
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==============================
-         CERTIFICATIONS
-    ============================== -->
-
-    <section
-        id="certifications"
-        class="certifications"
-    >
-
-        <div class="container">
-
-            <h2 class="section-title">
-                Certifications & Credentials
-            </h2>
-
-
-            <p class="section-description">
-                Professional certifications and learning credentials supporting
-                my accounting, finance and technology skills.
-            </p>
-
-
-            <div class="certifications-grid">
-
-
-                <div class="certification-card">
-
-                    <div class="certification-badge">
-                        SAP
-                    </div>
-
-                    <h3>
-                        SAP FI Certified
-                    </h3>
-
-                    <p>
-                        Certification focused on SAP Financial Accounting
-                        processes and concepts.
-                    </p>
-
-                </div>
-
-
-                <div class="certification-card">
-
-                    <div class="certification-badge">
-                        GST
-                    </div>
-
-                    <h3>
-                        GST Practitioner Certified
-                    </h3>
-
-                    <p>
-                        Professional knowledge of GST processes and
-                        accounting-related compliance support.
-                    </p>
-
-                </div>
-
-
-                <div class="certification-card">
-
-                    <div class="certification-badge">
-                        AI
-                    </div>
-
-                    <h3>
-                        Google AI / Coursera
-                    </h3>
-
-                    <p>
-                        Completed a six-course Google AI learning program
-                        through Coursera.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==============================
-         SERVICES & SOLUTIONS
-    ============================== -->
-
-    <section
-        id="services"
-        class="services"
-    >
-
-        <div class="container">
-
-            <h2 class="section-title">
-                Services & Solutions
-            </h2>
-
-
-            <p class="section-description">
-                Practical accounting, reporting, data analysis and business
-                solutions for small and growing businesses.
-            </p>
-
-
-            <div class="solutions-grid">
-
-
-                <div class="solution-card">
-
-                    <div class="solution-image-wrap">
-
-                        <img
-                            class="solution-image"
-                            src="excel-mis.jpg"
-                            alt="Excel and MIS business reporting"
-                        >
-
-                    </div>
-
-
-                    <div class="solution-content">
-
-                        <span class="solution-number">
-                            01
-                        </span>
-
-                        <h3>
-                            Excel & MIS Reporting
-                        </h3>
-
-                        <p>
-                            Professional Excel reports, management information
-                            systems, automated summaries, KPI reporting and
-                            business analysis.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="solution-card">
-
-                    <div class="solution-image-wrap">
-
-                        <img
-                            class="solution-image"
-                            src="accounting-reporting.jpg"
-                            alt="Accounting and financial reporting"
-                        >
-
-                    </div>
-
-
-                    <div class="solution-content">
-
-                        <span class="solution-number">
-                            02
-                        </span>
-
-                        <h3>
-                            Accounting & Financial Reporting
-                        </h3>
-
-                        <p>
-                            Accounting support, reconciliations, ledger review,
-                            P&L reporting and structured financial information.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="solution-card">
-
-                    <div class="solution-image-wrap">
-
-                        <img
-                            class="solution-image"
-                            src="inventory-stock.jpg"
-                            alt="Inventory and stock management"
-                        >
-
-                    </div>
-
-
-                    <div class="solution-content">
-
-                        <span class="solution-number">
-                            03
-                        </span>
-
-                        <h3>
-                            Inventory & Stock Solutions
-                        </h3>
-
-                        <p>
-                            Reorder reporting, stock ageing, movement analysis,
-                            product-level monitoring and inventory reporting.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="solution-card">
-
-                    <div class="solution-image-wrap">
-
-                        <img
-                            class="solution-image"
-                            src="business-dashboard.jpg"
-                            alt="Business dashboard and data analytics"
-                        >
-
-                    </div>
-
-
-                    <div class="solution-content">
-
-                        <span class="solution-number">
-                            04
-                        </span>
-
-                        <h3>
-                            Business Dashboards & Analytics
-                        </h3>
-
-                        <p>
-                            Clear dashboards for sales, targets, products,
-                            customers and business performance.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==============================
-         HOW I WORK
-    ============================== -->
-
-    <section
-        id="why-me"
-        class="why-me"
-    >
-
-        <div class="container">
-
-            <h2 class="section-title">
-                How I Work
-            </h2>
-
-
-            <p class="section-description">
-                A practical approach focused on accurate data,
-                understandable reports and useful business information.
-            </p>
-
-
-            <div class="why-grid">
-
-
-                <div class="why-card">
-
-                    <div class="why-icon">
-                        01
-                    </div>
-
-                    <h3>
-                        Understand
-                    </h3>
-
-                    <p>
-                        First understand the business process, reporting
-                        requirement and data available.
-                    </p>
-
-                </div>
-
-
-                <div class="why-card">
-
-                    <div class="why-icon">
-                        02
-                    </div>
-
-                    <h3>
-                        Organize
-                    </h3>
-
-                    <p>
-                        Structure the data so that information becomes easier
-                        to check, analyze and maintain.
-                    </p>
-
-                </div>
-
-
-                <div class="why-card">
-
-                    <div class="why-icon">
-                        03
-                    </div>
-
-                    <h3>
-                        Report
-                    </h3>
-
-                    <p>
-                        Build clear reports and dashboards that help business
-                        owners understand their information.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==============================
-         BLOG
-    ============================== -->
-
-    <section
-        id="blog"
-        class="blog"
-    >
-
-        <div class="container">
-
-            <h2 class="section-title">
-                Latest Insights
-            </h2>
-
-
-            <p class="section-description">
-                Practical articles about Excel, accounting, MIS,
-                inventory and business analysis.
-            </p>
-
-
-            <div class="blog-grid">
-
-
-                <!-- ARTICLE 1 -->
-
-                <div class="blog-card">
-
-                    <span class="tag">
-                        EXCEL
-                    </span>
-
-
-                    <h3>
-                        Advanced Excel for Corporate MIS Reporting
-                    </h3>
-
-
-                    <p>
-                        A step-by-step guide to advanced Excel functions
-                        using a fictional multi-city corporate sales dataset.
-                    </p>
-
+                <div class="hero-buttons">
 
                     <a
-                        class="read-more"
-                        href="sumifs-excel.html"
+                        href="#services"
+                        class="btn btn-primary"
                     >
-                        Read Full Article →
+                        Explore My Solutions
+                    </a>
+
+                    <a
+                        href="#contact"
+                        class="btn btn-secondary"
+                    >
+                        Contact Me
                     </a>
 
                 </div>
 
-
-                <!-- ARTICLE 2 -->
-
-                <div class="blog-card">
-
-                    <span class="tag">
-                        MIS
-                    </span>
+            </div>
 
 
-                    <h3>
-                        How to Create a Monthly Sales MIS Report
-                    </h3>
+            <div class="profile-wrapper">
 
+                <div class="profile-card">
 
-                    <p>
-                        A practical approach to organizing sales information
-                        for management reporting.
-                    </p>
-
-
-                    <span class="read-more">
-                        Article Coming Soon →
-                    </span>
+                    <img
+                        src="vijay-profie.png"
+                        alt="Vijay Arulsamy - Accounting and MIS Professional"
+                    >
 
                 </div>
-
-
-                <!-- ARTICLE 3 -->
-
-                <div class="blog-card">
-
-                    <span class="tag">
-                        INVENTORY
-                    </span>
-
-
-                    <h3>
-                        How to Build an Inventory Reorder Report
-                    </h3>
-
-
-                    <p>
-                        Understand the basic structure of reorder and
-                        stock-priority reporting.
-                    </p>
-
-
-                    <span class="read-more">
-                        Article Coming Soon →
-                    </span>
-
-                </div>
-
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ==============================
-         CONTACT
-    ============================== -->
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
-    <section
-        id="contact"
-        class="contact"
-    >
+<section
+    id="about"
+    class="about"
+>
 
-        <div class="container">
+    <div class="container">
 
-            <h2 class="section-title">
-                Let's Work Together
-            </h2>
+        <h2 class="section-title">
+            About Me
+        </h2>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I am Vijay Arulsamy, an accounting and business reporting
+                    professional with experience in accounting, documentation,
+                    payroll support, inventory reporting and management
+                    information systems.
+                </p>
+
+                <p>
+                    My professional focus combines accounting knowledge with
+                    Microsoft Excel, Power BI, business reporting, dashboards
+                    and data analysis to make business information easier
+                    to understand and use.
+                </p>
+
+                <p>
+                    I am also interested in business process improvement,
+                    reporting automation and practical data-driven solutions
+                    for small and growing businesses.
+                </p>
+
+            </div>
 
 
-            <p class="contact-text">
-                Have an Excel, accounting, reporting or business-data
-                requirement? Tell me what you need and let's discuss
-                how the work can be structured.
-            </p>
+            <div>
 
-
-            <div class="contact-links">
-
-
-                <a
-                    class="contact-link"
-                    href="mailto:your-email@example.com"
+                <h3
+                    style="
+                        margin-bottom:20px;
+                        color:#ffffff;
+                    "
                 >
-                    Email
-                </a>
+                    Professional Skills
+                </h3>
 
+                <div class="skills">
 
-                <a
-                    class="contact-link"
-                    href="#"
-                >
-                    LinkedIn
-                </a>
+                    <span class="skill">Microsoft Excel</span>
+                    <span class="skill">Advanced Excel</span>
+                    <span class="skill">Tally Prime</span>
+                    <span class="skill">SAP FI</span>
+                    <span class="skill">Zoho Books</span>
+                    <span class="skill">MIS Reporting</span>
+                    <span class="skill">Inventory Analysis</span>
+                    <span class="skill">GST</span>
+                    <span class="skill">TDS</span>
+                    <span class="skill">Payroll</span>
+                    <span class="skill">Power BI</span>
+                    <span class="skill">Business Dashboards</span>
+                    <span class="skill">Google Sheets</span>
 
-
-                <a
-                    class="contact-link"
-                    href="#"
-                >
-                    WhatsApp
-                </a>
-
+                </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ==============================
-         FOOTER
-    ============================== -->
+<!-- =====================================================
+     CERTIFICATIONS
+===================================================== -->
 
-    <footer>
+<section
+    id="certifications"
+    class="certifications"
+>
 
-        © 2026 Vijay Arulsamy. All rights reserved.
+    <div class="container">
 
-    </footer>
+        <h2 class="section-title">
+            Certifications & Credentials
+        </h2>
+
+        <p class="section-description">
+            Professional certifications and learning credentials supporting
+            my accounting, finance and technology skills.
+        </p>
+
+        <div class="certifications-grid">
+
+
+            <div class="certification-card">
+
+                <div class="certification-badge">
+                    SAP
+                </div>
+
+                <h3>
+                    SAP FI Certified
+                </h3>
+
+                <p>
+                    Certification focused on SAP Financial Accounting
+                    processes and concepts.
+                </p>
+
+            </div>
+
+
+            <div class="certification-card">
+
+                <div class="certification-badge">
+                    GST
+                </div>
+
+                <h3>
+                    GST Practitioner Certified
+                </h3>
+
+                <p>
+                    Professional knowledge of GST processes and
+                    accounting-related compliance support.
+                </p>
+
+            </div>
+
+
+            <div class="certification-card">
+
+                <div class="certification-badge">
+                    AI
+                </div>
+
+                <h3>
+                    Google AI / Coursera
+                </h3>
+
+                <p>
+                    Completed a six-course Google AI learning program
+                    through Coursera.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section
+    id="services"
+    class="services"
+>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Services & Solutions
+        </h2>
+
+        <p class="section-description">
+            Practical accounting, reporting, data analysis and business
+            solutions for small and growing businesses.
+        </p>
+
+        <div class="solutions-grid">
+
+
+            <!-- SERVICE 01 -->
+
+            <div class="solution-card">
+
+                <div class="solution-image-wrap">
+
+                    <img
+                        class="solution-image"
+                        src="excel-mis.jpg"
+                        alt="Excel and MIS business reporting"
+                    >
+
+                </div>
+
+                <div class="solution-content">
+
+                    <span class="solution-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Excel & MIS Reporting
+                    </h3>
+
+                    <p>
+                        Professional Excel and Power BI reporting,
+                        management information systems, automated
+                        summaries, KPI reporting and business analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICE 02 -->
+
+            <div class="solution-card">
+
+                <div class="solution-image-wrap">
+
+                    <img
+                        class="solution-image"
+                        src="accounting-reporting.jpg"
+                        alt="Accounting and financial reporting"
+                    >
+
+                </div>
+
+                <div class="solution-content">
+
+                    <span class="solution-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Accounting & Financial Reporting
+                    </h3>
+
+                    <p>
+                        Accounting support, reconciliations, ledger review,
+                        P&L reporting and structured financial information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICE 03 -->
+
+            <div class="solution-card">
+
+                <div class="solution-image-wrap">
+
+                    <img
+                        class="solution-image"
+                        src="inventory-stock.jpg"
+                        alt="Inventory and stock management"
+                    >
+
+                </div>
+
+                <div class="solution-content">
+
+                    <span class="solution-number">
+                        03
+                    </span>
+
+                    <h3>
+                        Inventory & Stock Solutions
+                    </h3>
+
+                    <p>
+                        Reorder reporting, stock ageing, movement analysis,
+                        product-level monitoring and inventory reporting.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICE 04 -->
+
+            <div class="solution-card">
+
+                <div class="solution-image-wrap">
+
+                    <img
+                        class="solution-image"
+                        src="business-dashboard.jpg"
+                        alt="Business dashboard and data analytics"
+                    >
+
+                </div>
+
+                <div class="solution-content">
+
+                    <span class="solution-number">
+                        04
+                    </span>
+
+                    <h3>
+                        Business Dashboards & Analytics
+                    </h3>
+
+                    <p>
+                        Clear Excel and Power BI dashboards for sales,
+                        targets, products, customers and business
+                        performance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY ME / HOW I WORK
+===================================================== -->
+
+<section
+    id="why-me"
+    class="why-me"
+>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            How I Work
+        </h2>
+
+        <p class="section-description">
+            A practical approach focused on accurate data,
+            understandable reports and useful business information.
+        </p>
+
+        <div class="why-grid">
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    01
+                </div>
+
+                <h3>
+                    Understand
+                </h3>
+
+                <p>
+                    First understand the business process,
+                    reporting requirement and data available.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    02
+                </div>
+
+                <h3>
+                    Organize
+                </h3>
+
+                <p>
+                    Structure the data so that information becomes
+                    easier to check, analyze and maintain.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    03
+                </div>
+
+                <h3>
+                    Report
+                </h3>
+
+                <p>
+                    Build clear Excel reports and Power BI dashboards
+                    that help business owners understand their data.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BLOG
+===================================================== -->
+
+<section
+    id="blog"
+    class="blog"
+>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Latest Insights
+        </h2>
+
+        <p class="section-description">
+            Practical articles about Excel, Power BI, accounting,
+            MIS, inventory and business analysis.
+        </p>
+
+        <div class="blog-grid">
+
+
+            <!-- BLOG 01 -->
+
+            <div class="blog-card">
+
+                <span class="tag">
+                    EXCEL + POWER BI
+                </span>
+
+                <h3>
+                    Advanced Excel for Corporate MIS Reporting
+                </h3>
+
+                <p>
+                    A step-by-step corporate guide covering Excel
+                    formulas, formatted output and Power BI
+                    dashboard logic.
+                </p>
+
+                <a
+                    class="read-more"
+                    href="sumifs-excel.html"
+                >
+                    Read Full Article →
+                </a>
+
+            </div>
+
+
+            <!-- BLOG 02 -->
+
+            <div class="blog-card">
+
+                <span class="tag">
+                    MIS + POWER BI
+                </span>
+
+                <h3>
+                    How to Create a Monthly Sales MIS Report
+                </h3>
+
+                <p>
+                    Learn how to organize sales data, create KPIs,
+                    format the output and convert the same logic
+                    into a Power BI dashboard.
+                </p>
+
+                <a
+                    class="read-more"
+                    href="monthly-sales-mis.html"
+                >
+                    Read Full Article →
+                </a>
+
+            </div>
+
+
+            <!-- BLOG 03 -->
+
+            <div class="blog-card">
+
+                <span class="tag">
+                    INVENTORY + POWER BI
+                </span>
+
+                <h3>
+                    How to Build an Inventory Reorder Report
+                </h3>
+
+                <p>
+                    Build a structured reorder report using stock,
+                    demand, lead time, safety stock, Excel logic
+                    and Power BI dashboard concepts.
+                </p>
+
+                <a
+                    class="read-more"
+                    href="inventory-reorder.html"
+                >
+                    Read Full Article →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    id="contact"
+    class="contact"
+>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Let's Work Together
+        </h2>
+
+        <p class="contact-text">
+            Have an Excel, Power BI, accounting, reporting or
+            business-data requirement? Tell me what you need and
+            let's discuss how the work can be structured.
+        </p>
+
+        <div class="contact-links">
+
+            <!-- Replace this email later -->
+            <a
+                class="contact-link"
+                href="mailto:your-email@example.com"
+            >
+                Email
+            </a>
+
+            <!-- Replace # with your LinkedIn URL -->
+            <a
+                class="contact-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+            <!-- Replace # with your WhatsApp link -->
+            <a
+                class="contact-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    © 2026 Vijay Arulsamy. All rights reserved.
+
+</footer>
 
 
 </body>

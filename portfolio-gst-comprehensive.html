@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        GST, GSTR-1, GSTR-3B & TDS Reporting Sample | Vijay Arulsamy
+    </title>
+
+    <meta
+        name="description"
+        content="A fictional GST and TDS compliance reporting sample covering GST law concepts, GSTR-1, GSTR-1A, GSTR-2B, GSTR-3B, reconciliation, TDS and management reporting."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://vijayfrankii555-gif.github.io/portfolio-gst.html"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1080px;
+            margin: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,10,.96);
+            border-bottom: 1px solid #292929;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            color: #ffc400;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .back {
+            color: #d8d8d8;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .back:hover {
+            color: #ffc400;
+        }
+
+        main {
+            padding: 65px 0 90px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 18px;
+            background: #ffc400;
+            color: #0a0a0a;
+            font-size: 11px;
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(34px, 5vw, 56px);
+            line-height: 1.08;
+            margin-bottom: 18px;
+        }
+
+        .intro {
+            color: #b8b8b8;
+            max-width: 860px;
+            font-size: 17px;
+            margin-bottom: 28px;
+        }
+
+        .notice {
+            background: #151200;
+            border: 1px solid #4d3f00;
+            border-radius: 12px;
+            padding: 17px 19px;
+            margin-bottom: 40px;
+            color: #d7d7d7;
+        }
+
+        .notice strong {
+            color: #ffc400;
+        }
+
+        h2 {
+            margin-top: 54px;
+            margin-bottom: 18px;
+            font-size: 29px;
+            line-height: 1.2;
+        }
+
+        h3 {
+            color: #ffc400;
+            font-size: 20px;
+            margin: 28px 0 12px;
+        }
+
+        p {
+            color: #d3d3d3;
+        }
+
+        ul {
+            color: #d3d3d3;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+            margin: 20px 0 26px;
+        }
+
+        .kpi {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 11px;
+            padding: 18px;
+        }
+
+        .kpi small {
+            display: block;
+            color: #8d8d8d;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+        }
+
+        .kpi strong {
+            display: block;
+            margin-top: 6px;
+            font-size: 22px;
+        }
+
+        .green {
+            color: #59d98e;
+        }
+
+        .yellow {
+            color: #ffc400;
+        }
+
+        .red {
+            color: #ff7070;
+        }
+
+        .blue {
+            color: #65b3ff;
+        }
+
+        .panel {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 13px;
+            padding: 20px;
+            margin: 18px 0;
+        }
+
+        .panel-title {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid #292929;
+            border-radius: 10px;
+            margin: 18px 0;
+        }
+
+        table {
+            width: 100%;
+            min-width: 760px;
+            border-collapse: collapse;
+            background: #0f0f0f;
+        }
+
+        th,
+        td {
+            padding: 11px 12px;
+            border-bottom: 1px solid #242424;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        th {
+            color: #ffc400;
+            background: #151515;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .status.good {
+            background: rgba(89,217,142,.12);
+            color: #59d98e;
+        }
+
+        .status.watch {
+            background: rgba(255,196,0,.12);
+            color: #ffc400;
+        }
+
+        .status.risk {
+            background: rgba(255,112,112,.12);
+            color: #ff7070;
+        }
+
+        .logic {
+            background: #151515;
+            border-left: 4px solid #ffc400;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 15px 0;
+            font-family: Consolas, monospace;
+            overflow-x: auto;
+            color: #eeeeee;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 22px 0;
+        }
+
+        .flow-card {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 11px;
+            padding: 17px;
+        }
+
+        .flow-number {
+            color: #ffc400;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+        }
+
+        .flow-card strong {
+            display: block;
+            margin-top: 7px;
+            color: #ffffff;
+        }
+
+        .flow-card span {
+            display: block;
+            margin-top: 6px;
+            color: #9f9f9f;
+            font-size: 13px;
+        }
+
+        .source-box {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .source-box a {
+            color: #65b3ff;
+            font-size: 13px;
+        }
+
+        .source-box a:hover {
+            color: #ffc400;
+        }
+
+        .cta {
+            margin-top: 55px;
+            background: #ffc400;
+            color: #0a0a0a;
+            border-radius: 13px;
+            padding: 25px;
+        }
+
+        .cta h2 {
+            margin-top: 0;
+            color: #0a0a0a;
+        }
+
+        .cta p {
+            color: #161616;
+        }
+
+        .cta-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 15px;
+            border: 1px solid #0a0a0a;
+            border-radius: 7px;
+            font-weight: 900;
+        }
+
+        .cta-link:hover {
+            background: #0a0a0a;
+            color: #ffc400;
+        }
+
+        footer {
+            border-top: 1px solid #292929;
+            padding: 24px;
+            text-align: center;
+            color: #818181;
+            background: #000000;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .flow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 520px) {
+
+            .kpi-grid,
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="container">
+
+        <nav>
+
+            <a
+                class="brand"
+                href="index.html"
+            >
+                VIJAY ARULSAMY
+            </a>
+
+            <a
+                class="back"
+                href="index.html#portfolio"
+            >
+                ← Back to Portfolio
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <span class="tag">
+            SAMPLE PROJECT • GST + TDS REPORTING
+        </span>
+
+
+        <h1>
+            GST Law, Returns, GSTR-1, GSTR-3B & TDS
+        </h1>
+
+
+        <p class="intro">
+
+            A comprehensive fictional compliance-reporting sample
+            showing the workflow from source transactions to
+            GST returns, ITC reconciliation, tax payment,
+            TDS deduction and quarterly TDS reporting.
+
+        </p>
+
+
+        <div class="notice">
+
+            <strong>Important:</strong>
+            This is an educational portfolio sample using fictional
+            numbers. It is not legal or tax advice and should not
+            replace the current GST law, Income-tax Act, Rules,
+            notifications, circulars or professional review.
+
+        </div>
+
+
+        <!-- =================================================
+             1. GST LAW
+        ================================================== -->
+
+        <h2>
+            1. GST Law — What the Reporting Process Is Based On
+        </h2>
+
+        <p>
+            A practical GST workflow should begin with the underlying
+            law and applicable rules, not with the return form alone.
+            Key areas include taxable supply, registration,
+            tax invoice, time and place of supply, value of supply,
+            tax payment, input tax credit, reverse charge,
+            returns, refunds and compliance controls.
+        </p>
+
+        <div class="flow">
+
+            <div class="flow-card">
+                <div class="flow-number">
+                    Step 01
+                </div>
+                <strong>
+                    Transaction
+                </strong>
+                <span>
+                    Identify supply and transaction type.
+                </span>
+            </div>
+
+            <div class="flow-card">
+                <div class="flow-number">
+                    Step 02
+                </div>
+                <strong>
+                    Tax Treatment
+                </strong>
+                <span>
+                    Determine applicable GST treatment.
+                </span>
+            </div>
+
+            <div class="flow-card">
+                <div class="flow-number">
+                    Step 03
+                </div>
+                <strong>
+                    Reporting
+                </strong>
+                <span>
+                    Report the transaction in the applicable return.
+                </span>
+            </div>
+
+            <div class="flow-card">
+                <div class="flow-number">
+                    Step 04
+                </div>
+                <strong>
+                    Reconcile
+                </strong>
+                <span>
+                    Compare books, return data and ITC information.
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             2. RETURNS MAP
+        ================================================== -->
+
+        <h2>
+            2. GST Returns & Statements — Practical Map
+        </h2>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Form</th>
+                        <th>Purpose</th>
+                        <th>Portfolio Example</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>GSTR-1</td>
+                        <td>Outward supply details / sales reporting</td>
+                        <td>B2B, B2C, exports, notes, HSN/SAC</td>
+                    </tr>
+
+                    <tr>
+                        <td>GSTR-1A</td>
+                        <td>Optional amendment/addition facility for the same period before GSTR-3B</td>
+                        <td>Correct missed or incorrect records</td>
+                    </tr>
+
+                    <tr>
+                        <td>GSTR-2B</td>
+                        <td>Static ITC statement generated from supplier/other source data</td>
+                        <td>Reconcile eligible ITC before GSTR-3B</td>
+                    </tr>
+
+                    <tr>
+                        <td>GSTR-3B</td>
+                        <td>Summary return for outward supplies, tax liability, ITC and payment</td>
+                        <td>Calculate net tax payable</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <h3>
+            GSTR-1 Filing Timing
+        </h3>
+
+        <p>
+            The GST Portal's GSTR-1 guidance states that the normal
+            due date is the 11th of the succeeding month for monthly
+            filers and the 13th of the month following the quarter
+            for quarterly filers, subject to extensions by notification.
+        </p>
+
+
+        <!-- =================================================
+             3. GSTR-1
+        ================================================== -->
+
+        <h2>
+            3. GSTR-1 — Outward Supply Reporting
+        </h2>
+
+        <p>
+            GSTR-1 is the statement used to report outward supplies.
+            The GST Portal describes B2B supplies, B2C supplies,
+            exports, credit/debit notes, advances, amendments,
+            nil/exempt/non-GST supplies and HSN/SAC summaries among
+            the reported information.
+        </p>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Example Transaction</th>
+                        <th>Taxable Value</th>
+                        <th>GST</th>
+                        <th>GSTR-1 Treatment</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            B2B Inter-State Sale
+                        </td>
+
+                        <td>
+                            ₹1,00,000
+                        </td>
+
+                        <td>
+                            IGST ₹18,000
+                        </td>
+
+                        <td>
+                            B2B invoice reporting
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            B2C Intra-State Sale
+                        </td>
+
+                        <td>
+                            ₹50,000
+                        </td>
+
+                        <td>
+                            CGST ₹4,500 + SGST ₹4,500
+                        </td>
+
+                        <td>
+                            B2C summary reporting
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Export on Payment of Tax
+                        </td>
+
+                        <td>
+                            ₹2,00,000
+                        </td>
+
+                        <td>
+                            Illustrative IGST ₹36,000
+                        </td>
+
+                        <td>
+                            Export invoice reporting
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Credit Note
+                        </td>
+
+                        <td>
+                            -₹10,000
+                        </td>
+
+                        <td>
+                            Illustrative tax adjustment
+                        </td>
+
+                        <td>
+                            Credit note reporting
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p>
+            From May 2025 onwards, the GST Portal says the HSN-wise
+            summary in GSTR-1 is presented separately for B2B and B2C
+            supplies.
+        </p>
+
+
+        <!-- =================================================
+             4. GSTR-1 EXAMPLE
+        ================================================== -->
+
+        <h2>
+            4. GSTR-1 — Full Example
+        </h2>
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Fictional September Sales Register
+            </div>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Invoice</th>
+                            <th>Customer Type</th>
+                            <th>Place of Supply</th>
+                            <th>Taxable Value</th>
+                            <th>Tax</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>INV-1001</td>
+                            <td>B2B</td>
+                            <td>Karnataka</td>
+                            <td>₹1,00,000</td>
+                            <td>IGST ₹18,000</td>
+                        </tr>
+
+                        <tr>
+                            <td>INV-1002</td>
+                            <td>B2B</td>
+                            <td>Tamil Nadu</td>
+                            <td>₹80,000</td>
+                            <td>CGST ₹7,200 + SGST ₹7,200</td>
+                        </tr>
+
+                        <tr>
+                            <td>INV-1003</td>
+                            <td>B2C</td>
+                            <td>Tamil Nadu</td>
+                            <td>₹50,000</td>
+                            <td>CGST ₹4,500 + SGST ₹4,500</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             5. GSTR-1A
+        ================================================== -->
+
+        <h2>
+            5. GSTR-1A — Example Correction Workflow
+        </h2>
+
+        <p>
+            GSTR-1A is an optional facility for correcting or adding
+            records for the same tax period. The GST Portal states
+            that it can be used after GSTR-1 or its due date, whichever
+            is later, and before filing GSTR-3B for that period.
+        </p>
+
+        <div class="logic">
+
+            Original GSTR-1:
+            Invoice INV-1005 = ₹60,000 taxable value
+
+            Error identified:
+            Correct taxable value = ₹65,000
+
+            GSTR-1A:
+            Add / amend the same-period record
+
+            GSTR-3B:
+            Corrected liability flows into the reporting process
+
+        </div>
+
+
+        <!-- =================================================
+             6. GSTR-2B / ITC
+        ================================================== -->
+
+        <h2>
+            6. GSTR-2B — ITC Reconciliation
+        </h2>
+
+        <p>
+            GSTR-2B is a static ITC statement. The GST Portal advises
+            taxpayers to reconcile GSTR-2B with their books and ensure
+            that ITC is not claimed twice, required reversals are made,
+            and reverse-charge tax is paid where applicable.
+        </p>
+
+        <div class="kpi-grid">
+
+            <div class="kpi">
+                <small>Books ITC</small>
+                <strong>
+                    ₹8,000
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>GSTR-2B ITC</small>
+                <strong class="green">
+                    ₹7,500
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>Difference</small>
+                <strong class="red">
+                    ₹500
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>Action</small>
+                <strong class="yellow">
+                    REVIEW
+                </strong>
+            </div>
+
+        </div>
+
+
+        <h3>
+            Example Reconciliation
+        </h3>
+
+        <div class="logic">
+
+            Books eligible ITC       = ₹8,000
+            GSTR-2B reflected ITC    = ₹7,500
+            Difference                = ₹500
+
+            Action:
+            Identify missing / timing / eligibility issue
+            before final ITC claim.
+
+        </div>
+
+
+        <!-- =================================================
+             7. GSTR-3B
+        ================================================== -->
+
+        <h2>
+            7. GSTR-3B — Summary Return & Tax Payment
+        </h2>
+
+        <p>
+            GSTR-3B is a summary return. The GST Portal currently
+            documents system auto-drafting from GSTR-1/1A and GSTR-2B
+            for relevant liability and ITC sections, while the taxpayer
+            remains responsible for reviewing and filing the correct
+            values.
+        </p>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>GSTR-3B Area</th>
+                        <th>What It Represents</th>
+                        <th>Sample Amount</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>3.1(a)</td>
+                        <td>Taxable outward supplies other than zero-rated supplies</td>
+                        <td>₹1,00,000 taxable value</td>
+                    </tr>
+
+                    <tr>
+                        <td>3.1(d)</td>
+                        <td>Inward supplies liable to reverse charge</td>
+                        <td>₹20,000 taxable value</td>
+                    </tr>
+
+                    <tr>
+                        <td>4(A)</td>
+                        <td>Eligible ITC categories</td>
+                        <td>₹7,500</td>
+                    </tr>
+
+                    <tr>
+                        <td>4(B)</td>
+                        <td>ITC reversals</td>
+                        <td>₹500</td>
+                    </tr>
+
+                    <tr>
+                        <td>4(C)</td>
+                        <td>Net ITC</td>
+                        <td>₹7,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>5.1</td>
+                        <td>Interest / late fee where applicable</td>
+                        <td>₹0 in this sample</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =================================================
+             8. GSTR-3B NUMERICAL EXAMPLE
+        ================================================== -->
+
+        <h2>
+            8. GSTR-3B — Simplified Tax Calculation Example
+        </h2>
+
+        <p>
+            The following is a simplified illustration using one
+            IGST liability and eligible ITC. Actual offset depends
+            on the tax heads, ledgers and applicable utilization rules.
+        </p>
+
+        <div class="logic">
+
+            Output IGST Liability       = ₹18,000
+
+            Eligible ITC                = ₹7,200
+
+            Simplified Balance          = ₹18,000 - ₹7,200
+
+            Illustrative Cash Requirement
+            = ₹10,800
+
+        </div>
+
+        <div class="kpi-grid">
+
+            <div class="kpi">
+                <small>Output Tax</small>
+                <strong class="yellow">
+                    ₹18,000
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>Eligible ITC</small>
+                <strong class="green">
+                    ₹7,200
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>Balance</small>
+                <strong class="red">
+                    ₹10,800
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>Report</small>
+                <strong>
+                    GSTR-3B
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             9. GST CONTROL CHECKLIST
+        ================================================== -->
+
+        <h2>
+            9. GST Monthly Control Checklist
+        </h2>
+
+        <ul>
+
+            <li>
+                Sales register reconciled with books.
+            </li>
+
+            <li>
+                B2B invoices checked for GSTIN and invoice data.
+            </li>
+
+            <li>
+                B2C and export transactions classified correctly.
+            </li>
+
+            <li>
+                Credit notes and debit notes reviewed.
+            </li>
+
+            <li>
+                GSTR-1 totals reconciled with books.
+            </li>
+
+            <li>
+                GSTR-2B reconciled with purchase records.
+            </li>
+
+            <li>
+                Eligible and ineligible ITC reviewed.
+            </li>
+
+            <li>
+                Reverse-charge liabilities reviewed.
+            </li>
+
+            <li>
+                GSTR-3B values checked against GSTR-1/1A, GSTR-2B
+                and the books before filing.
+            </li>
+
+            <li>
+                Tax payment / cash ledger requirement reviewed.
+            </li>
+
+        </ul>
+
+
+        <!-- =================================================
+             10. TDS LAW
+        ================================================== -->
+
+        <h2>
+            10. TDS — Current 2026 Framework
+        </h2>
+
+        <p>
+            For transactions on or after 1 April 2026, TDS obligations
+            are governed by the Income-tax Act, 2025. The Income Tax
+            Department states that the earlier TDS provisions of the
+            Income-tax Act, 1961 were consolidated mainly under
+            sections 392 (salary) and 393 (other specified payments).
+        </p>
+
+        <p>
+            For the transition around 31 March / 1 April 2026, the
+            applicable Act depends on the earlier of the credit or
+            payment event.
+        </p>
+
+
+        <div class="notice">
+
+            <strong>Important 2026 change:</strong>
+            Do not automatically use old section numbers such as
+            194C or 194J for transactions on or after 1 April 2026.
+            The Income Tax Department states that the relevant table
+            item under section 393 should be used for applicable
+            post-1-April-2026 payments.
+
+        </div>
+
+
+        <!-- =================================================
+             11. TDS EXAMPLE
+        ================================================== -->
+
+        <h2>
+            11. TDS — Contractor / Professional Example
+        </h2>
+
+        <p>
+            Use the applicable statutory rate and threshold for the
+            exact transaction. The calculation below uses a clearly
+            labelled illustrative rate so that the arithmetic can be
+            understood without treating the example rate as a legal rate.
+        </p>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Particular</th>
+                        <th>Illustrative Value</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Professional / Contractor Bill</td>
+                        <td>₹50,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>Illustrative TDS Rate</td>
+                        <td>10%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Illustrative TDS</td>
+                        <td>₹5,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>Illustrative Net Payment</td>
+                        <td>₹45,000</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="logic">
+
+            TDS = Amount liable to TDS × Applicable TDS Rate
+
+            Example:
+            ₹50,000 × 10% = ₹5,000
+
+        </div>
+
+
+        <!-- =================================================
+             12. TDS DEPOSIT / QUARTERLY STATEMENTS
+        ================================================== -->
+
+        <h2>
+            12. TDS Compliance Workflow
+        </h2>
+
+        <div class="flow">
+
+            <div class="flow-card">
+                <div class="flow-number">
+                    Step 01
+                </div>
+
+                <strong>
+                    TAN
+                </strong>
+
+                <span>
+                    Maintain valid deductor details and records.
+                </span>
+            </div>
+
+            <div class="flow-card">
+                <div class="flow-number">
+                    Step 02
+                </div>
+
+                <strong>
+                    Deduct
+                </strong>
+
+                <span>
+                    Identify applicable provision, threshold and rate.
+                </span>
+            </div>
+
+            <div class="flow-card">
+                <div class="flow-number">
+                    Step 03
+                </div>
+
+                <strong>
+                    Deposit
+                </strong>
+
+                <span>
+                    Pay the TDS within the prescribed timeline.
+                </span>
+            </div>
+
+            <div class="flow-card">
+                <div class="flow-number">
+                    Step 04
+                </div>
+
+                <strong>
+                    Statement
+                </strong>
+
+                <span>
+                    File the applicable quarterly statement/form.
+                </span>
+            </div>
+
+        </div>
+
+
+        <h3>
+            TDS Statement Examples
+        </h3>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Current Form</th>
+                        <th>Earlier Form Reference</th>
+                        <th>Illustrative Use</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Form 138</td>
+                        <td>Earlier Form 24Q</td>
+                        <td>Salary TDS statement</td>
+                    </tr>
+
+                    <tr>
+                        <td>Form 140</td>
+                        <td>Earlier Form 26Q</td>
+                        <td>Non-salary resident TDS statement</td>
+                    </tr>
+
+                    <tr>
+                        <td>Form 144</td>
+                        <td>Earlier Form 27Q</td>
+                        <td>Non-resident TDS statement</td>
+                    </tr>
+
+                    <tr>
+                        <td>Form 141</td>
+                        <td>Earlier 26QB / 26QC / 26QD / 26QE use cases</td>
+                        <td>Specified challan-cum-statement cases under section 393(1)</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =================================================
+             13. TDS QUARTERLY EXAMPLE
+        ================================================== -->
+
+        <h2>
+            13. Quarterly TDS Reporting Example
+        </h2>
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Fictional Q1 Tax Year 2026–27
+            </div>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Month</th>
+                            <th>Payment</th>
+                            <th>TDS Base</th>
+                            <th>Illustrative TDS</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>April</td>
+                            <td>₹50,000</td>
+                            <td>₹50,000</td>
+                            <td>₹5,000</td>
+                        </tr>
+
+                        <tr>
+                            <td>May</td>
+                            <td>₹40,000</td>
+                            <td>₹40,000</td>
+                            <td>₹4,000</td>
+                        </tr>
+
+                        <tr>
+                            <td>June</td>
+                            <td>₹60,000</td>
+                            <td>₹60,000</td>
+                            <td>₹6,000</td>
+                        </tr>
+
+                        <tr>
+                            <td>Q1 Total</td>
+                            <td>₹1,50,000</td>
+                            <td>₹1,50,000</td>
+                            <td>₹15,000</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <p>
+            The values above use the same illustrative 10% rate solely
+            to demonstrate the reporting arithmetic. The actual rate,
+            threshold and applicability must be checked against the
+            transaction and the law in force for that tax year.
+        </p>
+
+
+        <!-- =================================================
+             14. GST + TDS MANAGEMENT DASHBOARD
+        ================================================== -->
+
+        <h2>
+            14. Combined GST + TDS Management Dashboard
+        </h2>
+
+        <div class="kpi-grid">
+
+            <div class="kpi">
+                <small>GSTR-1 Status</small>
+                <strong class="green">
+                    REVIEWED
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>GSTR-3B Status</small>
+                <strong class="yellow">
+                    READY
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>ITC Exceptions</small>
+                <strong class="red">
+                    18
+                </strong>
+            </div>
+
+            <div class="kpi">
+                <small>TDS Statement</small>
+                <strong class="green">
+                    READY
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Management Review Logic
+            </div>
+
+            <ul>
+
+                <li>
+                    GST outward supply data reconciled before filing.
+                </li>
+
+                <li>
+                    GSTR-2B reviewed before claiming eligible ITC.
+                </li>
+
+                <li>
+                    GSTR-3B liability checked against the reporting records.
+                </li>
+
+                <li>
+                    TDS deduction register reconciled with ledger payments.
+                </li>
+
+                <li>
+                    Challans and quarterly TDS statements checked for completeness.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =================================================
+             15. SOURCE REFERENCES
+        ================================================== -->
+
+        <h2>
+            15. Official Reference Sources
+        </h2>
+
+        <div class="source-box">
+
+            <p>
+                This portfolio page is based on current official
+                government guidance reviewed for the 2026 reporting
+                environment.
+            </p>
+
+            <br>
+
+            <p>
+                <a
+                    href="https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GST Portal — GSTR-1
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://tutorial.gst.gov.in/userguide/returns/GSTR3B.htm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GST Portal — GSTR-3B
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://tutorial.gst.gov.in/userguide/returns/FAQ_gstr2b.htm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GST Portal — GSTR-2B
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://cbic-gst.gov.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    CBIC — GST Law / Acts / Rules
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Income Tax Department — TDS Compliance
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tax-payments"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Income Tax Department — TDS / Tax Payments
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://www.incometax.gov.in/iec/foportal/newformpage/forms/form140-um"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Income Tax Department — Form 140 / earlier Form 26Q
+                </a>
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <div class="cta">
+
+            <h2>
+                Accounting, GST & TDS Reporting
+            </h2>
+
+            <p>
+                This portfolio sample demonstrates a structured way
+                to organize accounting, GST and TDS information into
+                understandable reporting outputs. Actual compliance
+                should always use current law, applicable notifications,
+                authorized records and professional review.
+            </p>
+
+            <a
+                class="cta-link"
+                href="index.html#contact"
+            >
+                Contact Vijay
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 Vijay Arulsamy • Accounting • MIS • GST • TDS Reporting
+
+</footer>
+
+</body>
+
+</html>

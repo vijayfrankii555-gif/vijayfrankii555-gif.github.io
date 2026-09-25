@@ -11,14 +11,14 @@
 
     <meta
         name="description"
-        content="Vijay Arulsamy - Accounting, Excel, MIS, business reporting, inventory analysis and business dashboards."
+        content="Vijay Arulsamy - Accounting, Excel, MIS reporting, business analysis, inventory reporting and business solutions."
     >
 
     <style>
 
-        /* =====================================
+        /* ==================================================
            GLOBAL
-        ===================================== */
+        ================================================== */
 
         * {
             margin: 0;
@@ -54,13 +54,13 @@
         }
 
 
-        /* =====================================
+        /* ==================================================
            HEADER
-        ===================================== */
+        ================================================== */
 
         header {
             background: #0a0a0a;
-            border-bottom: 1px solid #252525;
+            border-bottom: 1px solid #292929;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -75,7 +75,7 @@
 
         .logo {
             font-size: 22px;
-            font-weight: 700;
+            font-weight: 800;
             color: #ffffff;
         }
 
@@ -92,7 +92,7 @@
         .nav-links a {
             color: #d4d4d4;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 600;
             transition: 0.2s;
         }
 
@@ -101,9 +101,9 @@
         }
 
 
-        /* =====================================
+        /* ==================================================
            HERO
-        ===================================== */
+        ================================================== */
 
         .hero {
             background: #0a0a0a;
@@ -112,7 +112,7 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 60px;
             align-items: center;
         }
@@ -130,14 +130,14 @@
 
         .hero-subtitle {
             font-size: 21px;
-            font-weight: 600;
-            color: #f0f0f0;
+            font-weight: 700;
+            color: #eeeeee;
             margin-bottom: 18px;
         }
 
         .hero-text {
             font-size: 17px;
-            color: #bdbdbd;
+            color: #bcbcbc;
             max-width: 700px;
             margin-bottom: 30px;
         }
@@ -152,7 +152,7 @@
             display: inline-block;
             padding: 13px 22px;
             border-radius: 6px;
-            font-weight: 700;
+            font-weight: 800;
             transition: 0.2s ease;
         }
 
@@ -177,9 +177,9 @@
         }
 
 
-        /* =====================================
+        /* ==================================================
            PROFILE
-        ===================================== */
+        ================================================== */
 
         .profile-wrapper {
             display: flex;
@@ -190,7 +190,7 @@
             background: #111111;
             padding: 10px;
             border-radius: 18px;
-            border: 1px solid #2a2a2a;
+            border: 1px solid #333333;
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
         }
 
@@ -203,9 +203,9 @@
         }
 
 
-        /* =====================================
-           SECTION COMMON
-        ===================================== */
+        /* ==================================================
+           COMMON SECTION
+        ================================================== */
 
         section {
             padding: 85px 0;
@@ -235,9 +235,9 @@
         }
 
 
-        /* =====================================
+        /* ==================================================
            ABOUT
-        ===================================== */
+        ================================================== */
 
         .about {
             background: #111111;
@@ -272,13 +272,13 @@
             border: 1px solid #333333;
             color: #ffc400;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
 
-        /* =====================================
+        /* ==================================================
            CERTIFICATIONS
-        ===================================== */
+        ================================================== */
 
         .certifications {
             background: #0a0a0a;
@@ -312,7 +312,7 @@
             background: #ffc400;
             color: #0a0a0a;
             border-radius: 10px;
-            font-weight: 800;
+            font-weight: 900;
             margin-bottom: 18px;
         }
 
@@ -327,37 +327,101 @@
         }
 
 
-        /* =====================================
-           SERVICES
-        ===================================== */
+        /* ==================================================
+           SERVICES & SOLUTIONS
+        ================================================== */
 
         .services {
             background: #111111;
         }
 
-        .services-grid {
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .solution-card {
+            background: #0a0a0a;
+            border: 1px solid #292929;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: 0.25s ease;
+        }
+
+        .solution-card:hover {
+            border-color: #ffc400;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 196, 0, 0.08);
+        }
+
+        .solution-image {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .solution-content {
+            padding: 28px;
+        }
+
+        .solution-number {
+            display: inline-block;
+            color: #0a0a0a;
+            background: #ffc400;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .solution-content h3 {
+            color: #ffffff;
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .solution-content p {
+            color: #a8a8a8;
+            font-size: 15px;
+        }
+
+
+        /* ==================================================
+           WHY WORK WITH ME
+        ================================================== */
+
+        .why-me {
+            background: #0a0a0a;
+        }
+
+        .why-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
-        .service-card {
-            background: #0a0a0a;
+        .why-card {
+            background: #111111;
             border: 1px solid #292929;
+            padding: 28px;
             border-radius: 12px;
-            padding: 30px;
-            transition: 0.2s ease;
         }
 
-        .service-card:hover {
-            transform: translateY(-4px);
-            border-color: #ffc400;
-            box-shadow: 0 10px 30px rgba(255, 196, 0, 0.08);
+        .why-card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
         }
 
-        .service-icon {
-            width: 46px;
-            height: 46px;
+        .why-card p {
+            color: #a8a8a8;
+            font-size: 15px;
+        }
+
+        .why-icon {
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -368,76 +432,10 @@
             margin-bottom: 18px;
         }
 
-        .service-card h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 19px;
-        }
 
-        .service-card p {
-            color: #a8a8a8;
-            font-size: 15px;
-        }
-
-
-        /* =====================================
-           PORTFOLIO
-        ===================================== */
-
-        .portfolio {
-            background: #0a0a0a;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 26px;
-        }
-
-        .portfolio-card {
-            border: 1px solid #292929;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #111111;
-            transition: 0.2s ease;
-        }
-
-        .portfolio-card:hover {
-            border-color: #ffc400;
-            transform: translateY(-4px);
-        }
-
-        .portfolio-visual {
-            height: 190px;
-            background: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffc400;
-            font-size: 23px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .portfolio-content {
-            padding: 26px;
-        }
-
-        .portfolio-content h3 {
-            margin-bottom: 10px;
-            color: #ffffff;
-            font-size: 20px;
-        }
-
-        .portfolio-content p {
-            color: #a8a8a8;
-            font-size: 15px;
-        }
-
-
-        /* =====================================
+        /* ==================================================
            BLOG
-        ===================================== */
+        ================================================== */
 
         .blog {
             background: #111111;
@@ -470,6 +468,7 @@
             padding: 6px 10px;
             border-radius: 20px;
             margin-bottom: 14px;
+            font-weight: 800;
         }
 
         .blog-card h3 {
@@ -487,13 +486,13 @@
         .read-more {
             color: #ffc400;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
 
-        /* =====================================
+        /* ==================================================
            CONTACT
-        ===================================== */
+        ================================================== */
 
         .contact {
             background: #ffc400;
@@ -525,7 +524,7 @@
             border: 1px solid #0a0a0a;
             border-radius: 7px;
             color: #0a0a0a;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .contact-link:hover {
@@ -534,9 +533,9 @@
         }
 
 
-        /* =====================================
+        /* ==================================================
            FOOTER
-        ===================================== */
+        ================================================== */
 
         footer {
             background: #000000;
@@ -547,11 +546,11 @@
         }
 
 
-        /* =====================================
-           RESPONSIVE
-        ===================================== */
+        /* ==================================================
+           MOBILE
+        ================================================== */
 
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
 
             .hero-grid {
                 grid-template-columns: 1fr;
@@ -559,10 +558,6 @@
 
             .profile-wrapper {
                 order: -1;
-            }
-
-            .hero h1 {
-                font-size: 42px;
             }
 
             .about-grid {
@@ -573,7 +568,11 @@
                 grid-template-columns: 1fr 1fr;
             }
 
-            .services-grid {
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
                 grid-template-columns: 1fr 1fr;
             }
 
@@ -608,10 +607,14 @@
             }
 
             .certifications-grid,
-            .services-grid,
-            .portfolio-grid,
+            .solutions-grid,
+            .why-grid,
             .blog-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .solution-image {
+                height: 200px;
             }
 
             section {
@@ -632,9 +635,9 @@
 <body>
 
 
-    <!-- =====================================
+    <!-- ==================================================
          HEADER
-    ===================================== -->
+    ================================================== -->
 
     <header>
 
@@ -653,15 +656,15 @@
                     </li>
 
                     <li>
-                        <a href="#certifications">Certifications</a>
+                        <a href="#certifications">Credentials</a>
                     </li>
 
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="#services">Solutions</a>
                     </li>
 
                     <li>
-                        <a href="#portfolio">Portfolio</a>
+                        <a href="#why-me">Why Me</a>
                     </li>
 
                     <li>
@@ -681,9 +684,9 @@
     </header>
 
 
-    <!-- =====================================
+    <!-- ==================================================
          HERO
-    ===================================== -->
+    ================================================== -->
 
     <section class="hero">
 
@@ -722,10 +725,10 @@
                     <div class="hero-buttons">
 
                         <a
-                            href="#portfolio"
+                            href="#services"
                             class="btn btn-primary"
                         >
-                            View My Work
+                            Explore My Solutions
                         </a>
 
 
@@ -762,9 +765,9 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ==================================================
          ABOUT
-    ===================================== -->
+    ================================================== -->
 
     <section
         id="about"
@@ -828,53 +831,29 @@
 
                     <div class="skills">
 
-                        <span class="skill">
-                            Microsoft Excel
-                        </span>
+                        <span class="skill">Microsoft Excel</span>
 
-                        <span class="skill">
-                            Advanced Excel
-                        </span>
+                        <span class="skill">Advanced Excel</span>
 
-                        <span class="skill">
-                            Tally Prime
-                        </span>
+                        <span class="skill">Tally Prime</span>
 
-                        <span class="skill">
-                            SAP FI
-                        </span>
+                        <span class="skill">SAP FI</span>
 
-                        <span class="skill">
-                            Zoho Books
-                        </span>
+                        <span class="skill">Zoho Books</span>
 
-                        <span class="skill">
-                            MIS Reporting
-                        </span>
+                        <span class="skill">MIS Reporting</span>
 
-                        <span class="skill">
-                            Inventory Analysis
-                        </span>
+                        <span class="skill">Inventory Analysis</span>
 
-                        <span class="skill">
-                            GST
-                        </span>
+                        <span class="skill">GST</span>
 
-                        <span class="skill">
-                            TDS
-                        </span>
+                        <span class="skill">TDS</span>
 
-                        <span class="skill">
-                            Payroll
-                        </span>
+                        <span class="skill">Payroll</span>
 
-                        <span class="skill">
-                            Business Dashboards
-                        </span>
+                        <span class="skill">Business Dashboards</span>
 
-                        <span class="skill">
-                            Google Sheets
-                        </span>
+                        <span class="skill">Google Sheets</span>
 
                     </div>
 
@@ -888,9 +867,9 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ==================================================
          CERTIFICATIONS
-    ===================================== -->
+    ================================================== -->
 
     <section
         id="certifications"
@@ -982,9 +961,9 @@
     </section>
 
 
-    <!-- =====================================
-         SERVICES
-    ===================================== -->
+    <!-- ==================================================
+         SERVICES & SOLUTIONS
+    ================================================== -->
 
     <section
         id="services"
@@ -994,137 +973,148 @@
         <div class="container">
 
             <h2 class="section-title">
-                Services
+                Services & Solutions
             </h2>
 
 
             <p class="section-description">
 
-                Practical accounting, reporting and business-data support
-                for small and growing businesses.
+                Practical accounting, reporting, data analysis and
+                business solutions for small and growing businesses.
 
             </p>
 
 
-            <div class="services-grid">
+            <div class="solutions-grid">
 
 
-                <div class="service-card">
+                <!-- SOLUTION 1 -->
 
-                    <div class="service-icon">
-                        📊
+                <div class="solution-card">
+
+                    <img
+                        class="solution-image"
+                        src="excel-mis.jpg"
+                        alt="Excel and MIS business reporting"
+                    >
+
+                    <div class="solution-content">
+
+                        <span class="solution-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Excel & MIS Reporting
+                        </h3>
+
+                        <p>
+
+                            Professional Excel reports, management
+                            information systems, automated summaries,
+                            KPI reporting and business analysis.
+
+                        </p>
+
                     </div>
-
-                    <h3>
-                        Excel & MIS Reporting
-                    </h3>
-
-                    <p>
-
-                        Professional Excel reports, automated summaries,
-                        dashboards, target analysis and management reports.
-
-                    </p>
 
                 </div>
 
 
-                <div class="service-card">
+                <!-- SOLUTION 2 -->
 
-                    <div class="service-icon">
-                        📒
+                <div class="solution-card">
+
+                    <img
+                        class="solution-image"
+                        src="accounting-reporting.jpg"
+                        alt="Accounting and financial reporting"
+                    >
+
+                    <div class="solution-content">
+
+                        <span class="solution-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Accounting & Financial Reporting
+                        </h3>
+
+                        <p>
+
+                            Accounting support, reconciliations, ledger
+                            review, P&L reporting and structured financial
+                            information.
+
+                        </p>
+
                     </div>
-
-                    <h3>
-                        Accounting Support
-                    </h3>
-
-                    <p>
-
-                        Bookkeeping support, reconciliations, ledger review,
-                        P&L reporting and accounting data organization.
-
-                    </p>
 
                 </div>
 
 
-                <div class="service-card">
+                <!-- SOLUTION 3 -->
 
-                    <div class="service-icon">
-                        📦
+                <div class="solution-card">
+
+                    <img
+                        class="solution-image"
+                        src="inventory-stock.jpg"
+                        alt="Inventory and stock management"
+                    >
+
+                    <div class="solution-content">
+
+                        <span class="solution-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Inventory & Stock Solutions
+                        </h3>
+
+                        <p>
+
+                            Reorder reporting, stock ageing, movement
+                            analysis, product-level monitoring and
+                            inventory reporting.
+
+                        </p>
+
                     </div>
-
-                    <h3>
-                        Inventory Reporting
-                    </h3>
-
-                    <p>
-
-                        Stock movement, reorder analysis, ageing reports,
-                        product-wise analysis and inventory monitoring.
-
-                    </p>
 
                 </div>
 
 
-                <div class="service-card">
+                <!-- SOLUTION 4 -->
 
-                    <div class="service-icon">
-                        📈
+                <div class="solution-card">
+
+                    <img
+                        class="solution-image"
+                        src="business-dashboard.jpg"
+                        alt="Business dashboard and data analytics"
+                    >
+
+                    <div class="solution-content">
+
+                        <span class="solution-number">
+                            04
+                        </span>
+
+                        <h3>
+                            Business Dashboards & Analytics
+                        </h3>
+
+                        <p>
+
+                            Clear dashboards for sales, targets,
+                            products, customers and business performance.
+
+                        </p>
+
                     </div>
-
-                    <h3>
-                        Business Dashboards
-                    </h3>
-
-                    <p>
-
-                        Clear dashboards for sales, targets, products,
-                        customers and business performance.
-
-                    </p>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        💻
-                    </div>
-
-                    <h3>
-                        Tally & Accounting Systems
-                    </h3>
-
-                    <p>
-
-                        Accounting reports, reconciliation, data checking
-                        and management reporting.
-
-                    </p>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        📋
-                    </div>
-
-                    <h3>
-                        GST, TDS & Payroll Support
-                    </h3>
-
-                    <p>
-
-                        Organizing accounting and payroll information
-                        for business reporting and compliance support.
-
-                    </p>
 
                 </div>
 
@@ -1136,126 +1126,89 @@
     </section>
 
 
-    <!-- =====================================
-         PORTFOLIO
-    ===================================== -->
+    <!-- ==================================================
+         WHY WORK WITH ME
+    ================================================== -->
 
     <section
-        id="portfolio"
-        class="portfolio"
+        id="why-me"
+        class="why-me"
     >
 
         <div class="container">
 
             <h2 class="section-title">
-                Selected Work
+                How I Work
             </h2>
 
 
             <p class="section-description">
 
-                Examples of business reporting, analysis and management
-                information projects.
+                A practical approach focused on accurate data,
+                understandable reports and useful business information.
 
             </p>
 
 
-            <div class="portfolio-grid">
+            <div class="why-grid">
 
 
-                <div class="portfolio-card">
+                <div class="why-card">
 
-                    <div class="portfolio-visual">
-                        SALES MIS
+                    <div class="why-icon">
+                        01
                     </div>
 
-                    <div class="portfolio-content">
+                    <h3>
+                        Understand
+                    </h3>
 
-                        <h3>
-                            Sales MIS Dashboard
-                        </h3>
+                    <p>
 
-                        <p>
+                        First understand the business process,
+                        reporting requirement and data available.
 
-                            Structured sales reporting for reviewing
-                            performance across shops, products and
-                            reporting periods.
-
-                        </p>
-
-                    </div>
+                    </p>
 
                 </div>
 
 
-                <div class="portfolio-card">
+                <div class="why-card">
 
-                    <div class="portfolio-visual">
-                        INVENTORY
+                    <div class="why-icon">
+                        02
                     </div>
 
-                    <div class="portfolio-content">
+                    <h3>
+                        Organize
+                    </h3>
 
-                        <h3>
-                            Inventory Reorder Report
-                        </h3>
+                    <p>
 
-                        <p>
+                        Structure the data so that information becomes
+                        easier to check, analyze and maintain.
 
-                            Stock reporting and priority logic to identify
-                            products requiring replenishment.
-
-                        </p>
-
-                    </div>
+                    </p>
 
                 </div>
 
 
-                <div class="portfolio-card">
+                <div class="why-card">
 
-                    <div class="portfolio-visual">
-                        TARGET
+                    <div class="why-icon">
+                        03
                     </div>
 
-                    <div class="portfolio-content">
+                    <h3>
+                        Report
+                    </h3>
 
-                        <h3>
-                            Target & Achievement Analysis
-                        </h3>
+                    <p>
 
-                        <p>
+                        Build clear reports and dashboards that help
+                        business owners understand their information.
 
-                            Reports for comparing targets, actual sales
-                            and achievement percentages.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="portfolio-card">
-
-                    <div class="portfolio-visual">
-                        PROFIT & STOCK
-                    </div>
-
-                    <div class="portfolio-content">
-
-                        <h3>
-                            Profit & Stock Reporting
-                        </h3>
-
-                        <p>
-
-                            Management reports combining sales, expenses,
-                            inventory and profitability information.
-
-                        </p>
-
-                    </div>
+                    </p>
 
                 </div>
 
@@ -1267,9 +1220,9 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ==================================================
          BLOG
-    ===================================== -->
+    ================================================== -->
 
     <section
         id="blog"
@@ -1285,7 +1238,7 @@
 
             <p class="section-description">
 
-                Practical articles about Excel, accounting, MIS reporting,
+                Practical articles about Excel, accounting, MIS,
                 inventory and business analysis.
 
             </p>
@@ -1297,7 +1250,7 @@
                 <div class="blog-card">
 
                     <span class="tag">
-                        Excel
+                        EXCEL
                     </span>
 
                     <h3>
@@ -1306,13 +1259,13 @@
 
                     <p>
 
-                        Learn how SUMIFS can be used to analyze business
-                        data using multiple conditions.
+                        Learn how SUMIFS can be used to analyze
+                        business data using multiple conditions.
 
                     </p>
 
                     <span class="read-more">
-                        Coming Soon →
+                        Article Coming Soon →
                     </span>
 
                 </div>
@@ -1330,13 +1283,13 @@
 
                     <p>
 
-                        A practical approach to organizing sales information
-                        for management reporting.
+                        A practical approach to organizing sales
+                        information for management reporting.
 
                     </p>
 
                     <span class="read-more">
-                        Coming Soon →
+                        Article Coming Soon →
                     </span>
 
                 </div>
@@ -1345,7 +1298,7 @@
                 <div class="blog-card">
 
                     <span class="tag">
-                        Inventory
+                        INVENTORY
                     </span>
 
                     <h3>
@@ -1360,7 +1313,7 @@
                     </p>
 
                     <span class="read-more">
-                        Coming Soon →
+                        Article Coming Soon →
                     </span>
 
                 </div>
@@ -1373,9 +1326,9 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ==================================================
          CONTACT
-    ===================================== -->
+    ================================================== -->
 
     <section
         id="contact"
@@ -1392,13 +1345,14 @@
             <p class="contact-text">
 
                 Have an Excel, accounting, reporting or business-data
-                problem? Tell me what you currently have and what result
-                you want to achieve.
+                requirement? Tell me what you need and let's discuss
+                how the work can be structured.
 
             </p>
 
 
             <div class="contact-links">
+
 
                 <a
                     class="contact-link"
@@ -1423,6 +1377,7 @@
                     WhatsApp
                 </a>
 
+
             </div>
 
         </div>
@@ -1430,9 +1385,9 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ==================================================
          FOOTER
-    ===================================== -->
+    ================================================== -->
 
     <footer>
 

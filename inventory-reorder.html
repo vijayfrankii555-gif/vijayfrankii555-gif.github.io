@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A corporate step-by-step guide to building an inventory reorder report in Excel using stock, demand, lead-time and safety-stock logic.">
+<title>How to Build an Inventory Reorder Report | Vijay Arulsamy</title>
+<style>
+    :root{
+        --black:#0a0a0a;
+        --card:#111111;
+        --line:#292929;
+        --yellow:#ffc400;
+        --white:#f5f5f5;
+        --muted:#b8b8b8;
+    }
+    *{box-sizing:border-box}
+    body{
+        margin:0;
+        font-family:Arial,Helvetica,sans-serif;
+        background:var(--black);
+        color:var(--white);
+        line-height:1.75;
+    }
+    .container{max-width:1000px;margin:auto;padding:0 22px}
+    header{
+        border-bottom:1px solid var(--line);
+        position:sticky;
+        top:0;
+        background:rgba(10,10,10,.94);
+        backdrop-filter:blur(8px);
+        z-index:10;
+    }
+    nav{
+        min-height:68px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:18px;
+    }
+    .brand{color:var(--yellow);text-decoration:none;font-weight:800;letter-spacing:.5px}
+    .back{color:var(--white);text-decoration:none;font-size:14px}
+    .back:hover{color:var(--yellow)}
+    main{padding:60px 0 80px}
+    .tag{
+        display:inline-block;
+        background:var(--yellow);
+        color:#000;
+        padding:7px 12px;
+        border-radius:20px;
+        font-size:12px;
+        font-weight:800;
+        margin-bottom:18px;
+    }
+    h1{font-size:clamp(34px,5vw,58px);line-height:1.08;margin:0 0 18px}
+    .intro{color:var(--muted);font-size:18px;max-width:820px;margin-bottom:40px}
+    .note{
+        border:1px solid #4d3f00;
+        background:#151200;
+        padding:18px 20px;
+        border-radius:12px;
+        margin:26px 0 38px;
+    }
+    .note strong{color:var(--yellow)}
+    h2{margin-top:52px;font-size:30px;line-height:1.2}
+    h3{margin-top:32px;font-size:21px;color:var(--yellow)}
+    p{color:#ddd}
+    ul,ol{color:#ddd}
+    li{margin:8px 0}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:18px 0 24px}
+    table{width:100%;border-collapse:collapse;min-width:860px;background:var(--card)}
+    th,td{border-bottom:1px solid var(--line);padding:11px 12px;text-align:left;font-size:14px}
+    th{color:var(--yellow);background:#151515}
+    tr:last-child td{border-bottom:none}
+    .formula{
+        background:#151515;
+        border:1px solid var(--line);
+        border-left:4px solid var(--yellow);
+        padding:15px 16px;
+        border-radius:8px;
+        margin:14px 0 20px;
+        font-family:Consolas,monospace;
+        color:#f2f2f2;
+        overflow:auto;
+    }
+    .step{
+        border:1px solid var(--line);
+        background:var(--card);
+        border-radius:12px;
+        padding:22px;
+        margin:18px 0;
+    }
+    .step-number{
+        color:var(--yellow);
+        font-weight:800;
+        font-size:13px;
+        letter-spacing:1px;
+        text-transform:uppercase;
+    }
+    .kpi-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+        gap:14px;
+        margin:20px 0;
+    }
+    .kpi{border:1px solid var(--line);background:var(--card);padding:20px;border-radius:12px}
+    .kpi strong{display:block;color:var(--yellow);font-size:13px}
+    .kpi span{display:block;margin-top:8px;font-size:14px;color:#ddd}
+    .cta{
+        margin-top:55px;
+        padding:26px;
+        border:1px solid #4d3f00;
+        background:#151200;
+        border-radius:14px;
+    }
+    .cta a{
+        color:#000;
+        background:var(--yellow);
+        text-decoration:none;
+        display:inline-block;
+        padding:11px 16px;
+        border-radius:7px;
+        font-weight:800;
+        margin-top:8px;
+    }
+    footer{border-top:1px solid var(--line);text-align:center;color:#888;padding:25px 20px;font-size:13px}
+
+    .result-title{
+        color:var(--yellow);
+        font-size:13px;
+        font-weight:800;
+        letter-spacing:1px;
+        text-transform:uppercase;
+        margin-bottom:10px;
+    }
+    .dashboard-preview{
+        border:1px solid var(--line);
+        background:#0d0d0d;
+        border-radius:16px;
+        padding:22px;
+        margin:24px 0 30px;
+        box-shadow:0 0 0 1px rgba(255,196,0,.04),0 18px 50px rgba(0,0,0,.25);
+    }
+    .preview-head{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:15px;
+        flex-wrap:wrap;
+        margin-bottom:18px;
+    }
+    .preview-head h3{margin:0;color:#fff}
+    .period{padding:7px 10px;border-radius:7px;background:#1d1d1d;color:#bbb;font-size:12px}
+    .kpi-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+    .kpi-box{background:#151515;border:1px solid #292929;border-radius:10px;padding:16px}
+    .kpi-label{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.7px}
+    .kpi-value{font-size:23px;font-weight:800;margin-top:5px}
+    .green{color:#59d98e}.yellow{color:var(--yellow)}.red{color:#ff7070}
+    .inventory-table{width:100%;border-collapse:collapse;min-width:700px}
+    .inventory-table th,.inventory-table td{padding:10px 8px;border-bottom:1px solid #242424;font-size:12px;text-align:left}
+    .inventory-table th{color:var(--yellow);font-size:11px;text-transform:uppercase}
+    .inventory-table tr:last-child td{border-bottom:none}
+    .status{display:inline-block;font-size:10px;font-weight:800;padding:4px 7px;border-radius:20px}
+    .status.good{background:rgba(89,217,142,.12);color:#59d98e}
+    .status.watch{background:rgba(255,196,0,.12);color:#ffc400}
+    .status.risk{background:rgba(255,112,112,.12);color:#ff7070}
+    .powerbi{border:1px solid #2d2d2d;border-radius:14px;background:#101010;overflow:hidden;margin:22px 0 30px}
+    .powerbi-top{background:#171717;border-bottom:1px solid #2d2d2d;padding:14px 18px;display:flex;justify-content:space-between;gap:15px;align-items:center}
+    .powerbi-top strong{color:#fff}
+    .powerbi-badge{color:#65b3ff;font-size:11px;font-weight:800;letter-spacing:.6px}
+    .powerbi-body{padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .powerbi-card{background:#161616;border:1px solid #2a2a2a;border-radius:10px;padding:15px}
+    .powerbi-card h4{margin:0 0 10px;font-size:13px;color:#ddd}
+    @media(max-width:800px){.kpi-row{grid-template-columns:repeat(2,minmax(0,1fr))}.powerbi-body{grid-template-columns:1fr}}
+    @media(max-width:520px){.kpi-row{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <a class="brand" href="index.html">VIJAY ARULSAMY</a>
+            <a class="back" href="index.html">← Back to Home</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<div class="container">
+    <span class="tag">INVENTORY • REORDER • EXCEL</span>
+    <h1>How to Build an Inventory Reorder Report</h1>
+    <p class="intro">
+        A corporate framework for turning stock balances, demand history, lead time and
+        safety stock into an actionable reorder report. The examples use a fictional
+        multi-location distribution dataset.
+    </p>
+
+    <div class="note">
+        <strong>Important:</strong> All products, quantities, prices and business conditions in this
+        article are fictional. The purpose is to demonstrate reporting logic, not to prescribe
+        a single inventory policy for every business.
+    </div>
+
+    <h2>1. What Does an Inventory Reorder Report Do?</h2>
+    <p>
+        An inventory reorder report helps a business identify items that may need replenishment
+        before available stock reaches an unacceptable level.
+    </p>
+    <p>
+        A useful report should connect four ideas:
+        current stock, expected demand, replenishment lead time and the agreed safety buffer.
+    </p>
+
+    <h2>2. Build the Item Master and Stock Dataset</h2>
+    <p>
+        Start with a structured table. Avoid mixing item descriptions, units of measure and
+        reorder rules in manually typed summary cells.
+    </p>
+
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Current Stock</th>
+                <th>Avg Daily Usage</th>
+                <th>Lead Time (Days)</th>
+                <th>Safety Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>SKU-1001</td><td>Premium A</td><td>Finished Goods</td><td>Chennai DC</td><td>420</td><td>30</td><td>8</td><td>120</td></tr>
+            <tr><td>SKU-1002</td><td>Premium B</td><td>Finished Goods</td><td>Bengaluru DC</td><td>260</td><td>24</td><td>10</td><td>100</td></tr>
+            <tr><td>SKU-1003</td><td>Standard A</td><td>Finished Goods</td><td>Hyderabad DC</td><td>700</td><td>35</td><td>7</td><td>140</td></tr>
+            <tr><td>SKU-1004</td><td>Value Pack</td><td>Finished Goods</td><td>Mumbai DC</td><td>180</td><td>22</td><td>9</td><td>90</td></tr>
+            <tr><td>SKU-1005</td><td>Premium C</td><td>Finished Goods</td><td>Delhi DC</td><td>500</td><td>18</td><td>12</td><td>110</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2>3. The Core Formula: Reorder Point</h2>
+    <p>
+        A common starting point for a reorder report is the Reorder Point (ROP).
+        One practical formula is:
+    </p>
+
+    <div class="formula">
+        Reorder Point = Average Daily Usage × Lead Time + Safety Stock
+    </div>
+
+    <p>
+        For SKU-1001 in the example:
+    </p>
+
+    <div class="formula">
+        ROP = 30 × 8 + 120 = 360 units
+    </div>
+
+    <p>
+        With current stock of 420 units, the item is above the example reorder point.
+        This does not automatically mean that no purchase action is required; an actual
+        decision may also consider open purchase orders, pending transfers, demand changes,
+        minimum order quantity and supplier conditions.
+    </p>
+
+    <h2>4. Calculate Average Daily Usage</h2>
+    <p>
+        Daily usage should be based on a clearly defined historical period.
+        For example, a 30-day or 90-day period may be used depending on the business cycle.
+    </p>
+
+    <div class="formula">
+        Average Daily Usage = Total Usage During Period / Number of Days
+    </div>
+
+    <p>
+        In Excel, if total usage is in B2 and the number of days is in C2:
+    </p>
+
+    <div class="formula">
+        =IFERROR(B2/C2,0)
+    </div>
+
+    <h2>5. Calculate Reorder Point in Excel</h2>
+    <p>
+        Assume these columns exist:
+        <strong>F = Avg Daily Usage</strong>,
+        <strong>G = Lead Time Days</strong>,
+        <strong>H = Safety Stock</strong>.
+    </p>
+
+    <div class="formula">
+        =F2*G2+H2
+    </div>
+
+    <p>
+        The formula is intentionally simple. In a production inventory system, the business
+        rules around demand, seasonality and lead time should be documented separately.
+    </p>
+
+    <h2>6. Add Available Stock Instead of Looking Only at Physical Stock</h2>
+    <p>
+        A stronger report distinguishes physical stock from stock that is actually available
+        for planning.
+    </p>
+
+    <div class="formula">
+        Available Stock = On Hand + Confirmed Incoming - Reserved / Allocated Stock
+    </div>
+
+    <p>
+        The exact definition should match the company's ERP and inventory policy.
+        Never assume that every unit physically present is available to promise.
+    </p>
+
+    <h2>7. Calculate Stock Coverage</h2>
+    <p>
+        Stock coverage estimates how many days the current available stock could support
+        the current demand rate.
+    </p>
+
+    <div class="formula">
+        Stock Cover Days = Available Stock / Average Daily Usage
+    </div>
+
+    <div class="formula">
+        Example: =IFERROR(I2/F2,0)
+    </div>
+
+    <p>
+        Comparing stock cover with supplier lead time gives an additional management signal.
+        For example, an item with 5 days of stock cover and a 12-day lead time deserves review.
+    </p>
+
+    <h2>8. Create a Reorder Status</h2>
+    <p>
+        Once the key calculations exist, create a transparent status column.
+    </p>
+
+    <div class="formula">
+        =IF(I2<=J2,"REORDER","NO REORDER")
+    </div>
+
+    <p>
+        Here, I2 represents available stock and J2 represents reorder point.
+        The business may add additional rules for open purchase orders or transfers.
+    </p>
+
+    <h2>9. Add Reorder Priority</h2>
+    <p>
+        Not every exception needs the same urgency. A priority field helps procurement,
+        stores and operations focus on the right items.
+    </p>
+
+    <div class="formula">
+        =IFS(I2<=J2*0.5,"HIGH",I2<=J2,"MEDIUM",TRUE,"LOW")
+    </div>
+
+    <p>
+        The 50% threshold above is only an example. Priority thresholds should be defined
+        by the business based on service levels, lead time and stockout impact.
+    </p>
+
+    <h2>10. Use SUMIFS for Location-Wise Inventory Reporting</h2>
+    <p>
+        In a multi-location business, management often needs to know total quantity,
+        reorder value or exception count by warehouse or distribution center.
+    </p>
+
+    <div class="formula">
+        =SUMIFS(Inventory[Current Stock],Inventory[Location],$B2)
+    </div>
+
+    <p>
+        You can add more criteria for category, supplier, SKU family or status.
+    </p>
+
+    <h2>11. Count Reorder Exceptions With COUNTIFS</h2>
+    <p>
+        A management summary can include the number of items requiring action.
+    </p>
+
+    <div class="formula">
+        =COUNTIFS(Inventory[Reorder Status],"REORDER",Inventory[Location],$B2)
+    </div>
+
+    <p>
+        This is useful for a daily or weekly exception dashboard because management can
+        see how many SKUs need attention before opening the detailed report.
+    </p>
+
+    <h2>12. Recommended Inventory MIS Columns</h2>
+
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>SKU</td><td>Unique product identifier</td></tr>
+            <tr><td>Product</td><td>Standard product name</td></tr>
+            <tr><td>Location</td><td>Warehouse / distribution center / store</td></tr>
+            <tr><td>On Hand</td><td>Physical stock balance</td></tr>
+            <tr><td>Reserved</td><td>Stock already allocated</td></tr>
+            <tr><td>Incoming</td><td>Confirmed stock expected</td></tr>
+            <tr><td>Available</td><td>Planning stock after business rules</td></tr>
+            <tr><td>Avg Daily Usage</td><td>Demand rate</td></tr>
+            <tr><td>Lead Time</td><td>Expected replenishment time</td></tr>
+            <tr><td>Safety Stock</td><td>Approved buffer level</td></tr>
+            <tr><td>Reorder Point</td><td>Replenishment trigger</td></tr>
+            <tr><td>Stock Cover Days</td><td>Approximate demand coverage</td></tr>
+            <tr><td>Reorder Status</td><td>Action signal</td></tr>
+            <tr><td>Priority</td><td>Exception urgency</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2>13. Build the Management Summary</h2>
+    <div class="kpi-grid">
+        <div class="kpi"><strong>Total SKUs</strong><span>Count of active inventory items.</span></div>
+        <div class="kpi"><strong>Reorder SKUs</strong><span>Items at or below the reorder point.</span></div>
+        <div class="kpi"><strong>High Priority</strong><span>Items meeting the defined high-risk rule.</span></div>
+        <div class="kpi"><strong>Stock Value</strong><span>Inventory value based on the approved valuation method.</span></div>
+        <div class="kpi"><strong>Low Cover</strong><span>Items with coverage below the selected threshold.</span></div>
+        <div class="kpi"><strong>Open Incoming</strong><span>Confirmed inbound quantity still expected.</span></div>
+    </div>
+
+    <h2>17. Important Controls Before Using the Report</h2>
+    <div class="step">
+        <div class="step-number">Control 01</div>
+        <p>Confirm that stock balances come from the same reporting time and location scope.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Control 02</div>
+        <p>Confirm that units of measure are consistent. Do not mix pieces, cartons and kilograms without conversion rules.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Control 03</div>
+        <p>Document the demand history period used for Average Daily Usage.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Control 04</div>
+        <p>Document how Safety Stock is calculated or approved.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Control 05</div>
+        <p>Check open purchase orders and transfers before issuing a new reorder recommendation.</p>
+    </div>
+
+    <h2>18. Common Inventory Reporting Mistakes</h2>
+    <ul>
+        <li>Using only current stock and ignoring demand velocity.</li>
+        <li>Using an arbitrary safety buffer with no documented business rule.</li>
+        <li>Ignoring supplier lead time.</li>
+        <li>Counting reserved stock as freely available stock.</li>
+        <li>Ignoring open purchase orders or stock transfers.</li>
+        <li>Mixing units of measure.</li>
+        <li>Using old demand history when the business is changing quickly.</li>
+        <li>Showing a “REORDER” flag without explaining the rule behind it.</li>
+        <li>Publishing confidential stock or supplier information in a public portfolio.</li>
+    </ul>
+
+    <h2>19. Practical Build Sequence</h2>
+    <div class="step">
+        <div class="step-number">Step 01</div>
+        <p>Standardize the SKU and item master.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 02</div>
+        <p>Load current stock, reservations and confirmed incoming quantities.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 03</div>
+        <p>Calculate demand rate from an approved historical period.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 04</div>
+        <p>Apply lead time and safety stock to calculate reorder point.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 05</div>
+        <p>Calculate stock cover and exception status.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 06</div>
+        <p>Assign priority using documented thresholds.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 07</div>
+        <p>Summarize exceptions by location, category and product group.</p>
+    </div>
+    <div class="step">
+        <div class="step-number">Step 08</div>
+        <p>Validate the report against the source system before taking procurement action.</p>
+    </div>
+
+    <h2>20. Final Checklist</h2>
+    <ul>
+        <li>Is the stock balance current?</li>
+        <li>Are all SKUs using a consistent unit of measure?</li>
+        <li>Is demand history clearly defined?</li>
+        <li>Is lead time documented?</li>
+        <li>Is safety stock based on an approved rule?</li>
+        <li>Does the reorder point calculate correctly?</li>
+        <li>Are open purchase orders and transfers considered?</li>
+        <li>Can a manager see the high-priority exceptions immediately?</li>
+    </ul>
+
+
+    <h2>13. Excel Result Output — Reorder Dashboard Look</h2>
+    <p>
+        The final Excel report should make exceptions visible immediately. The example below
+        shows a professional colour-coded output using green, amber and red status rules.
+    </p>
+
+    <div class="dashboard-preview">
+        <div class="preview-head">
+            <div>
+                <div class="result-title">Excel Inventory MIS Output Preview</div>
+                <h3>Reorder & Stock Coverage Dashboard</h3>
+            </div>
+            <span class="period">Status as of: 25 Sep 2026</span>
+        </div>
+
+        <div class="kpi-row">
+            <div class="kpi-box">
+                <div class="kpi-label">Total SKUs</div>
+                <div class="kpi-value">1,240</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-label">Reorder SKUs</div>
+                <div class="kpi-value yellow">148</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-label">High Priority</div>
+                <div class="kpi-value red">34</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-label">Healthy Cover</div>
+                <div class="kpi-value green">78%</div>
+            </div>
+        </div>
+
+        <div style="overflow:auto;border:1px solid #292929;border-radius:10px;background:#121212">
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Location</th>
+                        <th>Available</th>
+                        <th>ROP</th>
+                        <th>Cover</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>SKU-1001</td><td>Chennai DC</td><td>420</td><td>360</td><td>14.0 d</td><td><span class="status good">NO REORDER</span></td><td><span class="status good">LOW</span></td></tr>
+                    <tr><td>SKU-1002</td><td>Bengaluru DC</td><td>180</td><td>340</td><td>7.5 d</td><td><span class="status risk">REORDER</span></td><td><span class="status risk">HIGH</span></td></tr>
+                    <tr><td>SKU-1003</td><td>Hyderabad DC</td><td>520</td><td>385</td><td>14.9 d</td><td><span class="status good">NO REORDER</span></td><td><span class="status good">LOW</span></td></tr>
+                    <tr><td>SKU-1004</td><td>Mumbai DC</td><td>230</td><td>288</td><td>10.5 d</td><td><span class="status watch">REVIEW</span></td><td><span class="status watch">MEDIUM</span></td></tr>
+                    <tr><td>SKU-1005</td><td>Delhi DC</td><td>170</td><td>326</td><td>9.4 d</td><td><span class="status risk">REORDER</span></td><td><span class="status risk">HIGH</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>14. Colour Formatting Rules for Inventory</h2>
+    <p>
+        Conditional formatting should make the action obvious without opening every calculation.
+    </p>
+    <ul>
+        <li><strong style="color:#ff7070">Red:</strong> reorder required or stock cover below the critical threshold.</li>
+        <li><strong style="color:#ffc400">Amber:</strong> item is approaching the reorder trigger or needs review.</li>
+        <li><strong style="color:#59d98e">Green:</strong> healthy stock position based on the defined rule.</li>
+        <li>Use the same thresholds in Excel and Power BI so the two reports tell the same story.</li>
+    </ul>
+
+    <h2>15. Power BI Version — Interactive Inventory Dashboard</h2>
+    <p>
+        Power BI can turn the same inventory logic into an interactive management dashboard.
+        The user can filter by warehouse, category, supplier, SKU and priority while keeping
+        the KPI definitions centralized in measures.
+    </p>
+
+    <div class="powerbi">
+        <div class="powerbi-top">
+            <strong>Power BI Output Preview — Inventory Control Dashboard</strong>
+            <span class="powerbi-badge">POWER BI</span>
+        </div>
+        <div class="powerbi-body">
+            <div class="powerbi-card">
+                <h4>KPI Cards</h4>
+                <p style="margin:0;color:#ddd">Total SKUs • Reorder SKUs • High Priority • Stock Value</p>
+            </div>
+            <div class="powerbi-card">
+                <h4>Visual 01 — Reorder by Location</h4>
+                <p style="margin:0;color:#ddd">Bar chart showing reorder quantity or exception count by DC.</p>
+            </div>
+            <div class="powerbi-card">
+                <h4>Visual 02 — Stock Cover</h4>
+                <p style="margin:0;color:#ddd">Scatter / column analysis of cover days against lead time.</p>
+            </div>
+            <div class="powerbi-card">
+                <h4>Visual 03 — Priority Matrix</h4>
+                <p style="margin:0;color:#ddd">High / Medium / Low exception distribution by category.</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>Suggested Power BI measures</h3>
+    <div class="formula">
+        Total Stock = SUM(Inventory[Current Stock])
+    </div>
+    <div class="formula">
+        Reorder SKUs = CALCULATE(COUNTROWS(Inventory),Inventory[Reorder Status]="REORDER")
+    </div>
+    <div class="formula">
+        High Priority = CALCULATE(COUNTROWS(Inventory),Inventory[Priority]="HIGH")
+    </div>
+    <div class="formula">
+        Average Cover Days = AVERAGE(Inventory[Stock Cover Days])
+    </div>
+
+    <h2>16. Excel vs Power BI for Inventory Reporting</h2>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Requirement</th><th>Excel</th><th>Power BI</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>SKU-level calculations</td><td>Strong formula and table support</td><td>Strong with a model and measures</td></tr>
+            <tr><td>Exception review</td><td>Excellent for detailed working sheets</td><td>Excellent for interactive summaries</td></tr>
+            <tr><td>Warehouse filtering</td><td>Filters / PivotTables</td><td>Slicers and cross-filtering</td></tr>
+            <tr><td>Management dashboard</td><td>Possible with charts</td><td>Purpose-built interactive experience</td></tr>
+            <tr><td>Operational detail</td><td>Very convenient for row-level work</td><td>Better when paired with drill-through</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="cta">
+        <h2 style="margin-top:0">Final Takeaway</h2>
+        <p>
+            A useful reorder report is not just a stock list. It is an exception-management
+            tool that combines inventory position, demand, lead time and business rules.
+            The goal is to make the reason for a reorder decision visible and auditable.
+        </p>
+        <p>
+            Build the calculation logic first, document the rules, validate the data, and
+            only then design the management dashboard.
+        </p>
+        <a href="index.html">← Return to Vijay Arulsamy</a>
+    </div>
+</div>
+</main>
+
+<footer>
+    © 2026 Vijay Arulsamy • Accounting • Excel • MIS • Business Reporting
+</footer>
+</body>
+</html>

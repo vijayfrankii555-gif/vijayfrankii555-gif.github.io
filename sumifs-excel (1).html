@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Advanced Excel for Corporate MIS Reporting | Vijay Arulsamy</title>
+
+    <meta
+        name="description"
+        content="A practical corporate Excel guide using fictional multi-city sales MIS data. Learn XLOOKUP, INDEX MATCH, SUMIFS, COUNTIFS, SUMPRODUCT, FILTER, UNIQUE, SORT, IF, IFS, IFERROR and LET."
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.75;
+            color: #f4f4f4;
+            background: #0a0a0a;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1080px;
+            margin: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10,10,10,.96);
+            border-bottom: 1px solid #2a2a2a;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            min-height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #ffc400;
+        }
+
+        .back {
+            color: #ffc400;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .hero {
+            padding: 90px 0 65px;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(255,196,0,.08), transparent 30%),
+                #0a0a0a;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 18px;
+            background: #ffc400;
+            color: #0a0a0a;
+            font-size: 12px;
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: 48px;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            color: #fff;
+        }
+
+        h1 span {
+            color: #ffc400;
+        }
+
+        .intro {
+            max-width: 860px;
+            color: #c6c6c6;
+            font-size: 18px;
+        }
+
+        .meta {
+            margin-top: 18px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        main {
+            padding: 30px 0 90px;
+        }
+
+        .article {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 30px;
+            line-height: 1.25;
+            margin: 38px 0 14px;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #ffc400;
+            margin-top: 9px;
+        }
+
+        h3 {
+            color: #fff;
+            font-size: 21px;
+            margin: 28px 0 10px;
+        }
+
+        p {
+            color: #c4c4c4;
+            margin-bottom: 16px;
+        }
+
+        ul, ol {
+            color: #c4c4c4;
+            padding-left: 22px;
+            margin-bottom: 18px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        .note {
+            margin: 20px 0;
+            padding: 18px;
+            border-radius: 10px;
+            background: rgba(255,196,0,.08);
+            border: 1px solid rgba(255,196,0,.35);
+            color: #ddd;
+        }
+
+        .formula {
+            margin: 12px 0 18px;
+            padding: 17px 18px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            border-left: 4px solid #ffc400;
+            background: #050505;
+            color: #f7d66c;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .step {
+            margin: 15px 0;
+        }
+
+        .step-number {
+            display: inline-flex;
+            width: 30px;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: #ffc400;
+            color: #0a0a0a;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .explain {
+            padding: 20px;
+            margin: 14px 0 20px;
+            background: #171717;
+            border: 1px solid #303030;
+            border-radius: 10px;
+        }
+
+        .explain strong {
+            color: #fff;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 18px 0 24px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 980px;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 9px 10px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #ffc400;
+            color: #0a0a0a;
+            font-weight: 800;
+        }
+
+        td {
+            background: #0d0d0d;
+            color: #d4d4d4;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin: 22px 0;
+        }
+
+        .mini-card {
+            background: #0a0a0a;
+            border: 1px solid #2c2c2c;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .mini-card h3 {
+            margin-top: 0;
+            font-size: 19px;
+        }
+
+        .version {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 5px 9px;
+            border-radius: 14px;
+            background: #222;
+            border: 1px solid #383838;
+            color: #ffc400;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .cta {
+            margin-top: 38px;
+            padding: 28px;
+            border-radius: 12px;
+            background: #ffc400;
+            color: #0a0a0a;
+        }
+
+        .cta h2 {
+            color: #0a0a0a;
+            margin-top: 0;
+        }
+
+        .cta h2::after {
+            background: #0a0a0a;
+        }
+
+        .cta p {
+            color: #202020;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 17px;
+            border-radius: 7px;
+            background: #0a0a0a;
+            color: #ffc400;
+            font-weight: 800;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #000;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media (max-width: 760px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .article {
+                padding: 26px;
+            }
+
+            .mini-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            h1 {
+                font-size: 31px;
+            }
+
+            .article {
+                padding: 20px;
+            }
+
+            .hero {
+                padding: 65px 0 45px;
+            }
+        }
+    
+        .result-preview {
+            margin: 25px 0 35px;
+            padding: 20px;
+            border: 1px solid #2a2a2a;
+            border-radius: 14px;
+            background: #101010;
+        }
+        .result-head {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:15px;
+            flex-wrap:wrap;
+            margin-bottom:16px;
+        }
+        .result-kpis {
+            display:grid;
+            grid-template-columns:repeat(4,minmax(0,1fr));
+            gap:10px;
+            margin-bottom:14px;
+        }
+        .result-kpi {
+            background:#151515;
+            border:1px solid #292929;
+            border-radius:10px;
+            padding:14px;
+        }
+        .result-kpi small { color:#8f8f8f; display:block; text-transform:uppercase; font-size:10px; letter-spacing:.7px; }
+        .result-kpi strong { display:block; font-size:22px; margin-top:5px; }
+        .result-green{color:#59d98e}.result-yellow{color:#ffc400}.result-red{color:#ff7070}
+        .result-table { width:100%; border-collapse:collapse; min-width:700px; }
+        .result-table th,.result-table td{padding:9px 10px;border-bottom:1px solid #262626;font-size:12px;text-align:left}
+        .result-table th{color:#ffc400;font-size:10px;text-transform:uppercase}
+        .status-pill{display:inline-block;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800}
+        .pill-green{background:rgba(89,217,142,.12);color:#59d98e}
+        .pill-yellow{background:rgba(255,196,0,.12);color:#ffc400}
+        .pill-red{background:rgba(255,112,112,.12);color:#ff7070}
+        .powerbi-preview{border:1px solid #2c2c2c;border-radius:14px;background:#101010;overflow:hidden;margin:24px 0 32px}
+        .powerbi-bar{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px 18px;background:#171717;border-bottom:1px solid #2c2c2c}
+        .powerbi-bar span{color:#65b3ff;font-size:11px;font-weight:800}
+        .powerbi-body{padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .powerbi-card{padding:14px;border-radius:10px;background:#161616;border:1px solid #2b2b2b}
+        .powerbi-card h4{font-size:13px;margin:0 0 8px;color:#ddd}
+        @media(max-width:800px){.result-kpis,.powerbi-body{grid-template-columns:1fr 1fr}}
+        @media(max-width:520px){.result-kpis,.powerbi-body{grid-template-columns:1fr}}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                Vijay Arulsamy<span>.</span>
+            </div>
+
+            <a class="back" href="index.html">
+                ← Back to Website
+            </a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+
+        <span class="tag">ADVANCED EXCEL • CORPORATE MIS • MULTI-CITY REPORTING</span>
+
+        <h1>
+            Advanced Excel for
+            <span>Corporate MIS Reporting</span>
+        </h1>
+
+        <p class="intro">
+            In this guide, we use a fictional corporate sales dataset covering
+            major Indian cities, regions, teams, products, revenue and targets.
+            Every formula is explained step by step so you can reproduce the
+            examples in your own Excel workbook without using confidential data.
+        </p>
+
+        <p class="meta">
+            By Vijay Arulsamy • Accounting & MIS Professional
+        </p>
+
+    </div>
+</section>
+
+<main>
+    <div class="container">
+
+        <article class="article">
+
+            <span class="version">
+                Fictional corporate dataset • No company/client data used
+            </span>
+
+            <h2>1. Corporate Sample Dataset</h2>
+
+            <p>
+                To make the examples closer to real corporate MIS work, our
+                fictional company operates across multiple Indian cities.
+                The dataset contains city, region, sales manager, product,
+                category, units, revenue, target and customer count.
+            </p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>City</th>
+                            <th>Region</th>
+                            <th>Sales Manager</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Units</th>
+                            <th>Revenue</th>
+                            <th>Target</th>
+                            <th>Customers</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>01-09-2026</td>
+                            <td>Chennai</td>
+                            <td>South</td>
+                            <td>Arun</td>
+                            <td>Enterprise Plus</td>
+                            <td>Software</td>
+                            <td>42</td>
+                            <td>630000</td>
+                            <td>600000</td>
+                            <td>31</td>
+                        </tr>
+
+                        <tr>
+                            <td>02-09-2026</td>
+                            <td>Bengaluru</td>
+                            <td>South</td>
+                            <td>Priya</td>
+                            <td>Enterprise Plus</td>
+                            <td>Software</td>
+                            <td>38</td>
+                            <td>570000</td>
+                            <td>600000</td>
+                            <td>28</td>
+                        </tr>
+
+                        <tr>
+                            <td>03-09-2026</td>
+                            <td>Hyderabad</td>
+                            <td>South</td>
+                            <td>Rahul</td>
+                            <td>Business Standard</td>
+                            <td>Software</td>
+                            <td>55</td>
+                            <td>550000</td>
+                            <td>500000</td>
+                            <td>46</td>
+                        </tr>
+
+                        <tr>
+                            <td>04-09-2026</td>
+                            <td>Mumbai</td>
+                            <td>West</td>
+                            <td>Neha</td>
+                            <td>Enterprise Plus</td>
+                            <td>Software</td>
+                            <td>45</td>
+                            <td>675000</td>
+                            <td>650000</td>
+                            <td>36</td>
+                        </tr>
+
+                        <tr>
+                            <td>05-09-2026</td>
+                            <td>Delhi</td>
+                            <td>North</td>
+                            <td>Amit</td>
+                            <td>Business Standard</td>
+                            <td>Software</td>
+                            <td>60</td>
+                            <td>600000</td>
+                            <td>625000</td>
+                            <td>50</td>
+                        </tr>
+
+                        <tr>
+                            <td>06-09-2026</td>
+                            <td>Pune</td>
+                            <td>West</td>
+                            <td>Riya</td>
+                            <td>Professional Basic</td>
+                            <td>Subscription</td>
+                            <td>72</td>
+                            <td>432000</td>
+                            <td>400000</td>
+                            <td>61</td>
+                        </tr>
+
+                        <tr>
+                            <td>07-09-2026</td>
+                            <td>Chennai</td>
+                            <td>South</td>
+                            <td>Arun</td>
+                            <td>Business Standard</td>
+                            <td>Software</td>
+                            <td>58</td>
+                            <td>580000</td>
+                            <td>550000</td>
+                            <td>49</td>
+                        </tr>
+
+                        <tr>
+                            <td>08-09-2026</td>
+                            <td>Bengaluru</td>
+                            <td>South</td>
+                            <td>Priya</td>
+                            <td>Professional Basic</td>
+                            <td>Subscription</td>
+                            <td>75</td>
+                            <td>450000</td>
+                            <td>420000</td>
+                            <td>63</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Column structure</h3>
+
+            <ul>
+                <li><strong>A</strong> = Date</li>
+                <li><strong>B</strong> = City</li>
+                <li><strong>C</strong> = Region</li>
+                <li><strong>D</strong> = Sales Manager</li>
+                <li><strong>E</strong> = Product</li>
+                <li><strong>F</strong> = Category</li>
+                <li><strong>G</strong> = Units</li>
+                <li><strong>H</strong> = Revenue</li>
+                <li><strong>I</strong> = Target</li>
+                <li><strong>J</strong> = Customers</li>
+            </ul>
+
+            <div class="note">
+                <strong>Corporate practice tip:</strong>
+                Use fictional or anonymized data when creating public
+                portfolio content. Never upload confidential customer,
+                employee or company financial information.
+            </div>
+
+
+            <h2>2. XLOOKUP — Retrieve Corporate Master Data</h2>
+
+            <p>
+                Imagine we have a separate city master containing City,
+                Region and Regional Head.
+            </p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>Region</th>
+                            <th>Regional Head</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Chennai</td>
+                            <td>South</td>
+                            <td>Karthik</td>
+                        </tr>
+                        <tr>
+                            <td>Bengaluru</td>
+                            <td>South</td>
+                            <td>Meera</td>
+                        </tr>
+                        <tr>
+                            <td>Hyderabad</td>
+                            <td>South</td>
+                            <td>Vivek</td>
+                        </tr>
+                        <tr>
+                            <td>Mumbai</td>
+                            <td>West</td>
+                            <td>Shreya</td>
+                        </tr>
+                        <tr>
+                            <td>Delhi</td>
+                            <td>North</td>
+                            <td>Rohan</td>
+                        </tr>
+                        <tr>
+                            <td>Pune</td>
+                            <td>West</td>
+                            <td>Megha</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Suppose L2 contains a City. To return its Regional Head:
+            </p>
+
+            <div class="formula">=XLOOKUP(L2,$A$2:$A$7,$C$2:$C$7,"Not Found")</div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                L2 is the city we want to search.
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                A2:A7 contains the cities.
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                C2:C7 contains the Regional Head.
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                "Not Found" is returned when the city is missing.
+            </div>
+
+
+            <h2>3. INDEX + MATCH — Flexible Corporate Lookups</h2>
+
+            <p>
+                INDEX + MATCH performs the same basic lookup concept using
+                two separate functions.
+            </p>
+
+            <div class="formula">=INDEX($C$2:$C$7,MATCH(L2,$A$2:$A$7,0))</div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                MATCH finds the position of the city.
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                INDEX returns the corresponding value from the Regional
+                Head column.
+            </div>
+
+            <p>
+                This is still important knowledge because many corporate
+                workbooks contain older INDEX + MATCH models.
+            </p>
+
+
+            <h2>4. SUMIFS — City + Product + Region Analysis</h2>
+
+            <p>
+                Corporate MIS often needs multi-dimensional reporting.
+                Suppose you want total revenue for Chennai for
+                Enterprise Plus.
+            </p>
+
+            <div class="formula">=SUMIFS($H$2:$H$9,$B$2:$B$9,"Chennai",$E$2:$E$9,"Enterprise Plus")</div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                H2:H9 is the Revenue range.
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                B2:B9 must equal Chennai.
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                E2:E9 must equal Enterprise Plus.
+            </div>
+
+            <div class="explain">
+                <strong>Result with the sample data:</strong>
+                ₹630,000.
+            </div>
+
+            <h3>Make the report dynamic</h3>
+
+            <p>
+                Suppose L2 contains the City and L3 contains the Product:
+            </p>
+
+            <div class="formula">=SUMIFS($H$2:$H$9,$B$2:$B$9,L2,$E$2:$E$9,L3)</div>
+
+            <p>
+                Now the user can change the city or product without changing
+                the formula.
+            </p>
+
+
+            <h2>5. COUNTIFS — Transaction and Customer Analysis</h2>
+
+            <p>
+                COUNTIFS counts the number of rows that meet multiple
+                conditions.
+            </p>
+
+            <p>
+                Example:
+                count how many transactions belong to the South region.
+            </p>
+
+            <div class="formula">=COUNTIFS($C$2:$C$9,"South")</div>
+
+            <p>
+                Add another condition:
+                count South transactions for the Software category.
+            </p>
+
+            <div class="formula">=COUNTIFS($C$2:$C$9,"South",$F$2:$F$9,"Software")</div>
+
+            <p>
+                The same pattern can be used for city, manager, category,
+                product and reporting status.
+            </p>
+
+
+            <h2>6. SUMPRODUCT — Advanced Corporate Metrics</h2>
+
+            <p>
+                SUMPRODUCT is useful when you need row-level multiplication,
+                weighted calculations or multiple conditions.
+            </p>
+
+            <h3>Revenue from Chennai</h3>
+
+            <div class="formula">=SUMPRODUCT(($B$2:$B$9="Chennai")*$G$2:$G$9*$F$2:$F$9)</div>
+
+            <p>
+                That example assumes a numeric value in the last multiplication
+                column. In a real report, SUMPRODUCT is better used with
+                compatible numeric ranges, such as Units × Rate.
+            </p>
+
+            <h3>Weighted average example</h3>
+
+            <div class="formula">=SUMPRODUCT($G$2:$G$9,$H$2:$H$9)/SUM($G$2:$G$9)</div>
+
+            <p>
+                Here the formula weights Revenue by Units. Always decide what
+                the weighting should represent before using this pattern in a
+                client report.
+            </p>
+
+
+            <h2>7. FILTER — Build a Dynamic City Report</h2>
+
+            <p>
+                Suppose L2 contains the city Chennai. You want all Chennai
+                transactions to appear automatically.
+            </p>
+
+            <div class="formula">=FILTER(A2:J9,B2:B9=L2,"No matching records")</div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                Excel checks the City column.
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                Rows equal to L2 are retained.
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                The selected rows spill into the report automatically.
+            </div>
+
+            <div class="note">
+                <strong>Corporate use:</strong>
+                Create an interactive branch or city report where management
+                selects a city and the detailed transactions refresh
+                automatically.
+            </div>
+
+
+            <h2>8. UNIQUE — Dynamic City or Manager List</h2>
+
+            <p>
+                To create a unique city list from the dataset:
+            </p>
+
+            <div class="formula">=UNIQUE(B2:B9)</div>
+
+            <p>
+                This can be used as the source of a report selector or
+                dropdown list.
+            </p>
+
+
+            <h2>9. SORT — Organize the Dynamic List</h2>
+
+            <p>
+                Combine SORT and UNIQUE:
+            </p>
+
+            <div class="formula">=SORT(UNIQUE(B2:B9))</div>
+
+            <p>
+                The result becomes a unique, alphabetically sorted city list.
+            </p>
+
+
+            <h2>10. IF — Convert Corporate Metrics into Status</h2>
+
+            <p>
+                Suppose L2 contains Revenue and M2 contains Target.
+                We want to know whether the target was achieved.
+            </p>
+
+            <div class="formula">=IF(L2&gt;=M2,"Target Achieved","Below Target")</div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                Compare Revenue with Target.
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                Revenue equal to or above Target → Target Achieved.
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                Otherwise → Below Target.
+            </div>
+
+
+            <h2>11. IFS — Build Performance Categories</h2>
+
+            <p>
+                IFS is useful when a report requires more than two outcomes.
+                Assume L2 contains the achievement percentage.
+            </p>
+
+            <div class="formula">=IFS(L2&gt;=1,"Excellent",L2&gt;=0.9,"Good",L2&gt;=0.75,"Watch",TRUE,"Critical")</div>
+
+            <p>
+                This can classify performance into multiple management
+                categories.
+            </p>
+
+
+            <h2>12. IFERROR — Keep Management Reports Clean</h2>
+
+            <p>
+                If a city is missing from a master table, a lookup can return
+                an error. Wrap the lookup with IFERROR:
+            </p>
+
+            <div class="formula">=IFERROR(XLOOKUP(L2,$A$2:$A$7,$C$2:$C$7),"Not Found")</div>
+
+            <p>
+                The formula returns the normal result when the city exists,
+                and "Not Found" when it does not.
+            </p>
+
+
+            <h2>13. LET — Make a Long Corporate Formula Readable</h2>
+
+            <p>
+                Suppose L2 = City and L3 = Product. We want revenue and then
+                classify the result.
+            </p>
+
+            <div class="formula">=LET(
+    city,L2,
+    product,L3,
+    revenue,SUMIFS($H$2:$H$9,$B$2:$B$9,city,$E$2:$E$9,product),
+    IFS(
+        revenue&gt;600000,"High",
+        revenue&gt;=400000,"Medium",
+        revenue&gt;0,"Low",
+        TRUE,"No Sales"
+    )
+)</div>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                city stores the selected city.
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                product stores the selected product.
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                revenue calculates the matching sales.
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                IFS converts the result into a business status.
+            </div>
+
+
+            <h2>14. City-Level MIS: A Practical Corporate Dashboard Logic</h2>
+
+            <p>
+                A simple management report can allow a user to choose a city
+                and show the following KPIs:
+            </p>
+
+            <ul>
+                <li>Total Revenue</li>
+                <li>Total Units</li>
+                <li>Total Customers</li>
+                <li>Target</li>
+                <li>Target Achievement %</li>
+                <li>Number of Transactions</li>
+                <li>Performance Status</li>
+            </ul>
+
+            <h3>Total Revenue</h3>
+            <div class="formula">=SUMIFS($H$2:$H$9,$B$2:$B$9,L2)</div>
+
+            <h3>Total Units</h3>
+            <div class="formula">=SUMIFS($G$2:$G$9,$B$2:$B$9,L2)</div>
+
+            <h3>Total Customers</h3>
+            <div class="formula">=SUMIFS($J$2:$J$9,$B$2:$B$9,L2)</div>
+
+            <h3>Target</h3>
+            <div class="formula">=SUMIFS($I$2:$I$9,$B$2:$B$9,L2)</div>
+
+            <h3>Achievement %</h3>
+            <div class="formula">=IFERROR(TotalRevenue/Target,0)</div>
+
+            <h3>Performance Status</h3>
+            <div class="formula">=IFS(AchievementPct&gt;=1,"Achieved",AchievementPct&gt;=0.9,"Near Target",AchievementPct&gt;=0.75,"Watch",TRUE,"Critical")</div>
+
+            <div class="note">
+                <strong>Key corporate concept:</strong>
+                The same framework can be expanded from City → Region →
+                National level without rebuilding the entire report.
+            </div>
+
+
+            <h2>15. City Comparison Example</h2>
+
+            <p>
+                Once the formulas are connected to a city selector, the same
+                dashboard can compare Chennai, Bengaluru, Hyderabad, Mumbai,
+                Delhi and Pune.
+            </p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>Region</th>
+                            <th>Example Reporting Focus</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Chennai</td>
+                            <td>South</td>
+                            <td>Revenue, Target, Manager Performance</td>
+                        </tr>
+
+                        <tr>
+                            <td>Bengaluru</td>
+                            <td>South</td>
+                            <td>Revenue, Customers, Product Mix</td>
+                        </tr>
+
+                        <tr>
+                            <td>Hyderabad</td>
+                            <td>South</td>
+                            <td>Revenue, Units, Category Analysis</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mumbai</td>
+                            <td>West</td>
+                            <td>Revenue, Target, Sales Conversion</td>
+                        </tr>
+
+                        <tr>
+                            <td>Delhi</td>
+                            <td>North</td>
+                            <td>Revenue, Customers, Target Gap</td>
+                        </tr>
+
+                        <tr>
+                            <td>Pune</td>
+                            <td>West</td>
+                            <td>Subscription Growth, Revenue, Units</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <h2>16. Combine Functions — Where Advanced Excel Starts</h2>
+
+            <p>
+                Individual functions are the building blocks. Advanced MIS
+                work begins when multiple functions work together.
+            </p>
+
+            <div class="mini-grid">
+
+                <div class="mini-card">
+                    <h3>XLOOKUP + IFERROR</h3>
+                    <p>
+                        Retrieve master data and display a controlled message
+                        instead of a lookup error.
+                    </p>
+                </div>
+
+                <div class="mini-card">
+                    <h3>UNIQUE + SORT</h3>
+                    <p>
+                        Create clean dynamic lists for cities, managers,
+                        products or regions.
+                    </p>
+                </div>
+
+                <div class="mini-card">
+                    <h3>SUMIFS + IFS</h3>
+                    <p>
+                        Calculate a KPI and immediately classify performance
+                        into a management category.
+                    </p>
+                </div>
+
+                <div class="mini-card">
+                    <h3>LET + SUMIFS + IFS</h3>
+                    <p>
+                        Organize a complex calculation into readable named
+                        variables and a final business rule.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <h2>17. Common Corporate Excel Mistakes</h2>
+
+            <ul>
+                <li>Mixing different city names such as Bengaluru and Bangalore in the same dataset.</li>
+                <li>Using inconsistent date formats.</li>
+                <li>Hard-coding business criteria into every formula.</li>
+                <li>Building reports directly from messy raw data.</li>
+                <li>Ignoring errors when creating management-facing reports.</li>
+                <li>Using formulas without understanding the business rule.</li>
+                <li>Publishing confidential company data in a public portfolio.</li>
+            </ul>
+
+
+            <h2>18. Recommended Learning Order</h2>
+
+            <ol>
+                <li>IF and IFERROR</li>
+                <li>SUMIFS and COUNTIFS</li>
+                <li>XLOOKUP</li>
+                <li>INDEX + MATCH</li>
+                <li>SUMPRODUCT</li>
+                <li>FILTER</li>
+                <li>UNIQUE + SORT</li>
+                <li>IFS</li>
+                <li>LET</li>
+                <li>Combine the functions into complete MIS reports</li>
+            </ol>
+
+
+
+            <h2>Result Output — What the Corporate Report Looks Like</h2>
+
+            <p>
+                The formulas are only the engine. The final deliverable should present the
+                calculated results in a clean management view with consistent colour rules.
+                The following is a fictional output preview.
+            </p>
+
+            <div class="result-preview">
+                <div class="result-head">
+                    <div>
+                        <div style="color:#ffc400;font-size:12px;font-weight:800;letter-spacing:1px">EXCEL CORPORATE MIS OUTPUT</div>
+                        <h3 style="margin:4px 0 0;color:#fff">Sales Performance Summary</h3>
+                    </div>
+                    <span style="font-size:11px;color:#999">Sep 2026 • Multi-City</span>
+                </div>
+
+                <div class="result-kpis">
+                    <div class="result-kpi"><small>Total Revenue</small><strong class="result-green">₹18.42 Cr</strong></div>
+                    <div class="result-kpi"><small>Target</small><strong class="result-yellow">₹20.00 Cr</strong></div>
+                    <div class="result-kpi"><small>Achievement</small><strong class="result-yellow">92.1%</strong></div>
+                    <div class="result-kpi"><small>Variance</small><strong class="result-red">-₹1.58 Cr</strong></div>
+                </div>
+
+                <div style="overflow:auto;border:1px solid #292929;border-radius:10px">
+                    <table class="result-table">
+                        <thead>
+                            <tr><th>City</th><th>Revenue</th><th>Target</th><th>Achievement</th><th>Status</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Chennai</td><td>₹4.80 Cr</td><td>₹5.00 Cr</td><td>96%</td><td><span class="status-pill pill-green">GOOD</span></td></tr>
+                            <tr><td>Bengaluru</td><td>₹3.65 Cr</td><td>₹3.90 Cr</td><td>94%</td><td><span class="status-pill pill-green">GOOD</span></td></tr>
+                            <tr><td>Hyderabad</td><td>₹3.20 Cr</td><td>₹3.65 Cr</td><td>88%</td><td><span class="status-pill pill-yellow">WATCH</span></td></tr>
+                            <tr><td>Delhi</td><td>₹2.20 Cr</td><td>₹3.05 Cr</td><td>72%</td><td><span class="status-pill pill-red">ACTION</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h2>Colour Formatting — Make the Result Easy to Read</h2>
+            <p>
+                A professional MIS uses colour to explain the status of a number.
+                The rule should be consistent and documented.
+            </p>
+            <ul>
+                <li><strong style="color:#59d98e">Green:</strong> approved “good” range.</li>
+                <li><strong style="color:#ffc400">Yellow:</strong> review / watch range.</li>
+                <li><strong style="color:#ff7070">Red:</strong> action / exception range.</li>
+            </ul>
+
+            <h2>Power BI Output — Same Business Logic, Interactive Dashboard</h2>
+            <p>
+                The same corporate dataset can be modeled in Power BI. Instead of stopping at
+                a formula-based Excel report, the management layer can become interactive with
+                slicers, drill-down and DAX measures.
+            </p>
+
+            <div class="powerbi-preview">
+                <div class="powerbi-bar">
+                    <strong style="color:#fff">Power BI Sales Performance Dashboard</strong>
+                    <span>POWER BI</span>
+                </div>
+                <div class="powerbi-body">
+                    <div class="powerbi-card"><h4>KPI Cards</h4><p style="margin:0;color:#bbb">Revenue • Target • Achievement • Variance</p></div>
+                    <div class="powerbi-card"><h4>Sales by City</h4><p style="margin:0;color:#bbb">Clustered bar chart with status formatting.</p></div>
+                    <div class="powerbi-card"><h4>Trend</h4><p style="margin:0;color:#bbb">Monthly line chart with current vs prior period.</p></div>
+                    <div class="powerbi-card"><h4>Product Mix</h4><p style="margin:0;color:#bbb">Category contribution using a column chart or treemap.</p></div>
+                </div>
+            </div>
+
+            <h3>Core DAX measures</h3>
+            <div class="formula">Total Sales = SUM(Sales[Revenue])</div>
+            <div class="formula">Total Target = SUM(Sales[Target])</div>
+            <div class="formula">Achievement % = DIVIDE([Total Sales],[Total Target],0)</div>
+            <div class="formula">Variance = [Total Sales] - [Total Target]</div>
+
+            <p>
+                Recommended slicers: Month, Region, City, Manager and Product.
+                The business logic remains the same; Power BI changes how the user explores the result.
+            </p>
+
+            <h2>Final Takeaway</h2>
+
+            <p>
+                Corporate-level Excel is not about using complicated formulas
+                for the sake of complexity. The goal is to create a report
+                that is accurate, dynamic, easy to maintain and useful to
+                management.
+            </p>
+
+            <p>
+                A fictional multi-city dataset is enough to learn these
+                techniques. Once the logic is understood, the same framework
+                can be applied to real business data without exposing
+                confidential information.
+            </p>
+
+
+            <div class="cta">
+
+                <h2>
+                    Need an Excel or MIS Reporting Solution?
+                </h2>
+
+                <p>
+                    I work with accounting, Excel, MIS, inventory reporting
+                    and business-data requirements. Visit the main website
+                    for services and contact details.
+                </p>
+
+                <a
+                    href="index.html#contact"
+                    class="btn"
+                >
+                    Contact Vijay
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+</main>
+
+<footer>
+    © 2026 Vijay Arulsamy. All rights reserved.
+</footer>
+
+</body>
+</html>

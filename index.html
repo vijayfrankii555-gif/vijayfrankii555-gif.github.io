@@ -4,7 +4,11 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>
         Vijay Arulsamy | Accounting, MIS Reporting, GST & AI Automation
@@ -12,12 +16,12 @@
 
     <meta
         name="description"
-        content="Vijay Arulsamy - Accounting, MIS Reporting, GST Returns, AI Automation, Business Reporting and Data Analysis professional."
+        content="Vijay Arulsamy provides accounting, MIS reporting, GST returns, AI automation, business reporting and data analysis solutions."
     >
 
     <meta
         name="keywords"
-        content="Vijay Arulsamy, Accounting, MIS Reporting, GST Returns, AI Automation, Business Reporting, Data Analysis, Inventory Reporting, Business Dashboard"
+        content="Vijay Arulsamy, Accounting, MIS Reporting, GST Returns, AI Automation, Business Reporting, Data Analysis, Inventory Reporting"
     >
 
     <meta
@@ -27,6 +31,11 @@
 
     <meta
         name="robots"
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    >
+
+    <meta
+        name="googlebot"
         content="index, follow"
     >
 
@@ -41,7 +50,9 @@
     >
 
 
-    <!-- OPEN GRAPH -->
+    <!-- =====================================================
+         OPEN GRAPH
+    ===================================================== -->
 
     <meta
         property="og:type"
@@ -55,7 +66,7 @@
 
     <meta
         property="og:description"
-        content="Accounting, MIS Reporting, GST Returns, AI Automation and Business Reporting solutions."
+        content="Accounting, MIS Reporting, GST Returns, AI Automation, Business Reporting and Data Analysis."
     >
 
     <meta
@@ -74,7 +85,9 @@
     >
 
 
-    <!-- TWITTER -->
+    <!-- =====================================================
+         TWITTER
+    ===================================================== -->
 
     <meta
         name="twitter:card"
@@ -88,7 +101,7 @@
 
     <meta
         name="twitter:description"
-        content="Accounting, MIS Reporting, GST Returns, AI Automation and Business Reporting solutions."
+        content="Accounting, MIS Reporting, GST Returns, AI Automation, Business Reporting and Data Analysis."
     >
 
     <meta
@@ -97,7 +110,9 @@
     >
 
 
-    <!-- STRUCTURED DATA -->
+    <!-- =====================================================
+         STRUCTURED DATA
+    ===================================================== -->
 
     <script type="application/ld+json">
     {
@@ -772,6 +787,282 @@
 
 
         /* =====================================================
+           PORTFOLIO
+        ===================================================== */
+
+        .portfolio {
+            background: #0a0a0a;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 26px;
+        }
+
+        .portfolio-card {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: 0.35s ease;
+        }
+
+        .portfolio-card:hover {
+            border-color: #ffc400;
+            transform: translateY(-8px);
+            box-shadow:
+                0 18px 40px rgba(255, 196, 0, 0.12);
+        }
+
+        .portfolio-output {
+            position: relative;
+            min-height: 230px;
+            padding: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #101010,
+                    #151515
+                );
+
+            border-bottom: 1px solid #292929;
+        }
+
+        .demo-badge {
+            position: absolute;
+
+            top: 14px;
+            right: 14px;
+
+            padding: 5px 9px;
+
+            border-radius: 12px;
+
+            background: #ffc400;
+            color: #0a0a0a;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            z-index: 2;
+        }
+
+        .mini-dashboard {
+            background: #0b0b0b;
+
+            border: 1px solid #292929;
+
+            border-radius: 10px;
+
+            padding: 13px;
+
+            height: 100%;
+        }
+
+        .mini-title {
+            color: #ffffff;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+        .mini-kpis {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 7px;
+
+            margin-bottom: 12px;
+        }
+
+        .mini-kpi {
+            background: #161616;
+
+            border: 1px solid #272727;
+
+            border-radius: 7px;
+
+            padding: 8px;
+        }
+
+        .mini-kpi small {
+            display: block;
+
+            color: #8c8c8c;
+
+            font-size: 8px;
+
+            text-transform: uppercase;
+        }
+
+        .mini-kpi strong {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 13px;
+        }
+
+        .green {
+            color: #59d98e;
+        }
+
+        .yellow {
+            color: #ffc400;
+        }
+
+        .red {
+            color: #ff7070;
+        }
+
+        .mini-chart {
+            display: flex;
+
+            align-items: end;
+
+            gap: 7px;
+
+            height: 78px;
+
+            padding:
+                8px 4px 2px;
+        }
+
+        .mini-bar {
+            flex: 1;
+
+            min-height: 14px;
+
+            border-radius:
+                5px 5px 2px 2px;
+
+            background: #ffc400;
+        }
+
+        .mini-bar:nth-child(1) {
+            height: 72%;
+        }
+
+        .mini-bar:nth-child(2) {
+            height: 65%;
+            opacity: .75;
+        }
+
+        .mini-bar:nth-child(3) {
+            height: 82%;
+        }
+
+        .mini-bar:nth-child(4) {
+            height: 54%;
+            opacity: .65;
+        }
+
+        .mini-bar:nth-child(5) {
+            height: 92%;
+        }
+
+        .mini-table {
+            margin-top: 10px;
+
+            border: 1px solid #262626;
+
+            border-radius: 7px;
+
+            overflow: hidden;
+        }
+
+        .mini-row {
+            display: grid;
+
+            grid-template-columns:
+                1.25fr .8fr .65fr;
+
+            gap: 5px;
+
+            padding: 7px 8px;
+
+            border-bottom: 1px solid #222222;
+
+            font-size: 9px;
+
+            color: #c7c7c7;
+        }
+
+        .mini-row:last-child {
+            border-bottom: none;
+        }
+
+        .mini-row.head {
+            color: #ffc400;
+            font-weight: 800;
+        }
+
+        .portfolio-content {
+            padding: 24px;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 14px;
+
+            background: #ffc400;
+            color: #0a0a0a;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            margin-bottom: 13px;
+        }
+
+        .portfolio-content h3 {
+            color: #ffffff;
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
+        }
+
+        .portfolio-content p {
+            color: #a8a8a8;
+
+            font-size: 14px;
+
+            margin-bottom: 14px;
+        }
+
+        .portfolio-meta {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+        .portfolio-meta span {
+            padding: 5px 9px;
+
+            border-radius: 12px;
+
+            background: #1a1a1a;
+
+            border: 1px solid #303030;
+
+            color: #bdbdbd;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
            HOW I WORK
         ===================================================== */
 
@@ -924,6 +1215,7 @@
 
         .contact {
             background: #ffc400;
+
             color: #0a0a0a;
         }
 
@@ -1015,6 +1307,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
             .why-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1022,6 +1318,7 @@
             .blog-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
         }
 
 
@@ -1054,6 +1351,7 @@
 
             .certifications-grid,
             .solutions-grid,
+            .portfolio-grid,
             .why-grid,
             .blog-grid {
                 grid-template-columns: 1fr;
@@ -1070,6 +1368,7 @@
             .section-title {
                 font-size: 30px;
             }
+
         }
 
     </style>
@@ -1115,6 +1414,12 @@
                 </li>
 
                 <li>
+                    <a href="#portfolio">
+                        Portfolio
+                    </a>
+                </li>
+
+                <li>
                     <a href="#why-me">
                         Why Me
                     </a>
@@ -1151,6 +1456,7 @@
 
         <div class="hero-grid">
 
+
             <div>
 
                 <h1>
@@ -1163,11 +1469,13 @@
 
                 </h1>
 
+
                 <p class="hero-subtitle">
 
                     GST Returns • AI Automation • Business Reporting • Data Analysis
 
                 </p>
+
 
                 <p class="hero-text">
 
@@ -1177,6 +1485,7 @@
                     practical automation solutions.
 
                 </p>
+
 
                 <div class="hero-buttons">
 
@@ -1212,6 +1521,7 @@
 
             </div>
 
+
         </div>
 
     </div>
@@ -1234,7 +1544,9 @@
             About Me
         </h2>
 
+
         <div class="about-grid">
+
 
             <div class="about-text">
 
@@ -1247,6 +1559,7 @@
 
                 </p>
 
+
                 <p>
 
                     My professional focus combines accounting knowledge
@@ -1255,6 +1568,7 @@
                     business information easier to understand and use.
 
                 </p>
+
 
                 <p>
 
@@ -1277,6 +1591,7 @@
                 >
                     Professional Skills
                 </h3>
+
 
                 <div class="skills">
 
@@ -1340,6 +1655,7 @@
 
             </div>
 
+
         </div>
 
     </div>
@@ -1361,6 +1677,7 @@
         <h2 class="section-title">
             Certifications & Credentials
         </h2>
+
 
         <p class="section-description">
 
@@ -1455,6 +1772,7 @@
             Services & Solutions
         </h2>
 
+
         <p class="section-description">
 
             Practical accounting, MIS reporting, GST, automation,
@@ -1481,15 +1799,18 @@
 
                 </div>
 
+
                 <div class="solution-content">
 
                     <span class="solution-number">
                         01
                     </span>
 
+
                     <h3>
                         MIS Reporting & Business Analysis
                     </h3>
+
 
                     <p>
 
@@ -1518,15 +1839,18 @@
 
                 </div>
 
+
                 <div class="solution-content">
 
                     <span class="solution-number">
                         02
                     </span>
 
+
                     <h3>
                         Accounting & Financial Reporting
                     </h3>
+
 
                     <p>
 
@@ -1555,15 +1879,18 @@
 
                 </div>
 
+
                 <div class="solution-content">
 
                     <span class="solution-number">
                         03
                     </span>
 
+
                     <h3>
                         GST Returns & Compliance Support
                     </h3>
+
 
                     <p>
 
@@ -1592,15 +1919,18 @@
 
                 </div>
 
+
                 <div class="solution-content">
 
                     <span class="solution-number">
                         04
                     </span>
 
+
                     <h3>
                         AI Automation & Business Dashboards
                     </h3>
+
 
                     <p>
 
@@ -1609,6 +1939,679 @@
                         data-driven analysis.
 
                     </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PORTFOLIO
+===================================================== -->
+
+<section
+    id="portfolio"
+    class="portfolio"
+>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Portfolio / Sample Projects
+        </h2>
+
+
+        <p class="section-description">
+
+            Demonstration projects showing how I structure
+            business reports, analysis and automation outputs.
+            These are sample concepts and do not represent
+            confidential client data.
+
+        </p>
+
+
+        <div class="portfolio-grid">
+
+
+            <!-- PROJECT 01 -->
+
+            <div class="portfolio-card">
+
+                <div class="portfolio-output">
+
+                    <span class="demo-badge">
+                        SAMPLE OUTPUT
+                    </span>
+
+
+                    <div class="mini-dashboard">
+
+                        <div class="mini-title">
+                            Monthly Sales MIS Dashboard
+                        </div>
+
+
+                        <div class="mini-kpis">
+
+                            <div class="mini-kpi">
+                                <small>
+                                    Sales
+                                </small>
+
+                                <strong class="green">
+                                    ₹18.42 Cr
+                                </strong>
+                            </div>
+
+
+                            <div class="mini-kpi">
+                                <small>
+                                    Target
+                                </small>
+
+                                <strong class="yellow">
+                                    ₹20 Cr
+                                </strong>
+                            </div>
+
+
+                            <div class="mini-kpi">
+                                <small>
+                                    Achievement
+                                </small>
+
+                                <strong class="yellow">
+                                    92.1%
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-chart">
+
+                            <div class="mini-bar"></div>
+                            <div class="mini-bar"></div>
+                            <div class="mini-bar"></div>
+                            <div class="mini-bar"></div>
+                            <div class="mini-bar"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="portfolio-content">
+
+                    <span class="portfolio-tag">
+                        MIS REPORTING
+                    </span>
+
+
+                    <h3>
+                        Monthly Sales MIS
+                    </h3>
+
+
+                    <p>
+
+                        Management-ready sales reporting with KPI cards,
+                        target achievement, variance, city analysis
+                        and clear exception highlighting.
+
+                    </p>
+
+
+                    <div class="portfolio-meta">
+
+                        <span>
+                            Excel
+                        </span>
+
+                        <span>
+                            Power BI
+                        </span>
+
+                        <span>
+                            KPI Reporting
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 02 -->
+
+            <div class="portfolio-card">
+
+                <div class="portfolio-output">
+
+                    <span class="demo-badge">
+                        SAMPLE OUTPUT
+                    </span>
+
+
+                    <div class="mini-dashboard">
+
+                        <div class="mini-title">
+                            GST Compliance Summary
+                        </div>
+
+
+                        <div class="mini-kpis">
+
+                            <div class="mini-kpi">
+                                <small>
+                                    Sales
+                                </small>
+
+                                <strong>
+                                    1,248
+                                </strong>
+                            </div>
+
+
+                            <div class="mini-kpi">
+                                <small>
+                                    Purchase
+                                </small>
+
+                                <strong>
+                                    846
+                                </strong>
+                            </div>
+
+
+                            <div class="mini-kpi">
+                                <small>
+                                    Exceptions
+                                </small>
+
+                                <strong class="red">
+                                    18
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-table">
+
+                            <div class="mini-row head">
+
+                                <span>
+                                    Area
+                                </span>
+
+                                <span>
+                                    Records
+                                </span>
+
+                                <span>
+                                    Status
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    Sales Data
+                                </span>
+
+                                <span>
+                                    1,248
+                                </span>
+
+                                <span class="green">
+                                    OK
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    Purchase Data
+                                </span>
+
+                                <span>
+                                    846
+                                </span>
+
+                                <span class="green">
+                                    OK
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    Exceptions
+                                </span>
+
+                                <span>
+                                    18
+                                </span>
+
+                                <span class="red">
+                                    REVIEW
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="portfolio-content">
+
+                    <span class="portfolio-tag">
+                        GST REPORTING
+                    </span>
+
+
+                    <h3>
+                        GST Returns & Reconciliation
+                    </h3>
+
+
+                    <p>
+
+                        A sample workflow for organizing GST-related
+                        sales and purchase data, reconciliation and
+                        exception tracking before return preparation.
+
+                    </p>
+
+
+                    <div class="portfolio-meta">
+
+                        <span>
+                            GST
+                        </span>
+
+                        <span>
+                            Reconciliation
+                        </span>
+
+                        <span>
+                            MIS
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 03 -->
+
+            <div class="portfolio-card">
+
+                <div class="portfolio-output">
+
+                    <span class="demo-badge">
+                        SAMPLE OUTPUT
+                    </span>
+
+
+                    <div class="mini-dashboard">
+
+                        <div class="mini-title">
+                            Inventory Reorder Dashboard
+                        </div>
+
+
+                        <div class="mini-kpis">
+
+                            <div class="mini-kpi">
+                                <small>
+                                    Total SKU
+                                </small>
+
+                                <strong>
+                                    1,240
+                                </strong>
+                            </div>
+
+
+                            <div class="mini-kpi">
+                                <small>
+                                    Reorder
+                                </small>
+
+                                <strong class="yellow">
+                                    148
+                                </strong>
+                            </div>
+
+
+                            <div class="mini-kpi">
+                                <small>
+                                    High
+                                </small>
+
+                                <strong class="red">
+                                    34
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-table">
+
+                            <div class="mini-row head">
+
+                                <span>
+                                    SKU
+                                </span>
+
+                                <span>
+                                    Cover
+                                </span>
+
+                                <span>
+                                    Status
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    SKU-1001
+                                </span>
+
+                                <span>
+                                    14 d
+                                </span>
+
+                                <span class="green">
+                                    OK
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    SKU-1002
+                                </span>
+
+                                <span>
+                                    7 d
+                                </span>
+
+                                <span class="red">
+                                    HIGH
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    SKU-1003
+                                </span>
+
+                                <span>
+                                    12 d
+                                </span>
+
+                                <span class="yellow">
+                                    WATCH
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="portfolio-content">
+
+                    <span class="portfolio-tag">
+                        INVENTORY
+                    </span>
+
+
+                    <h3>
+                        Inventory Reorder Analysis
+                    </h3>
+
+
+                    <p>
+
+                        A sample stock-control report using reorder point,
+                        safety stock, stock coverage, priority and
+                        exception-based colour formatting.
+
+                    </p>
+
+
+                    <div class="portfolio-meta">
+
+                        <span>
+                            Inventory
+                        </span>
+
+                        <span>
+                            Excel
+                        </span>
+
+                        <span>
+                            Power BI
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 04 -->
+
+            <div class="portfolio-card">
+
+                <div class="portfolio-output">
+
+                    <span class="demo-badge">
+                        SAMPLE WORKFLOW
+                    </span>
+
+
+                    <div class="mini-dashboard">
+
+                        <div class="mini-title">
+                            AI Reporting Automation
+                        </div>
+
+
+                        <div class="mini-kpis">
+
+                            <div class="mini-kpi">
+
+                                <small>
+                                    Input
+                                </small>
+
+                                <strong>
+                                    Data
+                                </strong>
+
+                            </div>
+
+
+                            <div class="mini-kpi">
+
+                                <small>
+                                    Process
+                                </small>
+
+                                <strong class="yellow">
+                                    AI
+                                </strong>
+
+                            </div>
+
+
+                            <div class="mini-kpi">
+
+                                <small>
+                                    Output
+                                </small>
+
+                                <strong class="green">
+                                    MIS
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-table">
+
+                            <div class="mini-row head">
+
+                                <span>
+                                    Stage
+                                </span>
+
+                                <span>
+                                    Action
+                                </span>
+
+                                <span>
+                                    Status
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    Raw Data
+                                </span>
+
+                                <span>
+                                    Clean
+                                </span>
+
+                                <span class="green">
+                                    DONE
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    Analysis
+                                </span>
+
+                                <span>
+                                    AI Assist
+                                </span>
+
+                                <span class="green">
+                                    DONE
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-row">
+
+                                <span>
+                                    Report
+                                </span>
+
+                                <span>
+                                    Generate
+                                </span>
+
+                                <span class="yellow">
+                                    REVIEW
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="portfolio-content">
+
+                    <span class="portfolio-tag">
+                        AI AUTOMATION
+                    </span>
+
+
+                    <h3>
+                        AI-Assisted Reporting Workflow
+                    </h3>
+
+
+                    <p>
+
+                        A sample workflow showing how repetitive data
+                        organization, summary generation and reporting
+                        tasks can be supported with AI-assisted automation.
+
+                    </p>
+
+
+                    <div class="portfolio-meta">
+
+                        <span>
+                            AI
+                        </span>
+
+                        <span>
+                            Automation
+                        </span>
+
+                        <span>
+                            Reporting
+                        </span>
+
+                    </div>
 
                 </div>
 
@@ -1636,6 +2639,7 @@
         <h2 class="section-title">
             How I Work
         </h2>
+
 
         <p class="section-description">
 
@@ -1730,6 +2734,7 @@
             Latest Insights
         </h2>
 
+
         <p class="section-description">
 
             Practical articles about accounting, MIS,
@@ -1749,9 +2754,11 @@
                     EXCEL + POWER BI
                 </span>
 
+
                 <h3>
                     Advanced Excel for Corporate MIS Reporting
                 </h3>
+
 
                 <p>
 
@@ -1760,6 +2767,7 @@
                     and Power BI dashboard concepts.
 
                 </p>
+
 
                 <a
                     class="read-more"
@@ -1779,9 +2787,11 @@
                     MIS + POWER BI
                 </span>
 
+
                 <h3>
                     How to Create a Monthly Sales MIS Report
                 </h3>
+
 
                 <p>
 
@@ -1790,6 +2800,7 @@
                     same logic into a Power BI dashboard.
 
                 </p>
+
 
                 <a
                     class="read-more"
@@ -1809,9 +2820,11 @@
                     INVENTORY + POWER BI
                 </span>
 
+
                 <h3>
                     How to Build an Inventory Reorder Report
                 </h3>
+
 
                 <p>
 
@@ -1820,6 +2833,7 @@
                     reporting logic and Power BI concepts.
 
                 </p>
+
 
                 <a
                     class="read-more"
@@ -1853,6 +2867,7 @@
             Let's Work Together
         </h2>
 
+
         <p class="contact-text">
 
             Have an accounting, MIS reporting, GST,
@@ -1865,8 +2880,6 @@
         <div class="contact-links">
 
 
-            <!-- EMAIL -->
-
             <a
                 class="contact-link"
                 href="mailto:vijayfrankii555@gmail.com"
@@ -1874,8 +2887,6 @@
                 Email
             </a>
 
-
-            <!-- LINKEDIN -->
 
             <a
                 class="contact-link"
@@ -1886,8 +2897,6 @@
                 LinkedIn
             </a>
 
-
-            <!-- WHATSAPP -->
 
             <a
                 class="contact-link"
